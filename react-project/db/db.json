@@ -39,11 +39,37 @@
   "articles":[
     {
       "id" :1,
-      "name" : "article1",
-      "price" : "30.00€",
-      "path" : "/src/assets/articles/article1.webp",
+      "category" : "mobile",
+      "name" : "Iphone 16 Pro Max",
+      "price" : "1399.99€",
+      "path" : "/assets/articles/mobiles/apple.webp",
+      "stock" : 10
+    },
+    {
+      "id" :2,
+      "category" : "mobile",
+      "name" : "Oppo X7 Pro 5g",
+      "price" : "399.99€",
+      "path" : "/assets/articles/mobiles/poco.webp",
+      "stock" : 10
+    },
+    {
+      "id" :3,
+      "category" : "mobile",
+      "name" : "Samsung Galaxy S25",
+      "price" : "909.00€",
+      "path" : "/assets/articles/mobiles/samsung.webp",
+      "stock" : 10
+    },
+    {
+      "id" :4,
+      "category" : "mobile",
+      "name" : "Xiaomi Redmi Note 13",
+      "price" : "169,99€",
+      "path" : "/assets/articles/mobiles/xiaomi.webp",
       "stock" : 10
     }
+
   ]
   
 

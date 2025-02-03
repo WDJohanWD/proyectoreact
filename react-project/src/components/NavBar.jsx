@@ -1,8 +1,7 @@
 import "bootstrap-icons/font/bootstrap-icons.css"
 import { Link } from "react-router-dom"
 import logo from "../assets/logo.png"
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-
+import "../styles/NavBar.css"
 const NavBar = () => {
   const username = localStorage.getItem("username")
   const isLogged = localStorage.getItem("username") ? true : false
@@ -13,7 +12,9 @@ const NavBar = () => {
   }
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary w-100  position-relative p-3" >
+    <nav className="navbar navbar-expand-lg navbar-dark w-100 position-relative p-3" 
+     style={{ backgroundColor: "#3498db" }}>
+        
       <div className="container-fluid">
         <button
           className="navbar-toggler"

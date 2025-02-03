@@ -1,8 +1,8 @@
 import "../styles/Home.css"
-import apple from "../assets/articles/apple.webp"
-import jbl from "../assets/articles/jbl.webp"
-import smartwatch from "../assets/articles/smartwatch.webp"
-import lenovo from "../assets/articles/lenovo.webp"
+import apple from "/assets/articles/apple.webp"
+import jbl from "/assets/articles/jbl.webp"
+import smartwatch from "/assets/articles/smartwatch.webp"
+import lenovo from "/assets/articles/lenovo.webp"
 
 const Home = () => {
   return (
