@@ -1,6 +1,25 @@
 import { Link } from 'react-router-dom';
 
 const Login = () => {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [users, setUsers] = useState([]);
+    
+    function handleUsernameChange(event) {
+        setUsername(event.target.value);
+    }
+
+    function handlePasswordChange(event) {
+        setPassword(event.target.value);
+    }
+
+    users = async function getUser() {
+        const response = await fetch("http://localhost:5000/users");
+        const data = await response.json();
+        return data;
+    }
+
+
     return (
         <div className="container mt-5">
             <h1 className="text-center">Login</h1>
@@ -13,6 +32,8 @@ const Login = () => {
                         className="form-control"
                         id="username"
                         placeholder="Enter username"
+                        value={username}
+                        onChange={handleUsernameChange}
                     />
                 </div>
                 <div className="form-group">
@@ -22,11 +43,14 @@ const Login = () => {
                         className="form-control"
                         id="password"
                         placeholder="Enter password"
+                        value={password}
+                        onChange={handlePasswordChange}
+
                     />
                 </div>
                 <button type="submit" className="btn btn-primary btn-block mt-3">Login</button> <br />
                 <div className="d-flex justify-content-end">
-                    <Link to="/register">If you are not user yet, you can register here</Link>
+                    <p className='me-1'>If you are not user yet, you can register </p><Link to="/register"> here</Link>
                 </div>
             </form>
         </div>

@@ -37,6 +37,7 @@ function Register() {
           });
 
         if (response.ok) {
+            
             window.location.href = "/login";
         } else {
             alert("Failed to register user");
