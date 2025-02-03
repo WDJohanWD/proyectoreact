@@ -13,7 +13,7 @@ const NavBar = () => {
   }
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary w-100  position-relative p-2" >
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary w-100  position-relative p-3" >
       <div className="container-fluid">
         <button
           className="navbar-toggler"
@@ -46,7 +46,7 @@ const NavBar = () => {
           </ul>
 
           <div className="position-absolute top-50 start-50 translate-middle">
-            <p className="mt-3 text-white">Smart <img width={90} src={logo || "/placeholder.svg"} alt="Logo" /> Sphere</p>
+            <p className="mt-4 text-white">Smart <img width={90} src={logo || "/placeholder.svg"} alt="Logo" /> Sphere</p>
             
           </div>
 

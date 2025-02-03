@@ -1,4 +1,8 @@
 import "../styles/Home.css"
+import apple from "../assets/articles/apple.webp"
+import jbl from "../assets/articles/jbl.webp"
+import smartwatch from "../assets/articles/smartwatch.webp"
+import lenovo from "../assets/articles/lenovo.webp"
 
 const Home = () => {
   return (
@@ -20,27 +24,27 @@ const Home = () => {
           <h2>Featured Products</h2>
           <div className="product-grid">
             <div className="product-card">
-              <img src="/placeholder.svg?height=200&width=200" alt="Smartphone" />
-              <h3>Latest Smartphone</h3>
-              <p>$999</p>
+              <img src={apple} alt="Smartphone" />
+              <h3>Iphone 16 Pro Max</h3>
+              <p>133,99€</p>
               <button>Add to Cart</button>
             </div>
             <div className="product-card">
-              <img src="/placeholder.svg?height=200&width=200" alt="Laptop" />
+              <img src={lenovo} alt="Laptop" />
               <h3>Powerful Laptop</h3>
-              <p>$1299</p>
+              <p>599,99€</p>
               <button>Add to Cart</button>
             </div>
             <div className="product-card">
-              <img src="/placeholder.svg?height=200&width=200" alt="Smartwatch" />
+              <img src={smartwatch} alt="Smartwatch" />
               <h3>Smartwatch</h3>
-              <p>$299</p>
+              <p>32.99€</p>
               <button>Add to Cart</button>
             </div>
             <div className="product-card">
-              <img src="/placeholder.svg?height=200&width=200" alt="Wireless Earbuds" />
+              <img src={jbl} alt="Wireless Earbuds" />
               <h3>Wireless Earbuds</h3>
-              <p>$159</p>
+              <p>59,99€</p>
               <button>Add to Cart</button>
             </div>
           </div>

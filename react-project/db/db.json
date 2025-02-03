@@ -35,6 +35,15 @@
       "coment": "Hola soy un comentario",
       "date": "2021-09-01"
     }
+  ],
+  "articles":[
+    {
+      "id" :1,
+      "name" : "article1",
+      "price" : "30.00€",
+      "path" : "/src/assets/articles/article1.webp",
+      "stock" : 10
+    }
   ]
   
 
