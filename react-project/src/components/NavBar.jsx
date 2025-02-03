@@ -1,11 +1,9 @@
-import React from 'react';
 import "bootstrap-icons/font/bootstrap-icons.css"; 
 import { Link } from 'react-router-dom';
 
 const NavBar = () => {
     const username = localStorage.getItem("username");
     const isLogged = localStorage.getItem("username") ? true : false;
-    const isAdmin = localStorage.getItem("username") === "admin" ? true : false;
     
     function closeSession(){
         localStorage.removeItem("username");
@@ -62,10 +60,12 @@ function handleNavbarCollapse() {
     const navbarToggler = document.querySelector('.navbar-toggler');
     const navbarCollapse = document.querySelector('#navbarNav');
 
-    navbarToggler.addEventListener('click', () => {
-        navbarCollapse.classList.toggle('show');
-    });
+    if (navbarToggler && navbarCollapse) {
+        navbarToggler.addEventListener('click', () => {
+            navbarCollapse.classList.toggle('show');
+        });
+    }
 }
 
 // Call the function to ensure the event listener is added
-handleNavbarCollapse();
+document.addEventListener('DOMContentLoaded', handleNavbarCollapse);

@@ -2,8 +2,8 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Home from "./components/Home";
 import NavBar from "./components/NavBar";
 import Articles from "./components/Articles";
-import Login from "./userAcces/Login";
-import Register from "./userAcces/Register";
+import Login from "./usersAccess/Login";
+import Register from "./usersAccess/Register";
 
 
 function App() {
