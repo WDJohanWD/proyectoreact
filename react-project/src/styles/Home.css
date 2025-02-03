@@ -23,6 +23,7 @@
     color: #fff;
     padding: 16.5rem 0;
     text-align: center;
+    box-shadow: 0 50px 10px rgba(181, 8, 166, 0.5);
   }
   
   .hero h1 {

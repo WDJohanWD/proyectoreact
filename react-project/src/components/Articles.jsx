@@ -29,7 +29,7 @@ const Articles = () => {
                             </div>
                         ))
                     }
-                </div>
+                </div> <br />
                 <h2>Laptops</h2>
                 <div className="product-grid">
                     {articles

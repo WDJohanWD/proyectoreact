@@ -6,10 +6,9 @@ import Login from "./usersAccess/Login";
 import Register from "./usersAccess/Register";
 
 
-
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter> 
       
       <NavBar />
       <Routes>
