@@ -3,7 +3,6 @@
     {
       "id": "1",
       "username": "admin",
-      "email": "admin@example.com",
       "password": "admin123"
     },
     {
@@ -15,11 +14,28 @@
       "id": "1ce9",
       "username": "estebomba",
       "password": "estebomba"
+    }
+  ],
+  "coments" : [
+    {
+      "id": "1",
+      "user_id": "1",
+      "coment": "Hola soy un comentario",
+      "date": "2021-09-01"
     },
     {
-      "id": "37df",
-      "username": "johan",
-      "password": "johan1"
+      "id": "2",
+      "user_id": "46e5",
+      "coment": "Hola soy un comentario",
+      "date": "2021-09-01"
+    },
+    {
+      "id": "3",
+      "user_id": "1ce9",
+      "coment": "Hola soy un comentario",
+      "date": "2021-09-01"
     }
   ]
+  
+
 }

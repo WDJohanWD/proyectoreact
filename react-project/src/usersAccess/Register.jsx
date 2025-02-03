@@ -24,6 +24,16 @@ function Register() {
             alert("Passwords do not match");
             return;
         }
+        const isRepeat = users.some(user => {
+            if (user.username === username) {
+                alert("Username already exists");
+                return true;
+            }
+            return false;
+        });
+        if (isRepeat) {
+            return;
+        }
         const newUser = { username, password };
         setUsers([...users, newUser]);
         setUsername("");
