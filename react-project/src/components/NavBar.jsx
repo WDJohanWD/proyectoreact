@@ -13,7 +13,7 @@ const NavBar = () => {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark w-100 position-relative p-3" 
-     style={{ backgroundColor: "#3498db" }}>
+     style={{ backgroundColor: "#3498db"}}>
         
       <div className="container-fluid">
         <button
@@ -52,16 +52,21 @@ const NavBar = () => {
           </div>
 
           <ul className="navbar-nav ms-auto">
+            <li className="nav-item">
+              <Link to="/cart" className="nav-link text-white">
+                <i className="bi bi-cart4 h4"></i>
+              </Link>
+            </li>
             {isLogged ? (
               <li className="nav-item">
                 <button className="nav-link text-white bg-transparent border-0" onClick={closeSession}>
-                  <i className="bi bi-box-arrow-right dark h4"></i>
+                  <i className="bi bi-box-arrow-right h4"></i>
                 </button>
               </li>
             ) : (
               <li className="nav-item">
                 <Link to="/login" className="nav-link text-white">
-                  <i className="bi bi-box-arrow-in-right dark h4"></i>
+                  <i className="bi bi-box-arrow-in-right h4"></i>
                 </Link>
               </li>
             )}

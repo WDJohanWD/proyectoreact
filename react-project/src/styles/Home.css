@@ -20,10 +20,11 @@
   /* Hero section styles */
   .hero {
     background-image: url("../assets/homeImage.webp");
+    background-size: cover;
     color: #fff;
-    padding: 16.5rem 0;
+    padding: 20% 0;
     text-align: center;
-    box-shadow: 0 50px 10px rgba(181, 8, 166, 0.5);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
   }
   
   .hero h1 {
