@@ -5,8 +5,20 @@ import Articles from "./components/Articles";
 import Login from "./usersAccess/Login";
 import Register from "./usersAccess/Register";
 import Footer from "./components/Footer";
+import Dashboard from "./usersAccess/Dashboard";
+import { useEffect, useState } from "react";
 
 function App() {
+
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    const admin = localStorage.getItem("isAdmin");
+    if (admin === "true") {
+      setIsAdmin(true);
+    }
+  }, []);
+
   return (
     <BrowserRouter> 
       
@@ -16,6 +28,7 @@ function App() {
         <Route path="/articles" element={<Articles />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/dashboard" element={<Dashboard />} />
     
       </Routes>
       <Footer />

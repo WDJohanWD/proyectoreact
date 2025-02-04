@@ -5,6 +5,7 @@ function Register() {
     const [password, setPassword] = useState("");
     const [repeatPassword, setRepeatPassword] = useState("");
     const [users, setUsers] = useState([]);
+    const [msg, setMsg] = useState("");
 
     function handleUsernameChange(event) {
         setUsername(event.target.value);
@@ -21,12 +22,12 @@ function Register() {
     async function handleSubmit(event) {
         event.preventDefault();
         if (password !== repeatPassword) {
-            alert("Passwords do not match");
+            setMsg("Passwords do not match");
             return;
         }
         const isRepeat = users.some(user => {
             if (user.username === username) {
-                alert("Username already exists");
+                setMsg("Username already exists");
                 return true;
             }
             return false;
@@ -44,13 +45,12 @@ function Register() {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(newUser),
-          });
+        });
 
         if (response.ok) {
-            
             window.location.href = "/login";
         } else {
-            alert("Failed to register user");
+            setMsg("Failed to register user");
         }
     }
 
@@ -60,7 +60,6 @@ function Register() {
         setUsers(data);
     }
 
-    
     useEffect(() => {
         receiveUsers();
     }, []);
@@ -96,8 +95,11 @@ function Register() {
                         onChange={handleRepeatPasswordChange}
                     />
                 </div> <br />
+                {msg && <div className="alert alert-danger mt-1">{msg}</div>}
                 <button type="submit" className="btn btn-primary btn-block">Register</button>
             </form>
+
+            
 
             {users.map((user, index) => (
                 <div key={index}>

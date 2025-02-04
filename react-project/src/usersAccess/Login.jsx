@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 const Login = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [users, setUsers] = useState([]);
+    const [msg, setMsg] = useState("");
+    const [isAdmin, setIsAdmin] = useState(false);
     
     function handleUsernameChange(event) {
         setUsername(event.target.value);
@@ -23,25 +24,38 @@ const Login = () => {
 
     function handleSubmit(event) {
         event.preventDefault();
+        setMsg(""); // Reset the message before checking credentials
+        let userFound = false;
         users.forEach(user => {
-            if (user.username === username && user.password === password) {
-                alert("You are logged in");
-                localStorage.setItem("username", username);
-
-                return window.location.href = "/";
+            if (user.username === username) {
+                userFound = true;
+                if (user.password === password) {
+                    if (user.username === "admin") {
+                        setIsAdmin(true);
+                    }
+                    alert("You are logged in");
+                    localStorage.setItem("username", username);
+                    localStorage.setItem("isAdmin", isAdmin);
+                    return window.location.href = "/";
+                } else {
+                    setMsg("Password is incorrect");
+                }
             }
         });
+        if (!userFound) {
+            setMsg("User not found");
+        }
     }
 
     useEffect(() => {
         getUser().then(data => setUsers(data));
-    })
+    }, []); // Add an empty dependency array to run only once
 
     return (
         <div className="container mt-5">
             <h1 className="text-center">Login</h1>
 
-            <form className="w-50 mx-auto">
+            <form className="w-50 mx-auto" onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="username">Username</label>
                     <input
@@ -62,10 +76,11 @@ const Login = () => {
                         placeholder="Enter password"
                         value={password}
                         onChange={handlePasswordChange}
-
                     />
                 </div>
-                <button type="submit" className="btn btn-primary btn-block mt-3" onClick={handleSubmit}>Login</button> <br />
+                <br />
+                {msg && <div className="alert alert-danger">{msg}</div>}
+                <button type="submit" className="btn btn-primary btn-block mt-3">Login</button> <br />
                 <div className="d-flex justify-content-end">
                     <p className='me-1'>If you are not user yet, you can register </p><Link to="/register"> here</Link>
                 </div>
