@@ -1,6 +1,6 @@
 import "bootstrap-icons/font/bootstrap-icons.css"
 import { Link } from "react-router-dom"
-import logo from "../assets/logo.png"
+import logo from "../assets/upscalemedia.png"
 import "../styles/NavBar.css"
 const NavBar = () => {
   const username = localStorage.getItem("username")
