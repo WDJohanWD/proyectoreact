@@ -5,10 +5,12 @@ import "../styles/NavBar.css"
 const NavBar = () => {
   const username = localStorage.getItem("username")
   const isLogged = localStorage.getItem("username") ? true : false
+  const isAdmin = localStorage.getItem("isAdmin") === "true" ? true : false
 
   function closeSession() {
     localStorage.removeItem("username")
     window.location.href = "/login"
+    localStorage.setItem("isAdmin", false)
   }
 
   return (
@@ -50,8 +52,16 @@ const NavBar = () => {
             <p className="mt-4 text-white">Smart <img width={90} src={logo || "/placeholder.svg"} alt="Logo" /> Sphere</p>
             
           </div>
+          
 
           <ul className="navbar-nav ms-auto">
+            {isAdmin && (
+              <li className="nav-item">
+                <Link to="/dashboard" className="nav-link text-white">
+                  <i className="bi bi-speedometer2 h4"></i>
+                </Link>
+              </li>
+            )}
             <li className="nav-item">
               <Link to="/cart" className="nav-link text-white">
                 <i className="bi bi-cart4 h4"></i>

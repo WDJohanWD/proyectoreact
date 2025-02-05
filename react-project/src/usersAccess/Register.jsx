@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 function Register() {
     const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [repeatPassword, setRepeatPassword] = useState("");
     const [users, setUsers] = useState([]);
@@ -9,6 +10,10 @@ function Register() {
 
     function handleUsernameChange(event) {
         setUsername(event.target.value);
+    }
+
+    function handleEmailChange(event) {
+        setEmail(event.target.value);
     }
 
     function handlePasswordChange(event) {
@@ -35,11 +40,12 @@ function Register() {
         if (isRepeat) {
             return;
         }
-        const newUser = { username, password };
+        const newUser = { username, password, email };
         setUsers([...users, newUser]);
         setUsername("");
         setPassword("");
         setRepeatPassword("");
+        setEmail("");
 
         const response = await fetch("http://localhost:5000/users", {
             method: "POST",
@@ -77,6 +83,15 @@ function Register() {
                         onChange={handleUsernameChange}
                     />
                 </div> <br/>
+                <div className="form-group">
+                    <input
+                        type="email"
+                        className="form-control"
+                        placeholder="Email"
+                        value={email}
+                        onChange={handleEmailChange}
+                    />
+                </div> <br />
                 <div className="form-group">
                     <input
                         type="password"

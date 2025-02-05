@@ -7,7 +7,7 @@ import Register from "./usersAccess/Register";
 import Footer from "./components/Footer";
 import Dashboard from "./usersAccess/Dashboard";
 import { useEffect, useState } from "react";
-
+import "./styles/Navbar.css";
 function App() {
 
   const [isAdmin, setIsAdmin] = useState(false);

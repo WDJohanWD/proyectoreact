@@ -32,10 +32,12 @@ const Login = () => {
                 if (user.password === password) {
                     if (user.username === "admin") {
                         setIsAdmin(true);
+                        localStorage.setItem("isAdmin", true); // Save isAdmin as true
+                    } else {
+                        localStorage.setItem("isAdmin", false); // Save isAdmin as false for non-admin users
                     }
                     alert("You are logged in");
                     localStorage.setItem("username", username);
-                    localStorage.setItem("isAdmin", isAdmin);
                     return window.location.href = "/";
                 } else {
                     setMsg("Password is incorrect");
@@ -46,15 +48,15 @@ const Login = () => {
             setMsg("User not found");
         }
     }
-
+    
     useEffect(() => {
         getUser().then(data => setUsers(data));
     }, []); // Add an empty dependency array to run only once
-
+    
     return (
         <div className="container mt-5">
             <h1 className="text-center">Login</h1>
-
+    
             <form className="w-50 mx-auto" onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="username">Username</label>
@@ -78,20 +80,12 @@ const Login = () => {
                         onChange={handlePasswordChange}
                     />
                 </div>
-                <br />
-                {msg && <div className="alert alert-danger">{msg}</div>}
-                <button type="submit" className="btn btn-primary btn-block mt-3">Login</button> <br />
+                <button type="submit" className="btn btn-primary mt-3">Login</button>
+                {msg && <p className="text-danger mt-3">{msg}</p>}
                 <div className="d-flex justify-content-end">
                     <p className='me-1'>If you are not user yet, you can register </p><Link to="/register"> here</Link>
                 </div>
             </form>
-
-            {users.map((user, index) => (
-                <div key={index}>
-                    <h3>{user.username}</h3>
-                    <p>{user.password}</p>
-                </div>
-            ))}
         </div>
     );
 }
