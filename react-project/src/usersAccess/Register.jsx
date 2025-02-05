@@ -113,15 +113,6 @@ function Register() {
                 {msg && <div className="alert alert-danger mt-1">{msg}</div>}
                 <button type="submit" className="btn btn-primary btn-block">Register</button>
             </form>
-
-            
-
-            {users.map((user, index) => (
-                <div key={index}>
-                    <h3>{user.username}</h3>
-                    <p>{user.password}</p>
-                </div>
-            ))}
         </div>
     );
 }

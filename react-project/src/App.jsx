@@ -20,16 +20,16 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter> 
-      
+    <BrowserRouter>
+
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/articles" element={<Articles />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-    
+        {isAdmin && <Route path="/dashboard" element={<Dashboard />} />}
+
       </Routes>
       <Footer />
     </BrowserRouter>

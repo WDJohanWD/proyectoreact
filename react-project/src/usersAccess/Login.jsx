@@ -36,7 +36,6 @@ const Login = () => {
                     } else {
                         localStorage.setItem("isAdmin", false); // Save isAdmin as false for non-admin users
                     }
-                    alert("You are logged in");
                     localStorage.setItem("username", username);
                     return window.location.href = "/";
                 } else {
