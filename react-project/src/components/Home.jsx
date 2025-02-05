@@ -10,7 +10,7 @@ const Home = () => {
       <main>
         <section className="hero">
           <div className="container">
-            <h1>Welcome to TechShop</h1>
+            <h1>Welcome to SmartSphere</h1>
             <p>Discover the latest in technology and gadgets</p>
             <Link to="/articles" className="cta-button">
               Shop Now

@@ -25,8 +25,29 @@
     padding: 20% 0;
     text-align: center;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+    position: relative;
   }
-  
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
+    z-index: 1;
+  }
+
+  .hero h1,
+  .hero p,
+  .hero .cta-button {
+    position: relative;
+    z-index: 2;
+  }
+
+
+
   .hero h1 {
     font-size: 2.5rem;
     margin-bottom: 1rem;

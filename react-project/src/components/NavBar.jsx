@@ -14,79 +14,107 @@ const NavBar = () => {
   }
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark w-100 position-relative p-3" 
-     style={{ backgroundColor: "#3498db"}}>
-        
-      <div className="container-fluid">
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav me-auto">
-            <li className="nav-item">
-              <Link to="/" className="nav-link text-white">
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/articles" className="nav-link text-white">
-                Articles
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/contact" className="nav-link text-white">
-                Contact
-              </Link>
-            </li>
-          </ul>
+<nav
+  className="navbar navbar-expand-lg navbar-dark w-100 position-relative custom-navbar"
+  style={{
+    background: "linear-gradient(135deg, #3498db, #217dbb)",
+    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.3)",
+    borderBottom: "3px solid rgba(255, 255, 255, 0.3)",
+    padding: "10px 15px"
+  }}
+>
+  <div className="container-fluid">
+    <button
+      className="navbar-toggler custom-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span className="navbar-toggler-icon"></span>
+    </button>
+    <div className="collapse navbar-collapse" id="navbarNav">
+      <ul className="navbar-nav me-auto" style={{ fontSize: "1.2rem" }}>
+        <li className="nav-item">
+          <Link to="/" className="nav-link" style={{ padding: "10px 15px" }}>
+            Home
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/articles" className="nav-link" style={{ padding: "10px 15px" }}>
+            Articles
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/contact" className="nav-link" style={{ padding: "10px 15px" }}>
+            Contact
+          </Link>
+        </li>
+      </ul>
 
-          <div className="position-absolute top-50 start-50 translate-middle">
-            <p className="mt-4 text-white">Smart <img width={90} src={logo || "/placeholder.svg"} alt="Logo" /> Sphere</p>
-            
-          </div>
-          
-
-          <ul className="navbar-nav ms-auto">
-            {isAdmin && (
-              <li className="nav-item">
-                <Link to="/dashboard" className="nav-link text-white">
-                  <i className="bi bi-speedometer2 h4"></i>
-                </Link>
-              </li>
-            )}
-            <li className="nav-item">
-              <Link to="/cart" className="nav-link text-white">
-                <i className="bi bi-cart4 h4"></i>
-              </Link>
-            </li>
-            {isLogged ? (
-              <li className="nav-item">
-                <button className="nav-link text-white bg-transparent border-0" onClick={closeSession}>
-                  <i className="bi bi-box-arrow-right h4"></i>
-                </button>
-              </li>
-            ) : (
-              <li className="nav-item">
-                <Link to="/login" className="nav-link text-white">
-                  <i className="bi bi-box-arrow-in-right h4"></i>
-                </Link>
-              </li>
-            )}
-            <li className="nav-item">
-              <span className="nav-link text-white">{username}</span>
-            </li>
-          </ul>
-        </div>
+      <div className="brand-container position-absolute top-50 start-50 translate-middle">
+        <p className="brand-text mb-0">
+          <img
+            width={100}
+            src={logo || "/placeholder.svg"}
+            alt="Logo"
+            className="brand-logo"
+          />
+        </p>
       </div>
-    </nav>
+
+      <ul className="navbar-nav ms-auto" style={{ fontSize: "1.2rem" }}>
+        {isAdmin && (
+          <li className="nav-item">
+            <Link to="/dashboard" className="nav-link">
+              <i className="bi bi-speedometer2" style={{ fontSize: "1.5rem" }}></i>
+            </Link>
+          </li>
+        )}
+        <li className="nav-item">
+          <Link to="/cart" className="nav-link">
+            <i className="bi bi-cart4" style={{ fontSize: "1.5rem" }}></i>
+            <span className="nav-tooltip">Cart</span>
+          </Link>
+        </li>
+        {username && (
+          <li className="nav-item">
+            <span
+              className="nav-link username-text"
+              style={{ fontSize: "1.2rem", display: "flex", alignItems: "center" }}
+            >
+              <i className="bi bi-person-circle me-2" style={{ fontSize: "1.5rem" }}></i>
+              {username}
+            </span>
+          </li>
+        )}
+        
+        {isLogged ? (
+          <li className="nav-item">
+            <button
+              className="nav-link custom-btn"
+              onClick={closeSession}
+              style={{ fontSize: "1.2rem", display: "flex", alignItems: "center" }}
+            >
+              <i className="bi bi-box-arrow-right" style={{ fontSize: "1.5rem", marginRight: "5px" }}></i>
+              <span className="nav-tooltip">Logout</span>
+            </button>
+          </li>
+        ) : (
+          <li className="nav-item">
+            <Link to="/login" className="nav-link">
+              <i className="bi bi-box-arrow-in-right" style={{ fontSize: "1.5rem" }}></i>
+              <span className="nav-tooltip">Login</span>
+            </Link>
+          </li>
+        )}
+      </ul>
+    </div>
+  </div>
+</nav>
+
   )
 }
 
