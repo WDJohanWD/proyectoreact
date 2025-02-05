@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import "../styles/Dashboard.css";
 
 const Dashboard = () => {
     const [users, setUsers] = useState([]);
@@ -34,7 +34,7 @@ const Dashboard = () => {
         });
     }
 
-    
+
 
 
 
@@ -47,74 +47,73 @@ const Dashboard = () => {
         getArticles().then(data => setArticles(data));
     }, []);
 
-    return (
-        <div>
+    return (<div className="dashboard">
+        {msg && (
+            <div className={`message ${msg.includes("successfully") ? "message-success" : "message-error"}`}>{msg}</div>
+        )}
+        <div className="table-container">
+            <h1>Users</h1>
             <table>
                 <thead>
-                    <h1>Users</h1>
-                    <tr style={{ textAlign: "center", border: "1px solid black" }}>
+                    <tr>
                         <th>Username</th>
                         <th>Email</th>
                         <th>Actions</th>
                     </tr>
-
                 </thead>
                 <tbody>
-                    {users.map(user => (
-                        <tr style={{ textAlign: "center" }} key={user.id}>
+                    {users.map((user) => (
+                        <tr key={user.id}>
                             <td>{user.username}</td>
                             <td>{user.email}</td>
                             <td>
-                                <button
-                                    className="btn btn-danger"
-                                    onClick={() => handleDelete(user.id)}
-                                >
+                                <button className="btn btn-danger" onClick={() => handleDelete(user.id)}>
                                     Delete
                                 </button>
                             </td>
                         </tr>
                     ))}
-                    <Link to="/register"><button  className="btn btn-primary btn-block">Add new user</button></Link>
-
                 </tbody>
-
             </table>
+            <Link to="/register">
+                <button className="btn btn-primary btn-block">Add new user</button>
+            </Link>
+        </div>
 
+        <div className="table-container">
+            <h1>Articles</h1>
             <table>
                 <thead>
-                    <h1>Articles</h1>
-                    <tr style={{ textAlign: "center", border: "1px solid black" }}>
-                        <th>name</th>
-                        <th>price</th>
-                        <th>category</th>
-                        <th>stock</th>
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Category</th>
+                        <th>Stock</th>
                         <th>Actions</th>
                     </tr>
-
                 </thead>
                 <tbody>
-                    {articles.map(article => (
-                        <tr style={{ textAlign: "center" }} key={article.id}>
+                    {articles.map((article) => (
+                        <tr key={article.id}>
                             <td>{article.name}</td>
                             <td>{article.price}</td>
                             <td>{article.category}</td>
                             <td>{article.stock}</td>
                             <td>
-                                <button
-                                    className="btn btn-danger"
-                                    onClick={() => handleDelete(article.id)}
-                                >
+                                <button className="btn btn-danger" onClick={() => handleDelete(article.id)}>
                                     Delete
                                 </button>
                             </td>
                         </tr>
                     ))}
-                    <Link to="/add-article"><button  className="btn btn-primary btn-block">Add new article</button></Link>
-
                 </tbody>
             </table>
+            <Link to="/add-article">
+                <button className="btn btn-primary btn-block">Add new article</button>
+            </Link>
         </div>
-    );
+    </div>)
+
 };
 
 
