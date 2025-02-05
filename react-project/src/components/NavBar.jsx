@@ -1,7 +1,8 @@
 import "bootstrap-icons/font/bootstrap-icons.css"
 import { Link } from "react-router-dom"
 import logo from "../assets/upscalemedia.png"
-import "../styles/NavBar.css"
+import "../styles/NavBar.css";
+
 const NavBar = () => {
   const username = localStorage.getItem("username")
   const isLogged = localStorage.getItem("username") ? true : false
@@ -14,7 +15,7 @@ const NavBar = () => {
   }
 
   return (
-<nav
+<nav id="navbar"
   className="navbar navbar-expand-lg navbar-dark w-100 position-relative custom-navbar"
   style={{
     background: "linear-gradient(135deg, #3498db, #217dbb)",
@@ -76,7 +77,7 @@ const NavBar = () => {
         <li className="nav-item">
           <Link to="/cart" className="nav-link">
             <i className="bi bi-cart4" style={{ fontSize: "1.5rem" }}></i>
-            <span className="nav-tooltip">Cart</span>
+            <span className="nav-tooltip"></span>
           </Link>
         </li>
         {username && (
@@ -85,7 +86,7 @@ const NavBar = () => {
               className="nav-link username-text"
               style={{ fontSize: "1.2rem", display: "flex", alignItems: "center" }}
             >
-              <i className="bi bi-person-circle me-2" style={{ fontSize: "1.5rem" }}></i>
+              <i className="bi bi-person-circle me-2" style={{ fontSize: "1.5rem"}}></i>
               {username}
             </span>
           </li>
@@ -99,14 +100,14 @@ const NavBar = () => {
               style={{ fontSize: "1.2rem", display: "flex", alignItems: "center" }}
             >
               <i className="bi bi-box-arrow-right" style={{ fontSize: "1.5rem", marginRight: "5px" }}></i>
-              <span className="nav-tooltip">Logout</span>
+              <span className="nav-tooltip"></span>
             </button>
           </li>
         ) : (
           <li className="nav-item">
             <Link to="/login" className="nav-link">
               <i className="bi bi-box-arrow-in-right" style={{ fontSize: "1.5rem" }}></i>
-              <span className="nav-tooltip">Login</span>
+              <span className="nav-tooltip"></span>
             </Link>
           </li>
         )}

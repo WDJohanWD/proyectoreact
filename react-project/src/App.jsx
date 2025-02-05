@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import NavBar from "./components/NavBar";
 import Articles from "./components/Articles";
@@ -7,7 +7,6 @@ import Register from "./usersAccess/Register";
 import Footer from "./components/Footer";
 import Dashboard from "./usersAccess/Dashboard";
 import { useEffect, useState } from "react";
-import "./styles/Navbar.css";
 function App() {
 
   const [isAdmin, setIsAdmin] = useState(false);
