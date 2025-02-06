@@ -6,6 +6,7 @@ import Login from "./usersAccess/Login";
 import Register from "./usersAccess/Register";
 import Footer from "./components/Footer";
 import Dashboard from "./usersAccess/Dashboard";
+import EditArticle from "./components/EditArticle";
 import { useEffect, useState } from "react";
 function App() {
 
@@ -28,6 +29,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         {isAdmin && <Route path="/dashboard" element={<Dashboard />} />}
+        {isAdmin && <Route path="/edit-article" element={<EditArticle />} />}
+
 
       </Routes>
       <Footer />

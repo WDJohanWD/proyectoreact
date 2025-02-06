@@ -34,7 +34,10 @@ const Dashboard = () => {
         });
     }
 
-
+    function handleEdit(id) {
+        localStorage.setItem("articleId", id);
+        window.location.href = "/edit-article";
+    }
 
 
 
@@ -103,14 +106,17 @@ const Dashboard = () => {
                                 <button className="btn btn-danger" onClick={() => handleDelete(article.id)}>
                                     Delete
                                 </button>
+
+                                <button className="btn btn-warning ms-2 text-white" onClick={() => handleEdit(article.id)}>
+                                    Edit
+                                </button>
+
                             </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
-            <Link to="/add-article">
-                <button className="btn btn-primary btn-block">Add new article</button>
-            </Link>
+
         </div>
     </div>)
 

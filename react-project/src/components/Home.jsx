@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import "../styles/Home.css"
+import arrow from "../assets/arrow.png"
 
 
 const Home = () => {
@@ -15,6 +16,7 @@ const Home = () => {
             <Link to="/articles" className="cta-button">
               Shop Now
             </Link>
+            <img className="arrow" src={arrow} alt="" />
           </div>
         </section>
 

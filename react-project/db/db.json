@@ -35,15 +35,15 @@
   ],
   "articles": [
     {
-      "id": 1,
-      "category": "mobile",
       "name": "Iphone 16 Pro Max",
       "price": "1399.99€",
+      "stock": "11",
+      "category": "mobile",
       "path": "/assets/articles/mobiles/apple.webp",
-      "stock": 10
+      "id": "1"
     },
     {
-      "id": 2,
+      "id": "2",
       "category": "mobile",
       "name": "Oppo X7 Pro 5g",
       "price": "399.99€",
@@ -51,7 +51,7 @@
       "stock": 10
     },
     {
-      "id": 3,
+      "id": "3",
       "category": "mobile",
       "name": "Samsung Galaxy S25",
       "price": "909.00€",
@@ -59,7 +59,7 @@
       "stock": 10
     },
     {
-      "id": 4,
+      "id": "4",
       "category": "mobile",
       "name": "Xiaomi Redmi Note 13",
       "price": "169,99€",
@@ -67,7 +67,7 @@
       "stock": 10
     },
     {
-      "id": 6,
+      "id": "6",
       "category": "laptop",
       "name": "Asus Rog Strix G15",
       "price": "1299.99€",
@@ -75,7 +75,7 @@
       "stock": 10
     },
     {
-      "id": 7,
+      "id": "7",
       "category": "laptop",
       "name": "Hp Pavilion 15",
       "price": "899.99€",
@@ -83,7 +83,7 @@
       "stock": 10
     },
     {
-      "id": 8,
+      "id": "8",
       "category": "laptop",
       "name": "Lenovo Legion 5",
       "price": "999.99€",
@@ -91,7 +91,7 @@
       "stock": 10
     },
     {
-      "id": 9,
+      "id": "9",
       "category": "laptop",
       "name": "Msi Gf65 Thin",
       "price": "799.99€",

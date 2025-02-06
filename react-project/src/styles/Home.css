@@ -16,13 +16,29 @@
     margin: 0 auto;
     padding: 0 20px;
   }
-  
+  /*Image arrow */
+  .arrow {
+    position: absolute;
+    left: 48%;
+    bottom: -250px;
+    width: 100px;
+    height: 100px;
+    margin-left: -25px;
+    background-color: #fff;
+    border-radius: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    transform: rotate(180deg);
+    }
   /* Hero section styles */
   .hero {
     background-image: url("../assets/homeImage.webp");
     background-size: cover;
     color: #fff;
-    padding: 20% 0;
+    padding: 19% 0;
     text-align: center;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
     position: relative;
@@ -41,7 +57,8 @@
 
   .hero h1,
   .hero p,
-  .hero .cta-button {
+  .hero .cta-button,
+  .hero .arrow {
     position: relative;
     z-index: 2;
   }

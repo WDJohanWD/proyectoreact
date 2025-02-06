@@ -31,7 +31,7 @@ const Articles = () => {
                     }
                 </div> <br />
                 <h2>Laptops</h2>
-                <div className="product-grid">
+                <div className="product-grid" id="laptops">
                     {articles
                         .filter(article => article.category === "laptop")
                         .map((article, key) => (
