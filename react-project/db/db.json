@@ -8,11 +8,27 @@
       "role": "admin"
     },
     {
-      "id": "7c31",
-      "username": "Esteban",
+      "username": "esteban",
       "password": "estebomba",
       "email": "estebang@gmail.com",
       "date": "7/2/2025, 9:12:11",
+      "role": "user",
+      "id": "7c31"
+    },
+    {
+      "id": "df9e",
+      "username": "borja",
+      "password": "catalina",
+      "email": "borjamp@gmail.com",
+      "date": "7/2/2025, 20:06:43",
+      "role": "user"
+    },
+    {
+      "id": "2d5c",
+      "username": "sandra",
+      "password": "sandra123",
+      "email": "sandra@gmail.com",
+      "date": "7/2/2025, 20:07:11",
       "role": "user"
     }
   ],

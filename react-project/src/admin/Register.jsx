@@ -41,7 +41,7 @@ function Register() {
             return;
         }
         const registrationDate = new Date().toLocaleString();
-        const newUser = { username, password, email, date: registrationDate, role: "user" };
+        const newUser = { username: username.toLowerCase(), password, email, date: registrationDate, role: "user" };
         setUsers([...users, newUser]);
         setUsername("");
         setPassword("");

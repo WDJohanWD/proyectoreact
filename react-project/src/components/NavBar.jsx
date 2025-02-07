@@ -1,7 +1,6 @@
 import "bootstrap-icons/font/bootstrap-icons.css"
 import { Link } from "react-router-dom"
 import logo from "../assets/upscalemedia.png"
-import "../styles/NavBar.css";
 
 const NavBar = () => {
   const username = localStorage.getItem("username")
@@ -18,12 +17,12 @@ const NavBar = () => {
 <nav id="navbar"
   className="navbar navbar-expand-lg navbar-dark w-100 position-relative custom-navbar"
   style={{
-    background: "linear-gradient(135deg, #3498db, #217dbb)",
+    background: "linear-gradient(135deg, #7F8C8D ,  #2C3E50)",
     boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.3)",
     borderBottom: "3px solid rgba(255, 255, 255, 0.3)",
     padding: "10px 15px"
   }}
->
+> 
   <div className="container-fluid">
     <button
       className="navbar-toggler custom-toggler"
