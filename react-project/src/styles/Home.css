@@ -78,15 +78,15 @@ body {
   width: 100%;
   position: absolute;
   bottom: 200px;
-  left: 49%;
+  left: 46.5%;
   transform: translateX(-50%);
   z-index: 3;
 }
 
 .chevron {
   position: absolute;
-  width: 2.1rem;
-  height: 0.48rem;
+  width: 8rem;
+  height: 0.8rem;
   opacity: 0;
   transform: scale(0.3);
   animation: move-chevron 3s ease-out infinite;

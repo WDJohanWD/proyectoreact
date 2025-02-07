@@ -6,7 +6,7 @@ import Login from "./admin/Login";
 import Register from "./admin/Register";
 import Footer from "./components/Footer";
 import Dashboard from "./admin/Dashboard";
-import EditArticle from "./components/EditArticle";
+import EditArticle from "./admin/EditArticle";
 import { useEffect, useState } from "react";
 function App() {
 
