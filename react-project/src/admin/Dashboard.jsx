@@ -19,7 +19,7 @@ const Dashboard = () => {
         return data;
     }
 
-    function handleDelete(id) {
+    function handleDeleteUser(id) {
         const newUsers = users.filter(user => user.id !== id);
         setUsers(newUsers);
         fetch(`http://localhost:5000/users/${id}`, {
@@ -33,10 +33,30 @@ const Dashboard = () => {
         });
     }
 
-    function handleEdit(id) {
+    function handleDeleteArticle(id) {
+        fetch(`http://localhost:5000/articles/${id}`, {
+            method: "DELETE",
+        }).then(response => {
+            if (response.ok) {
+                setMsg("Article deleted successfully");
+            } else {
+                setMsg("Failed to delete article");
+            }
+        });
+
+    }
+
+
+    function handleEditArticle(id) {
         localStorage.setItem("articleId", id);
         window.location.href = "/edit-article";
     }
+
+    function handleEditUser(id) {
+        localStorage.setItem("userId", id);
+        window.location.href = "/edit-user";
+    }
+
 
     function newUser() {
         window.location.href = "/register";
@@ -79,11 +99,15 @@ const Dashboard = () => {
                                 <td>{user.email}</td>
                                 <td>{user.role}</td>
                                 <td>
-                                    {user.date}
+                                    {user.date ? user.date.substring(0, 8) : "N/A"} 
                                 </td>
                                 <td>
-                                    <button className="dashboard-btn dashboard-btn-danger" onClick={() => handleDelete(user.id)}>
+                                    <button className="dashboard-btn dashboard-btn-danger" onClick={() => handleDeleteUser(user.id)}>
                                         Delete
+                                    </button>
+
+                                    <button className="dashboard-btn dashboard-btn-warning ms-2" onClick={() => handleEditUser(user.id)}>
+                                        Edit
                                     </button>
                                 </td>
                             </tr>
@@ -115,11 +139,11 @@ const Dashboard = () => {
                                 <td>{article.category}</td>
                                 <td>{article.stock}</td>
                                 <td>
-                                    <button className="dashboard-btn dashboard-btn-danger" onClick={() => handleDelete(article.id)}>
+                                    <button className="dashboard-btn dashboard-btn-danger" onClick={() => handleDeleteArticle(article.id)}>
                                         Delete
                                     </button>
 
-                                    <button className="dashboard-btn dashboard-btn-warning ms-2" onClick={() => handleEdit(article.id)}>
+                                    <button className="dashboard-btn dashboard-btn-warning ms-2" onClick={() => handleEditArticle(article.id)}>
                                         Edit
                                     </button>
                                 </td>

@@ -7,6 +7,7 @@ import Register from "./admin/Register";
 import Footer from "./components/Footer";
 import Dashboard from "./admin/Dashboard";
 import EditArticle from "./admin/EditArticle";
+import EditUser from "./admin/EditUser";
 import { useEffect, useState } from "react";
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         {isAdmin && <Route path="/dashboard" element={<Dashboard />} />}
         {isAdmin && <Route path="/edit-article" element={<EditArticle />} />}
+        {isAdmin && <Route path="/edit-user" element={<EditUser />} />}
 
 
       </Routes>
