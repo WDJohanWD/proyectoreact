@@ -6,7 +6,6 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const [users, setUsers] = useState([]);
     const [msg, setMsg] = useState("");
-    const [isAdmin, setIsAdmin] = useState(false);
     
     function handleUsernameChange(event) {
         setUsername(event.target.value);
@@ -31,10 +30,9 @@ const Login = () => {
                 userFound = true;
                 if (user.password === password) {
                     if (user.username === "admin") {
-                        setIsAdmin(true);
-                        localStorage.setItem("isAdmin", true); // Save isAdmin as true
+                        localStorage.setItem("isAdmin", true); 
                     } else {
-                        localStorage.setItem("isAdmin", false); // Save isAdmin as false for non-admin users
+                        localStorage.setItem("isAdmin", false); 
                     }
                     localStorage.setItem("username", username);
                     return window.location.href = "/";

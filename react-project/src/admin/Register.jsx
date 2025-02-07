@@ -40,7 +40,8 @@ function Register() {
         if (isRepeat) {
             return;
         }
-        const newUser = { username, password, email };
+        const registrationDate = new Date().toLocaleString();
+        const newUser = { username, password, email, date: registrationDate, role: "user" };
         setUsers([...users, newUser]);
         setUsername("");
         setPassword("");

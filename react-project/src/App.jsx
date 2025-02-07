@@ -2,10 +2,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import NavBar from "./components/NavBar";
 import Articles from "./components/Articles";
-import Login from "./usersAccess/Login";
-import Register from "./usersAccess/Register";
+import Login from "./admin/Login";
+import Register from "./admin/Register";
 import Footer from "./components/Footer";
-import Dashboard from "./usersAccess/Dashboard";
+import Dashboard from "./admin/Dashboard";
 import EditArticle from "./components/EditArticle";
 import { useEffect, useState } from "react";
 function App() {

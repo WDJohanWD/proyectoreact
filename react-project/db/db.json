@@ -4,13 +4,16 @@
       "id": "afd9",
       "username": "admin",
       "password": "renaido",
-      "email": "admin@admin.com"
+      "email": "admin@admin.com",
+      "role": "admin"
     },
     {
-      "id": "9ce0",
-      "username": "johan",
-      "password": "johan",
-      "email": "johan@gmail.com"
+      "id": "7c31",
+      "username": "Esteban",
+      "password": "estebomba",
+      "email": "estebang@gmail.com",
+      "date": "7/2/2025, 9:12:11",
+      "role": "user"
     }
   ],
   "coments": [
@@ -37,7 +40,7 @@
     {
       "name": "Iphone 16 Pro Max",
       "price": "1399.99€",
-      "stock": "11",
+      "stock": "12",
       "category": "mobile",
       "path": "/assets/articles/mobiles/apple.webp",
       "id": "1"

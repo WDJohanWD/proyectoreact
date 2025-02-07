@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom"
 import "../styles/Home.css"
-import arrow from "../assets/arrow.png"
 
 
 const Home = () => {
   return (
     <div className="tech-shop">
-     
+
 
       <main>
         <section className="hero">
@@ -16,12 +15,18 @@ const Home = () => {
             <Link to="/articles" className="cta-button">
               Shop Now
             </Link>
-            <img className="arrow" src={arrow} alt="" />
+            <div className="arrow-container">
+              <a href="#featured">
+              <div className="chevron"></div>
+              <div className="chevron"></div>
+              <div className="chevron"></div>
+              </a>
+            </div>
           </div>
         </section>
 
         <section className="featured-products container">
-          <h2>Featured Products</h2>
+          <h2 id="featured">Featured Products</h2>
           <div className="product-grid">
             <div className="product-card">
               <img src="" alt="Smartphone" />
@@ -51,7 +56,7 @@ const Home = () => {
         </section>
       </main>
 
-      
+
     </div>
   )
 }
