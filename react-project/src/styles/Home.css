@@ -1,123 +1,13 @@
-/* Reset and base styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
-body {
-  font-family: "Arial", sans-serif;
-  line-height: 1.6;
-  color: #333;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-/* Hero section styles */
 .hero {
   background-image: url("../assets/homeImage.webp");
   background-size: cover;
   color: #fff;
   padding: 19% 0;
+  margin: 0 0 5% 0 ;
   text-align: center;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
   position: relative;
-}
-
-.hero::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1;
-}
-
-.hero h1,
-.hero p,
-.hero .cta-button {
-  position: relative;
-  z-index: 2;
-}
-
-.hero h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-.hero p {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-}
-
-.cta-button {
-  display: inline-block;
-  background-color: #2ecc71;
-  color: #fff;
-  padding: 0.8rem 1.5rem;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-
-.cta-button:hover {
-  background-color: #27ae60;
-}
-
-/* Scroll back arrow */
-.arrow-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  position: absolute;
-  bottom: 200px;
-  left: 46.5%;
-  transform: translateX(-50%);
-  z-index: 3;
-}
-
-.chevron {
-  position: absolute;
-  width: 8rem;
-  height: 0.8rem;
-  opacity: 0;
-  transform: scale(0.3);
-  animation: move-chevron 3s ease-out infinite;
-}
-
-.chevron:first-child {
-  animation: move-chevron 3s ease-out 1s infinite;
-}
-
-.chevron:nth-child(2) {
-  animation: move-chevron 3s ease-out 2s infinite;
-}
-
-.chevron:before,
-.chevron:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  height: 100%;
-  width: 50%;
-  background: #fff;
-}
-
-.chevron:before {
-  left: 0;
-  transform: skewY(30deg);
-}
-
-.chevron:after {
-  right: 0;
-  transform: skewY(-30deg);
 }
 
 @keyframes move-chevron {

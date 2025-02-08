@@ -15,13 +15,7 @@ const Home = () => {
             <Link to="/articles" className="cta-button">
               Shop Now
             </Link>
-            <div className="arrow-container">
-              <a href="#featured">
-              <div className="chevron"></div>
-              <div className="chevron"></div>
-              <div className="chevron"></div>
-              </a>
-            </div>
+           
           </div>
         </section>
 
