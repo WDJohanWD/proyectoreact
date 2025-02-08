@@ -44,6 +44,34 @@ const Articles = () => {
                         ))
                     }
                 </div>
+                <h2>SmartWatch</h2>
+                <div className="product-grid" id="laptops">
+                    {articles
+                        .filter(article => article.category === "smartwatch")
+                        .map((article, key) => (
+                            <div key={key} className="product-card">
+                                <img src={article.path} alt={article.name} />
+                                <h3>{article.name}</h3>
+                                <p>{article.price}</p>
+                                <button>Add to Cart</button>
+                            </div>
+                        ))
+                    }
+                </div>
+                <h2>Headphones</h2>
+                <div className="product-grid" id="laptops">
+                    {articles
+                        .filter(article => article.category === "headphones")
+                        .map((article, key) => (
+                            <div key={key} className="product-card">
+                                <img src={article.path} alt={article.name} />
+                                <h3>{article.name}</h3>
+                                <p>{article.price}</p>
+                                <button>Add to Cart</button>
+                            </div>
+                        ))
+                    }
+                </div>
             </section>
         </>
     );

@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
-import NavBar from "./components/NavBar";
+import NavBar from "./layout/NavBar";
 import Articles from "./components/Articles";
 import Login from "./admin/Login";
 import Register from "./admin/Register";
-import Footer from "./components/Footer";
+import Footer from "./layout/Footer";
 import Dashboard from "./admin/Dashboard";
 import EditArticle from "./admin/EditArticle";
 import EditUser from "./admin/EditUser";

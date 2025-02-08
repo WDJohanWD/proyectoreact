@@ -116,6 +116,198 @@
       "price": "799.99€",
       "path": "/assets/articles/laptops/msi.webp",
       "stock": 10
+    },
+    {
+      "id": "10",
+      "category": "smartwatch",
+      "name": "Essential Fit Max",
+      "price": "24.99€",
+      "path": "/assets/articles/smartwatch/fit-max.webp",
+      "stock": 10
+    },
+    {
+      "id": "11",
+      "category": "smartwatch",
+      "name": "Apple Watch Series",
+      "price": "479€",
+      "path": "/assets/articles/smartwatch/apple-watch.webp",
+      "stock": 10
+    },
+    {
+      "id": "12",
+      "category": "smartwatch",
+      "name": "Samsung Galaxy Watch FE ",
+      "price": "169€",
+      "path": "/assets/articles/smartwatch/samsung-watch.webp",
+      "stock": 10
+    },
+    {
+      "id": "13",
+      "category": "smartwatch",
+      "name": "Amazfit Bip 3 Pro",
+      "price": "49.01€",
+      "path": "/assets/articles/smartwatch/amazon-watch.webp",
+      "stock": 10
+    },
+    {
+      "id": "14",
+      "category": "smartwatch",
+      "name": "Garmin Forerunner 165",
+      "price": "287.95€",
+      "path": "/assets/articles/smartwatch/garmin-watch.webp",
+      "stock": 10
+    },
+    {
+      "id": "15",
+      "category": "smartwatch",
+      "name": "Xiaomi Watch S3 ",
+      "price": "199.99€",
+      "path": "/assets/articles/smartwatch/xiaomi-watch.webp",
+      "stock": 10
+    },
+    {
+      "id": "16",
+      "category": "smartwatch",
+      "name": "Cool Forest",
+      "price": "309.99€",
+      "path": "/assets/articles/smartwatch/cool-forest-watch.webp",
+      "stock": 10
+    },
+    {
+      "id": "17",
+      "category": "smartwatch",
+      "name": "ASUS VivoWatch 5",
+      "price": "36.99€",
+      "path": "/assets/articles/smartwatch/asus-watch.webp",
+      "stock": 10
+    },
+    {
+      "id": "18",
+      "category": "headphones",
+      "name": "Newskill Bael",
+      "price": "49.99€",
+      "path": "/assets/articles/headphones/newskill.webp",
+      "stock": 10
+    },
+    {
+      "id": "19",
+      "category": "headphones",
+      "name": "Tempest GHS400 Inquisitor  ",
+      "price": "31.99€",
+      "path": "/assets/articles/headphones/tempest.webp",
+      "stock": 10
+    },
+    {
+      "id": "20",
+      "category": "headphones",
+      "name": "Apple AirPods Max ",
+      "price": "579.00€",
+      "path": "/assets/articles/headphones/apple.webp",
+      "stock": 10
+    },
+    {
+      "id": "21",
+      "category": "headphones",
+      "name": "Sony WF-1000XM5",
+      "price": "283.90€",
+      "path": "/assets/articles/headphones/sony.webp",
+      "stock": 10
+    },
+    {
+      "id": "22",
+      "category": "headphones",
+      "name": "Technics EAH-A800",
+      "price": "273.90€",
+      "path": "/assets/articles/headphones/technics.webp",
+      "stock": 10
+    },
+    {
+      "id": "23",
+      "category": "headphones",
+      "name": "Huawei FreeBuds 3",
+      "price": "241.90€",
+      "path": "/assets/articles/headphones/huawei.webp",
+      "stock": 10
+    },
+    {
+      "id": "24",
+      "category": "headphones",
+      "name": "Beats Studio3 Wireless ",
+      "price": "229.90€",
+      "path": "/assets/articles/headphones/beats.webp",
+      "stock": 10
+    },
+    {
+      "id": "25",
+      "category": "headphones",
+      "name": "Xiaomi Buds 4 Pro",
+      "price": "224.90€",
+      "path": "/assets/articles/headphones/xiaomi.webp",
+      "stock": 10
+    },
+    {
+      "id": "26",
+      "category": "laptop",
+      "name": "Acer Gaming Nitro V 15 ANV15-41",
+      "price": "849.99€",
+      "path": "/assets/articles/laptops/acer.webp",
+      "stock": 10
+    },
+    {
+      "id": "27",
+      "category": "laptop",
+      "name": "Microsoft Surface Laptop Studio 2",
+      "price": "4256.99€",
+      "path": "/assets/articles/laptops/microsoft.webp",
+      "stock": 10
+    },
+    {
+      "id": "28",
+      "category": "laptop",
+      "name": " ASUS Zenbook Duo UX8406CA-PZ009W",
+      "price": "2723.99€",
+      "path": "/assets/articles/laptops/zenbook.webp",
+      "stock": 10
+    },
+    {
+      "id": "29",
+      "category": "laptop",
+      "name": "MSI Stealth 16 Mercedes AMG A1VGG-294XES",
+      "price": "2282.99€",
+      "path": "/assets/articles/laptops/stealth.webp",
+      "stock": 10
+    },
+    {
+      "id": "30",
+      "category": "mobile",
+      "name": "Google Pixel 8 Pro 5G",
+      "price": "550,44€",
+      "path": "/assets/articles/mobiles/google.webp",
+      "stock": 10
+    },
+    {
+      "id": "31",
+      "category": "mobile",
+      "name": "Realme 12 Pro 5G",
+      "price": "248,99€",
+      "path": "/assets/articles/mobiles/realme.webp",
+      "stock": 10
+    },
+    {
+      "id": "32",
+      "category": "mobile",
+      "name": "OnePlus Nord 4",
+      "price": "467,99€",
+      "path": "/assets/articles/mobiles/pooc.webp",
+      "stock": 10
+    },
+    {
+      "id": "33",
+      "category": "mobile",
+      "name": "Honor 70 Lite 5G",
+      "price": "147,99€",
+      "path": "/assets/articles/mobiles/honor.webp",
+      "stock": 10
     }
   ]
 }
