@@ -8,6 +8,7 @@ import Footer from "./layout/Footer";
 import Dashboard from "./admin/Dashboard";
 import EditArticle from "./admin/EditArticle";
 import EditUser from "./admin/EditUser";
+import Comments from "./components/Comments";
 import { useEffect, useState } from "react";
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
         {isAdmin && <Route path="/dashboard" element={<Dashboard />} />}
         {isAdmin && <Route path="/edit-article" element={<EditArticle />} />}
         {isAdmin && <Route path="/edit-user" element={<EditUser />} />}
+        <Route path="/comments" element={<Comments/>}/>
 
 
       </Routes>

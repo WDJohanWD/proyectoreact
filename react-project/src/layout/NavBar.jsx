@@ -48,8 +48,8 @@ const NavBar = () => {
           </Link>
         </li>
         <li className="nav-item">
-          <Link to="/contact" className="nav-link" style={{ padding: "10px 15px" }}>
-            Contact
+          <Link to="/comments" className="nav-link" style={{ padding: "10px 15px" }}>
+            Comments
           </Link>
         </li>
       </ul>

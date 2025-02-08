@@ -32,24 +32,36 @@
       "role": "user"
     }
   ],
-  "coments": [
+  "comments": [
     {
       "id": "1",
-      "user_id": "1",
-      "coment": "Hola soy un comentario",
+      "username": "1",
+      "comment": "Hola soy un comentario",
       "date": "2021-09-01"
     },
     {
       "id": "2",
-      "user_id": "46e5",
-      "coment": "Hola soy un comentario",
+      "username": "46e5",
+      "comment": "Hola soy un comentario",
       "date": "2021-09-01"
     },
     {
       "id": "3",
       "user_id": "1ce9",
-      "coment": "Hola soy un comentario",
+      "comment": "Hola soy un comentario",
       "date": "2021-09-01"
+    },
+    {
+      "id": "9316",
+      "username": "admin",
+      "comment": "",
+      "date": "8/2/2025, 23:18:18"
+    },
+    {
+      "id": "8840",
+      "username": "admin",
+      "comment": "Hi\n",
+      "date": "8/2/2025, 23:21:03"
     }
   ],
   "articles": [
