@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import "../styles/Edit.css"
 
 const Comments = () => {
     const [comments, setComments] = useState([])
@@ -23,17 +24,17 @@ const Comments = () => {
             console.error(error)
         }
     }
-    function saveComments(){
+    function saveComments() {
         const username = localStorage.getItem("username")
         const registrationDate = new Date().toLocaleString();
-        const newComment ={username, comment, date: registrationDate}
-        const response =  fetch("http://localhost:5000/comments",{
+        const newComment = { username, comment, date: registrationDate }
+        const response = fetch("http://localhost:5000/comments", {
             method: "POST",
-            headers: {"Content-Type": "application/json"},
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(newComment)
         });
 
-        if(!response.ok){
+        if (!response.ok) {
             console.log("Error saving comment.")
         }
     }
@@ -43,16 +44,16 @@ const Comments = () => {
     }, [])
 
     return (
-        <>  
-            <h2>Leave your opinion here</h2>
-            <div className="formComments">
-                <form action="" onSubmit={saveComments}>
-                    <textarea value={comment} onChange={handleCommentChange} placeholder="Write here..."></textarea>
-
-                    <button type="submit">Send Comment</button>
+        <>
+            <div className="edit-container">
+                <h2 className="edit-tittle">Leave your opinion here</h2>
+                <form action="" onSubmit={saveComments} className="edit-form">
+                    <textarea className="edit-input" value={comment} onChange={handleCommentChange} placeholder="Write here..."></textarea>
+                    <br />
+                    <button className="save-btn"  type="submit">Send Comment</button>
                 </form>
-            </div>
 
+            </div>
             <h2>Comments:</h2>
             <div className="comments">
                 {comments.length > 0 ? (

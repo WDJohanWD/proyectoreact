@@ -25,7 +25,7 @@ const Articles = () => {
                                 <img src={article.path} alt={article.name} />
                                 <h3>{article.name}</h3>
                                 <p>{article.price}</p>
-                                <button>Add to Cart</button>
+                                <button className="save-btn">Add to Cart</button>
                             </div>
                         ))
                     }
@@ -39,7 +39,7 @@ const Articles = () => {
                                 <img src={article.path} alt={article.name} />
                                 <h3>{article.name}</h3>
                                 <p>{article.price}</p>
-                                <button>Add to Cart</button>
+                                <button className="save-btn">Add to Cart</button>
                             </div>
                         ))
                     }
@@ -53,7 +53,7 @@ const Articles = () => {
                                 <img src={article.path} alt={article.name} />
                                 <h3>{article.name}</h3>
                                 <p>{article.price}</p>
-                                <button>Add to Cart</button>
+                                <button className="save-btn">Add to Cart</button>
                             </div>
                         ))
                     }
@@ -67,7 +67,7 @@ const Articles = () => {
                                 <img src={article.path} alt={article.name} />
                                 <h3>{article.name}</h3>
                                 <p>{article.price}</p>
-                                <button>Add to Cart</button>
+                                <button className="save-btn">Add to Cart</button>
                             </div>
                         ))
                     }

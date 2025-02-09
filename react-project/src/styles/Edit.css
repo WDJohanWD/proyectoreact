@@ -1,0 +1,8 @@
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .edit-container {
+        width: 90%;
+        padding: 1.5rem;
+    }
+}

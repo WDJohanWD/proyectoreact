@@ -6,7 +6,7 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const [users, setUsers] = useState([]);
     const [msg, setMsg] = useState("");
-    
+
     function handleUsernameChange(event) {
         setUsername(event.target.value);
     }
@@ -30,9 +30,9 @@ const Login = () => {
                 userFound = true;
                 if (user.password === password) {
                     if (user.username === "admin") {
-                        localStorage.setItem("isAdmin", true); 
+                        localStorage.setItem("isAdmin", true);
                     } else {
-                        localStorage.setItem("isAdmin", false); 
+                        localStorage.setItem("isAdmin", false);
                     }
                     localStorage.setItem("username", username);
                     return window.location.href = "/";
@@ -45,21 +45,22 @@ const Login = () => {
             setMsg("User not found");
         }
     }
-    
+
     useEffect(() => {
         getUser().then(data => setUsers(data));
     }, []); // Add an empty dependency array to run only once
-    
+
     return (
-        <div className="container mt-5">
+        <div className="edit-container container mt-5">
             <h1 className="text-center">Login</h1>
-    
-            <form className="w-50 mx-auto" onSubmit={handleSubmit}>
+
+            <form className="edit-form w-75 mx-auto" onSubmit={handleSubmit}>
+
                 <div className="form-group">
-                    <label htmlFor="username">Username</label>
+                    <label className='edit-label' htmlFor="username">Username</label>
                     <input
                         type="text"
-                        className="form-control"
+                        className="edit-input form-control"
                         id="username"
                         placeholder="Enter username"
                         value={username}
@@ -67,18 +68,25 @@ const Login = () => {
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="password">Password</label>
+                    <label className='edit-label' htmlFor="password">Password</label>
                     <input
                         type="password"
-                        className="form-control"
+                        className="edit-input form-control"
                         id="password"
                         placeholder="Enter password"
                         value={password}
                         onChange={handlePasswordChange}
                     />
                 </div>
-                <button type="submit" className="btn btn-primary mt-3">Login</button>
-                {msg && <p className="text-danger mt-3">{msg}</p>}
+                <button type="submit" className="save-btn btn btn-primary mt-3">Login</button>
+                {msg && (
+                    <div className={`message ${msg.includes("successfully") ? "message-success" : "message-error"}`}>
+                        <span>{msg.includes("successfully") ? "✔️" : "⚠️"}</span> {msg}
+                    </div>
+                )}
+
+
+
                 <div className="d-flex justify-content-end">
                     <p className='me-1'>If you are not user yet, you can register </p><Link to="/register"> here</Link>
                 </div>

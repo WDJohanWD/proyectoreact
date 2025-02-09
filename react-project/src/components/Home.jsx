@@ -7,6 +7,7 @@ const Home = () => {
   const [article1, setArticle1] = useState(null)
   const [article2, setArticle2] = useState(null)
   const [article3, setArticle3] = useState(null)
+  const [article4, setArticle4] = useState(null)
 
   async function fetchArticles() {
     try {
@@ -34,6 +35,8 @@ const Home = () => {
       setArticle1(categoryArticle("mobile"))
       setArticle2(categoryArticle("laptop"))
       setArticle3(categoryArticle("smartwatch"))
+      setArticle4(categoryArticle("headphones"))
+
     }
   }, [articles])
 
@@ -57,25 +60,25 @@ const Home = () => {
               <img src={article1?.path || ""} alt="Smartphone" />
               <h3>{article1?.name || "Smartphone"}</h3>
               <p>{article1?.price ? `${article1.price}€` : "N/A"}</p>
-              <button>Add to Cart</button>
+              <button className="save-btn">Add to Cart</button>
             </div>
             <div className="product-card">
               <img src={article2?.path || ""} alt="Laptop" />
               <h3>{article2?.name || "Laptop"}</h3>
               <p>{article2?.price ? `${article2.price}€` : "N/A"}</p>
-              <button>Add to Cart</button>
+              <button className="save-btn">Add to Cart</button>
             </div>
             <div className="product-card">
               <img src={article3?.path || ""} alt="Smartwatch" />
               <h3>{article3?.name || "Smartwatch"}</h3>
               <p>{article3?.price ? `${article3.price}€` : "N/A"}</p>
-              <button>Add to Cart</button>
+              <button className="save-btn">Add to Cart</button>
             </div>
             <div className="product-card">
-              <img src="" alt="Wireless Earbuds" />
-              <h3>Wireless Earbuds</h3>
-              <p>59,99€</p>
-              <button>Add to Cart</button>
+            <img src={article4?.path || ""} alt="Smartwatch" />
+              <h3>{article4?.name || "Smartwatch"}</h3>
+              <p>{article4?.price ? `${article4.price}€` : "N/A"}</p>
+              <button className="save-btn">Add to Cart</button>
             </div>
           </div>
         </section>

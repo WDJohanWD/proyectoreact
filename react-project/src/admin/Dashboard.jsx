@@ -76,7 +76,7 @@ const Dashboard = () => {
     return (
         <div className="dashboard-container">
             {msg && (
-                <div className={`dashboard-message ${msg.includes("successfully") ? "dashboard-message-success" : "dashboard-message-error"}`}>
+                <div className={`message ${msg.includes("successfully") ? "message-success" : "message-error"}`}>
                     {msg}
                 </div>
             )}
@@ -111,7 +111,7 @@ const Dashboard = () => {
                                     </button>
                                 </td>
                             </tr>
-                        ))}
+                        ))} 
                     </tbody>
                 </table>
                 

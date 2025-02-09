@@ -19,3 +19,8 @@ npm install -g json-server
 
 # Start Json-server
 json-server --watch db/db.json --port 5000
+
+
+# Remove node tasks in windows
+taskkill /F /IM node.exe
+

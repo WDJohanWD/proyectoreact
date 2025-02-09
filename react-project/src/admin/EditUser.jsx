@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import "../styles/Edit.css"
 
 const EditUser = () => {
     const id = localStorage.getItem("userId");
@@ -73,27 +74,27 @@ const EditUser = () => {
     };
 
     return (
-        <div>
-            <h1>Edit User</h1>
+        <div className='edit-container'>
+            <h1 className='edit-tittle'>Edit User</h1>
             <p>This is an edit user component.</p>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className='edit-form'>
                 <div>
-                    <label>Username:</label>
-                    <input type="text" name="username" value={username} onChange={handleChange} readOnly />
+                    <label className='edit-label'>Username:</label>
+                    <input className='edit-input' type="text" name="username" value={username} onChange={handleChange} readOnly />
                 </div>
                 <div>
-                    <label>Email:</label>
-                    <input type="text" name="email" value={email} onChange={handleChange} readOnly />
+                    <label className='edit-label'>Email:</label>
+                    <input className='edit-input' type="text" name="email" value={email} onChange={handleChange} readOnly />
                 </div>
                 <div>
-                    <label>Role:</label>
-                    <select name="role" id="role" value={role} onChange={handleChange}>
+                    <label className='edit-label' >Role:</label>
+                    <select className='edit-select' name="role" id="role" value={role} onChange={handleChange}>
                         <option value="admin">Admin</option>
                         <option value="user">User</option>
                     </select>
                 </div>
                 
-                <button type="submit">Update User</button>
+                <button className='save-btn' type="submit">Update User</button>
             </form>
         </div>
     );

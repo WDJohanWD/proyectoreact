@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import "../styles/Edit.css"
 
 const EditArticle = () => {
     const id = Number(localStorage.getItem("articleId"));
@@ -77,24 +78,25 @@ const EditArticle = () => {
 
     return (
         <div>
-            <h1>Edit Article</h1>
+            <div className="edit-container">
+            <h1 className='edit-tittle'>Edit Article</h1>
             <p>This is an edit article component.</p>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className='edit-form'>
                 <div>
-                    <label>Name:</label>
-                    <input type="text" name="name" value={name} onChange={handleChange} />
+                    <label className='edit-label'>Name:</label>
+                    <input className='edit-input' type="text" name="name" value={name} onChange={handleChange} />
                 </div>
                 <div>
-                    <label>Price:</label>
-                    <input type="text" name="price" value={price} onChange={handleChange} />
+                    <label className='edit-label'>Price:</label>
+                    <input className='edit-input' type="text" name="price" value={price} onChange={handleChange} />
                 </div>
                 <div>
-                    <label>Stock:</label>
-                    <input type="text" name="stock" value={stock} onChange={handleChange} />
+                    <label className='edit-label'>Stock:</label>
+                    <input className='edit-input' type="text" name="stock" value={stock} onChange={handleChange} />
                 </div>
                 <div>
-                    <label>Category:</label>
-                    <select name="category" value={category} onChange={handleChange}>
+                    <label className='edit-label'>Category:</label>
+                    <select className='edit-select' name="category" value={category} onChange={handleChange}>
                         <option value="laptop">Laptop</option>
                         <option value="mobile">Mobile</option>
                         <option value="tablet">Tablets</option>
@@ -102,8 +104,9 @@ const EditArticle = () => {
                         <option value="smartwatch">Smart Watch</option>
                     </select>
                 </div>
-                <button type="submit">Update Article</button>
+                <button className='save-btn' type="submit">Update Article</button>
             </form>
+            </div>
         </div>
     );
 };
