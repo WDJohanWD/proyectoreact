@@ -43,15 +43,14 @@ const Home = () => {
   return (
     <div className="tech-shop">
       <main>
-        <section className="relative bg-gray-900 text-white py-20 flex items-center justify-center text-center">
-          <div className="hero container mx-auto px-4 relative z-10">
+        <section className="hero relative text-white py-20 flex items-center justify-center text-center">
+          <div className=" container mx-auto px-4 relative z-10">
             <h1 className="text-4xl font-bold">Welcome to SmartSphere</h1>
             <p className="mt-4 text-lg">Discover the latest in technology and gadgets</p>
-            <Link to="/articles" className="mt-6 inline-block bg-teal-600 hover:bg-teal-500 text-white font-semibold py-3 px-6 rounded-lg transition">
+            <Link to="/articles" className=" mt-6 inline-block bg-teal-600 hover:bg-teal-500 text-white font-semibold py-3 px-6 rounded-lg transition">
               Shop Now
             </Link>
           </div>
-          <div className="absolute inset-0 bg-black bg-opacity-50"></div>
         </section>
 
         <section className="container mx-auto px-4 py-16">

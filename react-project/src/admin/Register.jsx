@@ -121,6 +121,10 @@ function Register() {
                 </div>
             )}
             <button type="submit" className="w-full bg-teal-600 text-white py-2 rounded-lg mt-4 hover:bg-teal-700 transition">Register</button>
+            <div className="flex justify-end mt-3 text-sm">
+                <p className='mr-1'>If you are register yet, you can login</p>
+                <a href="/login" className="text-teal-600 hover:underline">here</a>
+            </div>
         </form>
     </div>
     );

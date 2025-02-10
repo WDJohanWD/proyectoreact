@@ -74,85 +74,106 @@ const Dashboard = () => {
     }, []);
 
     return (
-        <div className="dashboard-container">
+        <div className="container mx-auto px-4 py-8">
             {msg && (
-                <div className={`message ${msg.includes("successfully") ? "message-success" : "message-error"}`}>
-                    {msg}
+                <div className={`p-3 text-center rounded-lg font-medium flex items-center justify-center gap-2 text-sm 
+            ${msg.includes("successfully") ? "bg-green-100 text-green-700 border-l-4 border-green-700" :
+                        "bg-red-100 text-red-700 border-l-4 border-red-700"}`}>
+                    <span>{msg.includes("successfully") ? "✔️" : "⚠️"}</span> {msg}
                 </div>
             )}
-            <div className="dashboard-table-container">
-                <h1 className="dashboard-title">Users</h1>
-                <table className="dashboard-table">
-                    <thead>
-                        <tr>
-                            <th>Username</th>
-                            <th>Email</th>
-                            <th>Role</th>
-                            <th>Registration Date</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {users.map((user) => (
-                            <tr key={user.id}>
-                                <td>{user.username}</td>
-                                <td>{user.email}</td>
-                                <td>{user.role}</td>
-                                <td>
-                                    {user.date ? user.date.substring(0, 8) : "N/A"} 
-                                </td>
-                                <td>
-                                    <button className="dashboard-btn dashboard-btn-danger" onClick={() => handleDeleteUser(user.id)}>
-                                        Delete
-                                    </button>
 
-                                    <button className="dashboard-btn dashboard-btn-warning ms-2" onClick={() => handleEditUser(user.id)}>
-                                        Edit
-                                    </button>
-                                </td>
+            {/* Sección de Usuarios */}
+            <div className="bg-white shadow-md rounded-lg p-6 mb-8">
+                <h1 className="text-2xl font-semibold mb-4">Users</h1>
+                <div className="overflow-x-auto">
+                    <table className="w-full border-collapse border border-gray-200">
+                        <thead>
+                            <tr className="bg-gray-100">
+                                <th className="border border-gray-300 px-4 py-2">Username</th>
+                                <th className="border border-gray-300 px-4 py-2">Email</th>
+                                <th className="border border-gray-300 px-4 py-2">Role</th>
+                                <th className="border border-gray-300 px-4 py-2">Registration Date</th>
+                                <th className="border border-gray-300 px-4 py-2">Actions</th>
                             </tr>
-                        ))} 
-                    </tbody>
-                </table>
-                
-                    <button className="dashboard-btn dashboard-btn-primary" onClick={newUser}>Add new user</button>
-                
+                        </thead>
+                        <tbody>
+                            {users.map((user) => (
+                                <tr key={user.id} className="border border-gray-200">
+                                    <td className="border border-gray-300 px-4 py-2">{user.username}</td>
+                                    <td className="border border-gray-300 px-4 py-2">{user.email}</td>
+                                    <td className="border border-gray-300 px-4 py-2">{user.role}</td>
+                                    <td className="border border-gray-300 px-4 py-2">{user.date ? user.date.substring(0, 8) : "N/A"}</td>
+                                    <td className="border border-gray-300 px-4 py-2 flex gap-2">
+                                        <button
+                                            className="bg-red-700 hover:bg-red-500 text-white px-4 py-1 rounded-md transition"
+                                            onClick={() => handleDeleteUser(user.id)}
+                                        >
+                                            Delete
+                                        </button>
+                                        <button
+                                            className="bg-yellow-600 hover:bg-yellow-400 text-white px-4 py-1 rounded-md transition"
+                                            onClick={() => handleEditUser(user.id)}
+                                        >
+                                            Edit
+                                        </button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+                <button
+                    className="mt-4 bg-teal-600 hover:bg-teal-500 text-white font-semibold py-2 px-4 rounded-md transition"
+                    onClick={newUser}
+                >
+                    Add new user
+                </button>
             </div>
 
-            <div className="dashboard-table-container">
-                <h1 className="dashboard-title">Articles</h1>
-                <table className="dashboard-table">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Price</th>
-                            <th>Category</th>
-                            <th>Stock</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {articles.map((article) => (
-                            <tr key={article.id}>
-                                <td>{article.name}</td>
-                                <td>{article.price}</td>
-                                <td>{article.category}</td>
-                                <td>{article.stock}</td>
-                                <td>
-                                    <button className="dashboard-btn dashboard-btn-danger" onClick={() => handleDeleteArticle(article.id)}>
-                                        Delete
-                                    </button>
-
-                                    <button className="dashboard-btn dashboard-btn-warning ms-2" onClick={() => handleEditArticle(article.id)}>
-                                        Edit
-                                    </button>
-                                </td>
+            {/* Sección de Artículos */}
+            <div className="bg-white shadow-md rounded-lg p-6">
+                <h1 className="text-2xl font-semibold mb-4">Articles</h1>
+                <div className="overflow-x-auto">
+                    <table className="w-full border-collapse border border-gray-200">
+                        <thead>
+                            <tr className="bg-gray-100">
+                                <th className="border border-gray-300 px-4 py-2">Name</th>
+                                <th className="border border-gray-300 px-4 py-2">Price</th>
+                                <th className="border border-gray-300 px-4 py-2">Category</th>
+                                <th className="border border-gray-300 px-4 py-2">Stock</th>
+                                <th className="border border-gray-300 px-4 py-2">Actions</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            {articles.map((article) => (
+                                <tr key={article.id} className="border border-gray-200">
+                                    <td className="border border-gray-300 px-4 py-2">{article.name}</td>
+                                    <td className="border border-gray-300 px-4 py-2">{article.price}</td>
+                                    <td className="border border-gray-300 px-4 py-2">{article.category}</td>
+                                    <td className="border border-gray-300 px-4 py-2">{article.stock}</td>
+                                    <td className="border border-gray-300 px-4 py-2 flex gap-2">
+                                        <button
+                                            className="bg-red-700 hover:bg-red-500 text-white px-4 py-1 rounded-md transition"
+                                            onClick={() => handleDeleteArticle(article.id)}
+                                        >
+                                            Delete
+                                        </button>
+                                        <button
+                                            className="bg-yellow-600 hover:bg-yellow-400 text-white px-4 py-1 rounded-md transition"
+                                            onClick={() => handleEditArticle(article.id)}
+                                        >
+                                            Edit
+                                        </button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
+
     )
 
 };
