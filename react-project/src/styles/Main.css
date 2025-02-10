@@ -37,43 +37,43 @@ h2 {
 }
 
 .message {
-  padding: 1rem 1.5rem;
-  text-align: center;
-  border-radius: 6px;
-  margin-bottom: 1rem;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  font-size: 1rem;
-  opacity: 0;
-  transform: translateY(-5px);
-  animation: fadeIn 0.4s ease-out forwards;
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    padding: 1rem 1.5rem;
+    text-align: center;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: 1rem;
+    opacity: 0;
+    transform: translateY(-5px);
+    animation: fadeIn 0.4s ease-out forwards;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 .message-success {
-  background-color: #eafaf1; /* Verde pastel */
-  color: #27ae60; /* Verde más fuerte */
-  border-left: 4px solid #27ae60;
+    background-color: #eafaf1; /* Verde pastel */
+    color: #27ae60; /* Verde más fuerte */
+    border-left: 4px solid #27ae60;
 }
 
 .message-error {
-  background-color: #fdecea; /* Rojo pastel */
-  color: #c0392b; /* Rojo más fuerte */
-  border-left: 4px solid #c0392b;
+    background-color: #fdecea; /* Rojo pastel */
+    color: #c0392b; /* Rojo más fuerte */
+    border-left: 4px solid #c0392b;
 }
 
 @keyframes fadeIn {
-  from {
-      opacity: 0;
-      transform: translateY(-5px);
-  }
-  to {
-      opacity: 1;
-      transform: translateY(0);
-  }
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /*Articles*/
@@ -125,6 +125,7 @@ h2 {
 .product-card button:hover {
     background-color: var(--primary-color-hover);
 }
+
 /* Dashborad */
 .dashboard-container {
     padding: 2rem 1rem;
@@ -208,7 +209,6 @@ h2 {
 .dashboard-btn-primary:hover {
     background-color: var(--primary-color-hover);
 }
-
 
 /*home */
 .container {
@@ -373,52 +373,66 @@ h2 {
 /*NavBar*/
 
 .custom-navbar {
-  background: linear-gradient(135deg, #7F8C8D, #2C3E50);
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-  border-bottom: 3px solid rgba(255, 255, 255, 0.3);
-  padding: 10px 15px;
+    background: linear-gradient(135deg, #7f8c8d, #2c3e50);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    border-bottom: 3px solid var(--primary-color-hover);
+    padding: 10px 15px;
 }
 
 .navbar-nav {
-  font-size: 1.2rem;
+    font-size: 1.2rem;
 }
 
 .nav-item .nav-link {
-  padding: 10px 15px;
-  transition: color 0.3s ease-in-out;
+    padding: 10px 15px;
+    transition: color 0.3s ease-in-out;
 }
 
 .nav-item .nav-link:hover {
-  color: var(--primary-color-hover);
+    color: var(--primary-color-hover);
 }
 
 .brand-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .brand-logo {
-  width: 100px;
+    width: 100px;
 }
 
 .username-text {
-  font-size: 1.2rem;
-  display: flex;
-  align-items: center;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
 }
 
 .username-text i {
-  font-size: 1.5rem;
-  margin-right: 5px;
+    font-size: 1.5rem;
+    margin-right: 5px;
 }
 
 .navbar-toggler {
-  border: none;
+    border: none;
 }
 
 .navbar-toggler:focus {
-  outline: none;
-  box-shadow: none;
+    outline: none;
+    box-shadow: none;
+}
+
+
+.comments{
+    max-width: 1000px;
+    margin: 3rem 0;
+    padding: 0.5rem;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.edit-comment{
+    margin-right: 0;
 }

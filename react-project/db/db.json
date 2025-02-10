@@ -33,36 +33,7 @@
     }
   ],
   "comments": [
-    {
-      "id": "1",
-      "username": "1",
-      "comment": "Hola soy un comentario",
-      "date": "2021-09-01"
-    },
-    {
-      "id": "2",
-      "username": "46e5",
-      "comment": "Hola soy un comentario",
-      "date": "2021-09-01"
-    },
-    {
-      "id": "3",
-      "user_id": "1ce9",
-      "comment": "Hola soy un comentario",
-      "date": "2021-09-01"
-    },
-    {
-      "id": "9316",
-      "username": "admin",
-      "comment": "",
-      "date": "8/2/2025, 23:18:18"
-    },
-    {
-      "id": "8840",
-      "username": "admin",
-      "comment": "Hi\n",
-      "date": "8/2/2025, 23:21:03"
-    },
+   
     {
       "id": "145a",
       "username": "admin",
