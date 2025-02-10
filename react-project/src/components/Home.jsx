@@ -43,43 +43,30 @@ const Home = () => {
   return (
     <div className="tech-shop">
       <main>
-        <section className="hero">
-          <div className="container">
-            <h1>Welcome to SmartSphere</h1>
-            <p>Discover the latest in technology and gadgets</p>
-            <Link to="/articles" className="cta-button">
+        <section className="relative bg-gray-900 text-white py-20 flex items-center justify-center text-center">
+          <div className="hero container mx-auto px-4 relative z-10">
+            <h1 className="text-4xl font-bold">Welcome to SmartSphere</h1>
+            <p className="mt-4 text-lg">Discover the latest in technology and gadgets</p>
+            <Link to="/articles" className="mt-6 inline-block bg-teal-600 hover:bg-teal-500 text-white font-semibold py-3 px-6 rounded-lg transition">
               Shop Now
             </Link>
           </div>
+          <div className="absolute inset-0 bg-black bg-opacity-50"></div>
         </section>
 
-        <section className="featured-products container">
-          <h2 id="featured">Featured Products</h2>
-          <div className="product-grid">
-            <div className="product-card">
-              <img src={article1?.path || ""} alt="Smartphone" />
-              <h3>{article1?.name || "Smartphone"}</h3>
-              <p>{article1?.price ? `${article1.price}€` : "N/A"}</p>
-              <button className="save-btn">Add to Cart</button>
-            </div>
-            <div className="product-card">
-              <img src={article2?.path || ""} alt="Laptop" />
-              <h3>{article2?.name || "Laptop"}</h3>
-              <p>{article2?.price ? `${article2.price}€` : "N/A"}</p>
-              <button className="save-btn">Add to Cart</button>
-            </div>
-            <div className="product-card">
-              <img src={article3?.path || ""} alt="Smartwatch" />
-              <h3>{article3?.name || "Smartwatch"}</h3>
-              <p>{article3?.price ? `${article3.price}€` : "N/A"}</p>
-              <button className="save-btn">Add to Cart</button>
-            </div>
-            <div className="product-card">
-            <img src={article4?.path || ""} alt="Smartwatch" />
-              <h3>{article4?.name || "Smartwatch"}</h3>
-              <p>{article4?.price ? `${article4.price}€` : "N/A"}</p>
-              <button className="save-btn">Add to Cart</button>
-            </div>
+        <section className="container mx-auto px-4 py-16">
+          <h2 id="featured" className="text-3xl font-semibold text-center text-gray-800 mb-10">Featured Products</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {[article1, article2, article3, article4].map((article, index) => (
+              <div key={index} className="bg-white rounded-lg shadow-md p-4 text-center transition-transform transform hover:-translate-y-1 hover:shadow-lg">
+                <img src={article?.path || ""} alt={article?.name || "Product"} className="w-full h-auto object-cover mb-4" />
+                <h3 className="text-lg font-semibold text-gray-900">{article?.name || "Product"}</h3>
+                <p className="text-teal-600 font-bold my-2">{article?.price ? `${article.price}€` : "N/A"}</p>
+                <button className="bg-teal-600 hover:bg-teal-500 text-white font-semibold py-2 px-4 rounded-lg transition">
+                  Add to Cart
+                </button>
+              </div>
+            ))}
           </div>
         </section>
       </main>

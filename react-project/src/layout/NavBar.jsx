@@ -1,4 +1,4 @@
-import "bootstrap-icons/font/bootstrap-icons.css"
+
 import { Link } from "react-router-dom"
 import logo from "../assets/upscalemedia.png"
 
@@ -13,99 +13,71 @@ const NavBar = () => {
     localStorage.setItem("isAdmin", false)
   }
 
-  return (<nav id="navbar"
-    className="navbar navbar-expand-lg navbar-dark w-100 position-relative custom-navbar "> 
-    <div className="container-fluid">
-      <button
-        className="navbar-toggler custom-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span className="navbar-toggler-icon"></span>
-      </button>
-      <div className="collapse navbar-collapse" id="navbarNav">
-      <div className="brand-container position-absolute top-50 start-50 translate-middle">
-          <p className="brand-text mb-0">
-            <img
-              width={100}
-              src={logo || "/placeholder.svg"}
-              alt="Logo"
-              className="brand-logo"
-            />
-          </p>
-        </div>
-        <ul className="navbar-nav me-auto" style={{ fontSize: "1.2rem" }}>
-          <li className="nav-item">
-            <Link to="/" className="nav-link" style={{ padding: "10px 15px" }}>
-              Home
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/articles" className="nav-link" style={{ padding: "10px 15px" }}>
-              Articles
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/comments" className="nav-link" style={{ padding: "10px 15px" }}>
-              Comments
-            </Link>
-          </li>
-        </ul>
-  
-        
-  
-        <ul className="navbar-nav ms-auto" style={{ fontSize: "1.2rem" }}>
-          {isAdmin && (
-            <li className="nav-item">
-              <Link to="/dashboard" className="nav-link">
-                <i className="bi bi-speedometer2" style={{ fontSize: "1.5rem" }}></i>
-              </Link>
-            </li>
-          )}
-          <li className="nav-item">
-            <Link to="/cart" className="nav-link">
-              <i className="bi bi-cart4" style={{ fontSize: "1.5rem" }}></i>
-              <span className="nav-tooltip"></span>
-            </Link>
-          </li>
-          {username && (
-            <li className="nav-item">
-              <span
-                className="nav-link username-text"
-                style={{ fontSize: "1.2rem", display: "flex", alignItems: "center" }}
-              >
-                <i className="bi bi-person-circle me-2" style={{ fontSize: "1.5rem"}}></i>
-                {username}
-              </span>
-            </li>
-          )}
-          
-          {isLogged ? (
-            <li className="nav-item">
-              <button
-                className="nav-link "
-                onClick={closeSession}
-                style={{ fontSize: "1.2rem", display: "flex", alignItems: "center" }}
-              >
-                <i className="bi bi-box-arrow-right" style={{ fontSize: "1.5rem", marginRight: "5px" }}></i>
-              </button>
-            </li>
-          ) : (
-            <li className="nav-item">
-              <Link to="/login" className="nav-link">
-                <i className="bi bi-box-arrow-right" style={{ fontSize: "1.5rem" }}></i>
-              </Link>
-            </li>
-          )}
-        </ul>
+  return ( <nav className="bg-gradient-to-r from-gray-600 to-gray-900 shadow-md border-b-4 border-teal-500 p-4">
+    <div className="container mx-auto flex items-center justify-between">
+      {/* Logo */}
+      <div className="absolute inset-x-1/2 transform -translate-x-1/2">
+        <img
+          width={100}
+          src={logo || "/placeholder.svg"}
+          alt="Logo"
+          className="h-16"
+        />
       </div>
+
+      {/* Left Links */}
+      <ul className="flex space-x-6 text-lg text-white">
+        <li>
+          <Link to="/" className="hover:text-teal-400">Home</Link>
+        </li>
+        <li>
+          <Link to="/articles" className="hover:text-teal-400">Articles</Link>
+        </li>
+        <li>
+          <Link to="/comments" className="hover:text-teal-400">Comments</Link>
+        </li>
+      </ul>
+
+      {/* Right Links */}
+      <ul className="flex items-center space-x-4 text-white text-lg">
+        {isAdmin && (
+          <li>
+            <Link to="/dashboard" className="hover:text-teal-400">
+              <i className="bi bi-speedometer2 text-xl"></i>
+            </Link>
+          </li>
+        )}
+        <li>
+          <Link to="/cart" className="hover:text-teal-400 relative">
+            <i className="bi bi-cart4 text-xl"></i>
+          </Link>
+        </li>
+        {username && (
+          <li className="flex items-center">
+            <i className="bi bi-person-circle text-xl mr-2"></i>
+            <span>{username}</span>
+          </li>
+        )}
+        {isLogged ? (
+          <li>
+            <button
+              onClick={closeSession}
+              className="hover:text-red-500 flex items-center"
+            >
+              <i className="bi bi-box-arrow-right text-xl mr-2"></i>
+              Logout
+            </button>
+          </li>
+        ) : (
+          <li>
+            <Link to="/login" className="hover:text-teal-400">
+              <i className="bi bi-box-arrow-right text-xl"></i>
+            </Link>
+          </li>
+        )}
+      </ul>
     </div>
   </nav>
-
   )
 }
 

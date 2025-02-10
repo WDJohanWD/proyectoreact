@@ -72,59 +72,57 @@ function Register() {
     }, []);
 
     return (
-        <div className="edit-container mt-5">
-            <h1 className="edit-tittle text-center">Register</h1>
-            <form className="edit-form w-75 mx-auto" onSubmit={handleSubmit}>
-
-                <div className="form-group">
-                    <label htmlFor="username" className="edit-label">Username</label>
-                    <input    
-                        type="text"
-                        className="edit-input form-control"
-                        placeholder="Username"
-                        value={username}
-                        onChange={handleUsernameChange}
-                    />
+        <div className="max-w-md mx-auto mt-5 p-6 bg-white rounded-lg shadow-md">
+        <h1 className="text-2xl font-bold text-center text-gray-800 mb-4">Register</h1>
+        <form className="w-3/4 mx-auto" onSubmit={handleSubmit}>
+            <div className="mb-4">
+                <label htmlFor="username" className="block text-gray-700 font-semibold mb-1">Username</label>
+                <input
+                    type="text"
+                    className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none"
+                    placeholder="Username"
+                    value={username}
+                    onChange={handleUsernameChange}
+                />
+            </div>
+            <div className="mb-4">
+                <label htmlFor="email" className="block text-gray-700 font-semibold mb-1">Email</label>
+                <input
+                    type="email"
+                    className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none"
+                    placeholder="Email"
+                    value={email}
+                    onChange={handleEmailChange}
+                />
+            </div>
+            <div className="mb-4">
+                <label htmlFor="password" className="block text-gray-700 font-semibold mb-1">Password</label>
+                <input
+                    type="password"
+                    className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none"
+                    placeholder="Password"
+                    value={password}
+                    onChange={handlePasswordChange}
+                />
+            </div>
+            <div className="mb-4">
+                <label htmlFor="repeat-password" className="block text-gray-700 font-semibold mb-1">Repeat password</label>
+                <input
+                    type="password"
+                    className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none"
+                    placeholder="Repeat Password"
+                    value={repeatPassword}
+                    onChange={handleRepeatPasswordChange}
+                />
+            </div>
+            {msg && (
+                <div className={`p-3 text-center rounded-lg font-medium flex items-center justify-center gap-2 text-sm ${msg.includes("successfully") ? "bg-green-100 text-green-700 border-l-4 border-green-700" : "bg-red-100 text-red-700 border-l-4 border-red-700"}`}>
+                    <span>{msg.includes("successfully") ? "✔️" : "⚠️"}</span> {msg}
                 </div>
-                <div className="form-group">
-                <label htmlFor="email" className="edit-label">Email</label>
-                    <input
-                        type="email"
-                        className="edit-input form-control"
-                        placeholder="Email"
-                        value={email}
-                        onChange={handleEmailChange}
-                    />
-                </div>
-                <div className="form-group">
-                <label htmlFor="password" className="edit-label">Password</label>
-                    <input
-                        type="password"
-                        className="edit-input form-control"
-                        placeholder="Password"
-                        value={password}
-                        onChange={handlePasswordChange}
-                    />
-                </div>
-                <div className="form-group">
-                <label htmlFor="repeat-password" className="edit-label">Repeat password</label>
-                    <input
-                        type="password"
-                        className="edit-input form-control"
-                        placeholder="Repeat Password"
-                        value={repeatPassword}
-                        onChange={handleRepeatPasswordChange}
-                    />
-                </div> 
-                {msg && (
-                    <div className={`message ${msg.includes("successfully") ? "message-success" : "message-error"}`}>
-                        <span>{msg.includes("successfully") ? "✔️" : "⚠️"}</span> {msg}
-                    </div>
-                )}
-
-                <button type="submit" className="save-btn mb-2">Register</button>
-            </form>
-        </div>
+            )}
+            <button type="submit" className="w-full bg-teal-600 text-white py-2 rounded-lg mt-4 hover:bg-teal-700 transition">Register</button>
+        </form>
+    </div>
     );
 }
 

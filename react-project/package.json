@@ -11,10 +11,7 @@
     "start": "concurrently \"npm run dev\" \"json-server --watch db/db.json --port 5000\""
   },
   "dependencies": {
-    "bootstrap": "^5.3.3",
-    "bootstrap-icons": "^1.11.3",
     "react": "^18.3.1",
-    "react-bootstrap": "^2.10.9",
     "react-dom": "^18.3.1",
     "react-project": "file:",
     "react-router": "^7.1.5",
@@ -22,6 +19,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
+    "@tailwindcss/vite": "^4.0.5",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
     "@vitejs/plugin-react-swc": "^3.5.0",
