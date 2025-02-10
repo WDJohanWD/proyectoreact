@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Home from "./components/Home";
 import NavBar from "./layout/NavBar";
 import Articles from "./components/Articles";
@@ -10,9 +10,10 @@ import EditArticle from "./admin/EditArticle";
 import EditUser from "./admin/EditUser";
 import Comments from "./components/Comments";
 import { useEffect, useState } from "react";
-function App() {
 
+function App() {
   const [isAdmin, setIsAdmin] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const admin = localStorage.getItem("isAdmin");
@@ -21,10 +22,12 @@ function App() {
     }
   }, []);
 
-  return (
-    <BrowserRouter>
+  // Ocultar NavBar y Footer en login y register
+  const hideNavAndFooter = location.pathname === "/login" || location.pathname === "/register";
 
-      <NavBar />
+  return (
+    <>
+      {!hideNavAndFooter && <NavBar />}
       <Routes>  
         <Route path="/" element={<Home />} />
         <Route path="/articles" element={<Articles />} />
@@ -33,13 +36,19 @@ function App() {
         {isAdmin && <Route path="/dashboard" element={<Dashboard />} />}
         {isAdmin && <Route path="/edit-article" element={<EditArticle />} />}
         {isAdmin && <Route path="/edit-user" element={<EditUser />} />}
-        <Route path="/comments" element={<Comments/>}/>
-
-
+        <Route path="/comments" element={<Comments />} />
       </Routes>
-      <Footer />
+      {!hideNavAndFooter && <Footer />}
+    </>
+  );
+}
+
+function AppWrapper() {
+  return (
+    <BrowserRouter>
+      <App />
     </BrowserRouter>
   );
 }
 
-export default App;
+export default AppWrapper;

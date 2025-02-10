@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-
 const Login = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -51,7 +50,7 @@ const Login = () => {
     }, []); // Add an empty dependency array to run only once
 
     return (
-        <div className="max-w-md mx-auto mt-5 p-6 bg-white rounded-lg shadow-md">
+        <div className="max-w-md mx-auto my-20 p-6 bg-white rounded-lg shadow-md">
         <h1 className="text-2xl font-bold text-center text-gray-800 mb-4">Login</h1>
         <form className="w-3/4 mx-auto" onSubmit={handleSubmit}>
             <div className="mb-4">

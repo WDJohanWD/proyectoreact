@@ -203,6 +203,14 @@
       "stock": 10
     },
     {
+      "id": "22",
+      "category": "headphones",
+      "name": "Technics EAH-A800",
+      "price": "273.90€",
+      "path": "/assets/articles/headphones/technics.webp",
+      "stock": 10
+    },
+    {
       "id": "23",
       "category": "headphones",
       "name": "Huawei FreeBuds 3",

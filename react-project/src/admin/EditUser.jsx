@@ -55,7 +55,7 @@ const EditUser = () => {
             date,
             role
         };
-        
+
         const response = await fetch(`http://localhost:5000/users/${id}`, {
             method: "PUT",
             headers: {
@@ -63,7 +63,7 @@ const EditUser = () => {
             },
             body: JSON.stringify(formData)
         });
-        
+
 
         if (response.ok) {
             console.log("User updated successfully");
@@ -74,29 +74,53 @@ const EditUser = () => {
     };
 
     return (
-        <div className='edit-container'>
-            <h1 className='edit-tittle'>Edit User</h1>
-            <p>This is an edit user component.</p>
-            <form onSubmit={handleSubmit} className='edit-form'>
+        <div className="max-w-lg mx-auto bg-white shadow-md rounded-lg p-6">
+            <h1 className="text-2xl font-semibold text-center mb-4">Edit User</h1>
+            <p className="text-center text-gray-600 mb-6">This is an edit user component.</p>
+            <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                    <label className='edit-label'>Username:</label>
-                    <input className='edit-input' type="text" name="username" value={username} onChange={handleChange} readOnly />
+                    <label className="block text-gray-700 font-medium">Username:</label>
+                    <input
+                        className="w-full p-2 border border-gray-300 rounded-md bg-gray-100 cursor-not-allowed"
+                        type="text"
+                        name="username"
+                        value={username}
+                        onChange={handleChange}
+                        readOnly
+                    />
                 </div>
                 <div>
-                    <label className='edit-label'>Email:</label>
-                    <input className='edit-input' type="text" name="email" value={email} onChange={handleChange} readOnly />
+                    <label className="block text-gray-700 font-medium">Email:</label>
+                    <input
+                        className="w-full p-2 border border-gray-300 rounded-md bg-gray-100 cursor-not-allowed"
+                        type="text"
+                        name="email"
+                        value={email}
+                        onChange={handleChange}
+                        readOnly
+                    />
                 </div>
                 <div>
-                    <label className='edit-label' >Role:</label>
-                    <select className='edit-select' name="role" id="role" value={role} onChange={handleChange}>
+                    <label className="block text-gray-700 font-medium">Role:</label>
+                    <select
+                        className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
+                        name="role"
+                        value={role}
+                        onChange={handleChange}
+                    >
                         <option value="admin">Admin</option>
                         <option value="user">User</option>
                     </select>
                 </div>
-                
-                <button className='save-btn' type="submit">Update User</button>
+                <button
+                    className="w-full bg-teal-600 hover:bg-teal-500 text-white font-semibold py-2 rounded-md transition"
+                    type="submit"
+                >
+                    Update User
+                </button>
             </form>
         </div>
+
     );
 };
 

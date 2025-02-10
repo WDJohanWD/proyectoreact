@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+
+body{
+    background-color: #fafafa;
+}
+
+Routes{
+    margin: 5%;
+}

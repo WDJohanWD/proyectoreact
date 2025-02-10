@@ -58,7 +58,7 @@ const EditArticle = () => {
             category,
             path
         };
-        
+
         const response = await fetch(`http://localhost:5000/articles/${id}`, {
             method: "PUT",
             headers: {
@@ -66,7 +66,7 @@ const EditArticle = () => {
             },
             body: JSON.stringify(formData)
         });
-        
+
 
         if (response.ok) {
             console.log("Article updated successfully");
@@ -77,26 +77,48 @@ const EditArticle = () => {
     };
 
     return (
-        <div>
-            <div className="edit-container">
-            <h1 className='edit-tittle'>Edit Article</h1>
-            <p>This is an edit article component.</p>
-            <form onSubmit={handleSubmit} className='edit-form'>
+        <div className="max-w-lg mx-auto bg-white shadow-md rounded-lg p-6">
+            <h1 className="text-2xl font-semibold text-center mb-4">Edit Article</h1>
+            <p className="text-center text-gray-600 mb-6">This is an edit article component.</p>
+            <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                    <label className='edit-label'>Name:</label>
-                    <input className='edit-input' type="text" name="name" value={name} onChange={handleChange} />
+                    <label className="block text-gray-700 font-medium">Name:</label>
+                    <input
+                        className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
+                        type="text"
+                        name="name"
+                        value={name}
+                        onChange={handleChange}
+                    />
                 </div>
                 <div>
-                    <label className='edit-label'>Price:</label>
-                    <input className='edit-input' type="text" name="price" value={price} onChange={handleChange} />
+                    <label className="block text-gray-700 font-medium">Price:</label>
+                    <input
+                        className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
+                        type="text"
+                        name="price"
+                        value={price}
+                        onChange={handleChange}
+                    />
                 </div>
                 <div>
-                    <label className='edit-label'>Stock:</label>
-                    <input className='edit-input' type="text" name="stock" value={stock} onChange={handleChange} />
+                    <label className="block text-gray-700 font-medium">Stock:</label>
+                    <input
+                        className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
+                        type="text"
+                        name="stock"
+                        value={stock}
+                        onChange={handleChange}
+                    />
                 </div>
                 <div>
-                    <label className='edit-label'>Category:</label>
-                    <select className='edit-select' name="category" value={category} onChange={handleChange}>
+                    <label className="block text-gray-700 font-medium">Category:</label>
+                    <select
+                        className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
+                        name="category"
+                        value={category}
+                        onChange={handleChange}
+                    >
                         <option value="laptop">Laptop</option>
                         <option value="mobile">Mobile</option>
                         <option value="tablet">Tablets</option>
@@ -104,10 +126,15 @@ const EditArticle = () => {
                         <option value="smartwatch">Smart Watch</option>
                     </select>
                 </div>
-                <button className='save-btn' type="submit">Update Article</button>
+                <button
+                    className="w-full bg-teal-600 hover:bg-teal-500 text-white font-semibold py-2 rounded-md transition"
+                    type="submit"
+                >
+                    Update Article
+                </button>
             </form>
-            </div>
         </div>
+
     );
 };
 
