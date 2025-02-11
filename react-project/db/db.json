@@ -38,7 +38,48 @@
       "id": "145a",
       "username": "admin",
       "comment": "hola",
-      "date": "9/2/2025, 21:37:00"
+      "date": "9/2/2025, 21:37:00",
+      "like": 1
+
+    },
+    {
+      "id": "5e53",
+      "username": "admin",
+      "comment": "Esto es una prueba\n",
+      "date": "2/11/2025, 12:28:33 PM",
+      "like": 1
+
+    },
+    {
+      "id": "1c44",
+      "username": "admin",
+      "comment": "Prueba 2",
+      "date": "2/11/2025, 12:28:57 PM",
+      "like": 1
+
+    },
+    {
+      "id": "2a7f",
+      "username": "admin",
+      "comment": "Prueba 3\n",
+      "date": "2/11/2025, 12:29:11 PM",
+      "like": 1
+
+    },
+    {
+      "id": "1324",
+      "username": "borja",
+      "comment": "Cata y Lulú no me decido\n",
+      "date": "2/11/2025, 12:40:05 PM",
+      "like": 1
+
+    },
+    {
+      "id": "bd08",
+      "username": "esteban",
+      "comment": "Prueba likes",
+      "date": "2/11/2025, 1:14:48 PM",
+      "like": 1
     }
   ],
   "articles": [

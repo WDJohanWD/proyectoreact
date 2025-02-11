@@ -5,3 +5,13 @@ body{
     background-color: #fafafa;
 }
 
+.auth-background {
+    background-image: url("../assets/homeImage.webp"); /* Ruta de la imagen */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh; /* Ajusta al 100% de la pantalla */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }

@@ -72,7 +72,7 @@ function Register() {
     }, []);
 
     return (
-        <div className="max-w-md m-auto my-20 p-6 bg-white rounded-lg shadow-lg">
+        <div className="max-w-md m-auto my-20 p-6 bg-white rounded-lg shadow-lg w-100">
         <h1 className="text-2xl font-bold text-center text-gray-800 mb-4">Register</h1>
         <form className="w-3/4 mx-auto" onSubmit={handleSubmit}>
             <div className="mb-4">

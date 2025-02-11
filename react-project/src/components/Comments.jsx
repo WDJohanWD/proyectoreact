@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react"
+import { AiOutlineLike } from "react-icons/ai";
+
 import "../styles/Edit.css"
 
 const Comments = () => {
@@ -36,7 +38,7 @@ const Comments = () => {
             return;
         }
 
-        const newComment = { username, comment, date: registrationDate };
+        const newComment = { username, comment, date: registrationDate, like: 0 };
 
         fetch("http://localhost:5000/comments", {
             method: "POST",
@@ -69,13 +71,13 @@ const Comments = () => {
 
     return (
         <>
-            <div className="container mx-auto flex justify-center items-start mt-8">
+            <div className="container mx-auto flex justify-center items-start mt-8 px-4">
                 {/* Contenedor dividido en dos columnas */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
 
                     {/* Columna del formulario */}
                     <div className="md:col-span-1 flex flex-col items-center">
-                        <div className="w-full bg-white shadow-md rounded-lg p-6">
+                        <div className="w-full bg-white shadow-lg rounded-lg p-6">
                             <h2 className="text-2xl font-semibold text-center mb-4">Leave your opinion here</h2>
                             <form onSubmit={saveComments} className="w-full">
                                 <textarea
@@ -89,6 +91,7 @@ const Comments = () => {
                                         <span>{msg.includes("successfully") ? "✔️" : "⚠️"}</span> {msg}
                                     </div>
                                 )}
+                                <br />
                                 <button
                                     className="w-full bg-teal-600 hover:bg-teal-500 text-white font-semibold py-2 rounded-md transition"
                                     type="submit"
@@ -101,17 +104,24 @@ const Comments = () => {
 
                     {/* Columna de los comentarios */}
                     <div className="md:col-span-2">
-                        <div className="w-full bg-white shadow-md rounded-lg p-6">
+                        <div className="w-full bg-white shadow-lg rounded-lg p-6">
                             <h2 className="text-2xl font-semibold mb-4">Comments:</h2>
                             {comments.length > 0 ? (
-                                <div className="overflow-x-auto">
-
+                                <div className="space-y-4">
                                     {comments.map((comment, index) => (
-                                        <div key={index} className="border border-gray-200">
-                                            <h2 className="px-4 py-2">{comment.username}</h2>
-                                            <p className="px-4 py-2">{comment.date.substring(0, 8)}</p>
-
-                                            <td className=" px-4 py-2">{comment.comment}</td>
+                                        <div
+                                            key={index}
+                                            className="bg-gray-50 p-4 rounded-lg shadow-sm border border-gray-200"
+                                        >
+                                            <div className="flex items-center justify-between mb-2">
+                                                <h3 className="text-lg font-semibold text-teal-700">{comment.username}</h3>
+                                                <span className="text-sm text-gray-500">{comment.date.substring(0, 8)}</span>
+                                            </div>
+                                            <p className="text-gray-700 flex">
+                                                {comment.comment}
+                                                <p className="ml-auto">
+                                                {comment.like}</p><AiOutlineLike className="mt-0.5" />
+                                            </p>
                                         </div>
                                     ))}
                                 </div>
@@ -124,6 +134,7 @@ const Comments = () => {
                 </div>
             </div>
         </>
+
 
 
     )

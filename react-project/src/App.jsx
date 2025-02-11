@@ -10,6 +10,7 @@ import EditArticle from "./admin/EditArticle";
 import EditUser from "./admin/EditUser";
 import Comments from "./components/Comments";
 import { useEffect, useState } from "react";
+import Profile from "./components/Profile";
 
 function App() {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -23,11 +24,11 @@ function App() {
   }, []);
 
   // Ocultar NavBar y Footer en login y register
-  const hideNavAndFooter = location.pathname === "/login" || location.pathname === "/register";
+  const isAuthPage = location.pathname === "/login" || location.pathname === "/register";
 
   return (
-    <>
-      {!hideNavAndFooter && <NavBar />}
+    <div className={isAuthPage ? "auth-background" : ""}>
+      {!isAuthPage && <NavBar />}
       <Routes>  
         <Route path="/" element={<Home />} />
         <Route path="/articles" element={<Articles />} />
@@ -37,9 +38,10 @@ function App() {
         {isAdmin && <Route path="/edit-article" element={<EditArticle />} />}
         {isAdmin && <Route path="/edit-user" element={<EditUser />} />}
         <Route path="/comments" element={<Comments />} />
+        <Route path="/profile" element={<Profile/>}></Route>
       </Routes>
-      {!hideNavAndFooter && <Footer />}
-    </>
+      {!isAuthPage && <Footer />}
+    </div>
   );
 }
 

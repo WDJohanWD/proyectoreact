@@ -13,7 +13,7 @@ const NavBar = () => {
   }
 
   return (
-    <nav className="sticky top-0 bg-gradient-to-r from-gray-600 to-gray-900 shadow-md border-b-4 border-gray-300 px-4 py-2 z-50 w-full">
+    <nav className="sticky top-0 bg-gradient-to-r from-gray-600 to-gray-900 shadow-md border-b-2 border-gray-300 px-4 py-2 z-50 w-full">
       <div className="flex items-center justify-between w-full">
         
         {/* Izquierda (Logo y Links) */}
@@ -43,9 +43,11 @@ const NavBar = () => {
           </Link>
           {username && (
             <div className="flex items-center">
+              <Link to={"/profile"}>
               <svg className="h-8 w-8 text-gray-500 hover:text-teal-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
+              </Link>
               <p className="hover:text-teal-400" style={{ color: "#697181" }}>{username}</p>
             </div>
           )}

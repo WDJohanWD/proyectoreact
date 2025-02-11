@@ -50,14 +50,14 @@ const Login = () => {
     }, []); // Add an empty dependency array to run only once
 
     return (
-        <div className="max-w-md mx-auto my-20 p-6 bg-white rounded-lg shadow-md">
+        <div className="max-w-md mx-auto my-20 p-6 bg-white rounded-lg shadow-md w-100 h-100 ">
         <h1 className="text-2xl font-bold text-center text-gray-800 mb-4">Login</h1>
         <form className="w-3/4 mx-auto" onSubmit={handleSubmit}>
             <div className="mb-4">
                 <label htmlFor="username" className="block text-gray-700 font-semibold mb-1">Username</label>
                 <input
                     type="text"
-                    className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none"
+                    className="w-full px-4 py-2 border rounded-lg focus:ring-2  focus:ring-teal-500 focus:outline-none"
                     id="username"
                     placeholder="Enter username"
                     value={username}
@@ -81,9 +81,9 @@ const Login = () => {
                     <span>{msg.includes("successfully") ? "✔️" : "⚠️"}</span> {msg}
                 </div>
             )}
-            <div className="flex justify-end mt-3 text-sm">
+            <div className="justify-end mt-3 text-sm">
                 <p className='mr-1'>If you are not a user yet, you can register</p>
-                <a href="/register" className="text-teal-600 hover:underline">here</a>
+                <a href="/register" className="text-teal-600 hover:underline m-0">here</a>
             </div>
         </form>
     </div>
