@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/upscalemedia.png";
 
 const NavBar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const username = localStorage.getItem("username");
   const isLogged = !!username;
   const isAdmin = localStorage.getItem("isAdmin") === "true";
@@ -16,22 +18,30 @@ const NavBar = () => {
     <nav className="sticky top-0 bg-gradient-to-r from-gray-600 to-gray-900 shadow-md border-b-2 border-gray-300 px-4 py-2 z-50 w-full">
       <div className="flex items-center justify-between w-full">
         
-        {/* Izquierda (Logo y Links) */}
-        <div className="flex items-center space-x-6 text-lg text-gray-400 flex-grow">
+        {/* IZQUIERDA: Logo y Menú */}
+        <div className="flex items-center space-x-6">
           <img width={100} src={logo || "/placeholder.svg"} alt="Logo" className="w-15" />
-          <Link to="/" className="hover:text-teal-400">Home</Link>
-          <Link to="/articles" className="hover:text-teal-400">Shop</Link>
-          <Link to="/comments" className="hover:text-teal-400">Comments</Link>
+
+          {/* Links en desktop */}
+          <div className="hidden lg:flex items-center space-x-6 text-lg text-gray-400">
+            <Link to="/" className="hover:text-teal-400">Home</Link>
+            <Link to="/articles" className="hover:text-teal-400">Shop</Link>
+            <Link to="/comments" className="hover:text-teal-400">Comments</Link>
+          </div>
+
+          {/* Botón de menú hamburguesa en mobile */}
+          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="lg:hidden focus:outline-none">
+            <svg className="w-8 h-8 text-gray-500 hover:text-teal-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M3 12h18M3 6h18M3 18h18" />
+            </svg>
+          </button>
         </div>
 
-        {/* Derecha (Admin, Carrito, Usuario, Logout/Login) */}
+        {/* DERECHA: Carrito, Login/Logout */}
         <div className="flex items-center space-x-4 text-white text-lg">
           {isAdmin && (
             <Link to="/dashboard" className="hover:text-teal-400">
-              <svg className="h-8 w-8 text-gray-500 hover:text-teal-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <circle cx="12" cy="12" r="3" />
-                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
-              </svg>
+              <svg className="h-8 w-8 text-gray-500 hover:text-teal-400"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor">  <circle cx="12" cy="12" r="3" />  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" /></svg>
             </Link>
           )}
           <Link to="/cart" className="hover:text-teal-400 relative">
@@ -44,11 +54,13 @@ const NavBar = () => {
           {username && (
             <div className="flex items-center">
               <Link to={"/profile"}>
-              <svg className="h-8 w-8 text-gray-500 hover:text-teal-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
+                <svg className="h-8 w-8 text-gray-500 hover:text-teal-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
               </Link>
-              <p className="hover:text-teal-400" style={{ color: "#697181" }}>{username}</p>
+              <Link to="/profile">
+              <p className="hover:text-teal-400 ml-2 text-gray-500">{username}</p>
+              </Link>
             </div>
           )}
           {isLogged ? (
@@ -69,7 +81,16 @@ const NavBar = () => {
             </Link>
           )}
         </div>
+      </div>
+
+      {/* Menú desplegable en mobile */}
+      {isMenuOpen && (
+        <div className="lg:hidden flex flex-col mt-2 space-y-2 text-gray-400 text-lg">
+          <Link to="/" className="hover:text-teal-400">Home</Link>
+          <Link to="/articles" className="hover:text-teal-400">Shop</Link>
+          <Link to="/comments" className="hover:text-teal-400">Comments</Link>
         </div>
+      )}
     </nav>
   );
 };

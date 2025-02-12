@@ -22,11 +22,14 @@
 
 .hero h1,
 .hero p,
-.hero .cta-button {
+.hero .cta-button,
+.hero .flecha {
     position: relative;
     z-index: 2;
 }
-
+.flecha{
+    
+}
 .hero h1 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
