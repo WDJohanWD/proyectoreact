@@ -1,12 +1,16 @@
 
 import { useEffect, useState } from 'react';
 import "../styles/Dashboard.css";
+import { SlArrowLeft } from "react-icons/sl";
+import { SlArrowRight } from "react-icons/sl";
+
 
 const Dashboard = () => {
     const [users, setUsers] = useState([]);
     const [articles, setArticles] = useState([]);
     const [msg, setMsg] = useState("");
-
+    const ITEMS_PER_PAGE = 8
+        ;
     async function getUsers() {
         const response = await fetch("http://localhost:5000/users");
         const data = await response.json();
@@ -45,7 +49,52 @@ const Dashboard = () => {
         });
 
     }
+    const [currentUserPage, setCurrentUserPage] = useState(1);
+    const [currentArticlePage, setCurrentArticlePage] = useState(1);
 
+    // Función para obtener los datos paginados de usuarios
+    const getPaginatedUsers = () => {
+        const startIndex = (currentUserPage - 1) * ITEMS_PER_PAGE;
+        const endIndex = startIndex + ITEMS_PER_PAGE;
+        return users.slice(startIndex, endIndex);
+    };
+
+    // Función para obtener los datos paginados de artículos
+    const getPaginatedArticles = () => {
+        const startIndex = (currentArticlePage - 1) * ITEMS_PER_PAGE;
+        const endIndex = startIndex + ITEMS_PER_PAGE;
+        return articles.slice(startIndex, endIndex);
+    };
+
+    // Función para manejar la navegación de usuarios entre páginas
+    const handleNextUserPage = () => {
+        if (currentUserPage * ITEMS_PER_PAGE < users.length) {
+            setCurrentUserPage(currentUserPage + 1);
+        }
+    };
+
+    const handlePrevUserPage = () => {
+        if (currentUserPage > 1) {
+            setCurrentUserPage(currentUserPage - 1);
+        }
+    };
+
+    // Función para manejar la navegación de artículos entre páginas
+    const handleNextArticlePage = () => {
+        if (currentArticlePage * ITEMS_PER_PAGE < articles.length) {
+            setCurrentArticlePage(currentArticlePage + 1);
+        }
+    };
+
+    const handlePrevArticlePage = () => {
+        if (currentArticlePage > 1) {
+            setCurrentArticlePage(currentArticlePage - 1);
+        }
+    };
+
+    // Total de páginas para usuarios y artículos
+    const totalUserPages = Math.ceil(users.length / ITEMS_PER_PAGE);
+    const totalArticlePages = Math.ceil(articles.length / ITEMS_PER_PAGE);
 
     function handleEditArticle(id) {
         localStorage.setItem("articleId", id);
@@ -101,7 +150,7 @@ const Dashboard = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {users.map((user) => (
+                            {getPaginatedUsers().map((user) => (
                                 <tr key={user.id} className="border border-gray-200">
                                     <td className="border border-gray-300 px-4 py-2">{user.username}</td>
                                     <td className="border border-gray-300 px-4 py-2">{user.email}</td>
@@ -126,6 +175,29 @@ const Dashboard = () => {
                         </tbody>
                     </table>
                 </div>
+                <div className="flex justify-between items-center mt-4">
+                    <button
+                        className="bg-teal-600 hover:bg-teal-500 text-white font-semibold py-2 px-4 rounded-md transition"
+                        onClick={handlePrevUserPage}
+                        disabled={currentUserPage === 1}
+                    >
+                        <SlArrowLeft />
+
+                    </button>
+                    <span className="text-sm text-gray-700">
+                        Page {currentUserPage} of {totalUserPages}
+                    </span>
+                    <button
+                        className="bg-teal-600 hover:bg-teal-500 text-white font-semibold py-2 px-4 rounded-md transition"
+                        onClick={handleNextUserPage}
+                        disabled={currentUserPage === totalUserPages}
+                    >
+                        <SlArrowRight />
+
+                    </button>
+                </div>
+
+
                 <button
                     className="mt-4 bg-teal-600 hover:bg-teal-500 text-white font-semibold py-2 px-4 rounded-md transition"
                     onClick={newUser}
@@ -149,7 +221,7 @@ const Dashboard = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {articles.map((article) => (
+                            {getPaginatedArticles().map((article) => (
                                 <tr key={article.id} className="border border-gray-200">
                                     <td className="border border-gray-300 px-4 py-2">{article.name}</td>
                                     <td className="border border-gray-300 px-4 py-2">{article.price}</td>
@@ -173,6 +245,26 @@ const Dashboard = () => {
                             ))}
                         </tbody>
                     </table>
+                    <div className="flex justify-between items-center mt-4">
+                        <button
+                            className="bg-teal-600 hover:bg-teal-500 text-white font-semibold py-2 px-4 rounded-md transition"
+                            onClick={handlePrevArticlePage}
+                            disabled={currentArticlePage === 1}
+                        >
+                            <SlArrowLeft />
+
+                        </button>
+                        <span className="text-sm text-gray-700">
+                            Page {currentArticlePage} of {totalArticlePages}
+                        </span>
+                        <button
+                            className="bg-teal-600 hover:bg-teal-500 text-white font-semibold py-2 px-4 rounded-md transition"
+                            onClick={handleNextArticlePage}
+                            disabled={currentArticlePage === totalArticlePages}
+                        >
+                            <SlArrowRight/>
+                        </button>
+                    </div>
                 </div>
             </div>
         </section>
