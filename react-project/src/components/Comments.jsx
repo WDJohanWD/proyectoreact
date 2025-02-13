@@ -37,6 +37,10 @@ const Comments = () => {
             setMsg("To comment, you have to be logged in.");
             return;
         }
+        if(!comment){
+            setMsg("Yo can not write a empty comment")
+            return;
+        }
 
         const newComment = { username, comment, date: registrationDate, like: 0 };
 
