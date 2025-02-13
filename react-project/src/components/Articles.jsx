@@ -16,6 +16,13 @@ const Articles = () => {
     return (
         <>
             <section className="container mx-auto px-4 py-8">
+                <div  className="bg-white rounded-lg shadow-md p-2 text-center  hover:shadow-lg">
+                    <button className="bg-gray-50 py-1 px-2 me-2 rounded-lg shadow-sm border border-gray-200 transition-transform transform hover:-translate-y-1">All</button>
+                    <button className="bg-gray-50 py-1 px-2 me-2 rounded-lg shadow-sm border border-gray-200 transition-transform transform hover:-translate-y-1">Mobiles</button>
+                    <button className="bg-gray-50 py-1 px-2 me-2 rounded-lg shadow-sm border border-gray-200 transition-transform transform hover:-translate-y-1">Laptops</button>
+                    <button className="bg-gray-50 py-1 px-2 me-2 rounded-lg shadow-sm border border-gray-200 transition-transform transform hover:-translate-y-1">Smartwatches</button>
+                    <button className="bg-gray-50 py-1 px-2 me-2 rounded-lg shadow-sm border border-gray-200 transition-transform transform hover:-translate-y-1">Headphones</button>
+                </div>
                 <h2 className="text-3xl font-bold text-gray-800 mb-6">Mobile Phones</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                     {articles

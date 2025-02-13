@@ -62,7 +62,7 @@ const Home = () => {
             <p className="mt-4 text-lg">Discover the latest in technology and gadgets</p>
             <Link
               to="/articles"
-              className="mt-6 inline-block bg-teal-600 hover:bg-teal-500 text-white font-semibold py-3 px-6 rounded-lg transition"
+              className="mt-6 mb-12 inline-block bg-teal-600 hover:bg-teal-500 text-white font-semibold py-3 px-6 rounded-lg transition"
             >
               Shop Now
             </Link>
