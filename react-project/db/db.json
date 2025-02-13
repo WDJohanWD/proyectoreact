@@ -6,7 +6,8 @@
       "email": "estebang@gmail.com",
       "date": "7/2/2025, 9:12:11",
       "role": "user",
-      "id": "7c31"
+      "id": "7c31",
+      "cart_ids": []
     },
     {
       "id": "df9e",
@@ -14,7 +15,8 @@
       "password": "catalina",
       "email": "borjamp@gmail.com",
       "date": "7/2/2025, 20:06:43",
-      "role": "user"
+      "role": "user",
+      "cart_ids": []
     },
     {
       "username": "sandra",
@@ -22,7 +24,8 @@
       "email": "sandra@gmail.com",
       "date": "7/2/2025, 20:07:11",
       "role": "admin",
-      "id": "2d5c"
+      "id": "2d5c",
+      "cart_ids": []
     },
     {
       "username": "admin",
@@ -30,7 +33,8 @@
       "email": "admin@admin.ad",
       "date": "10/2/2025, 13:57:11",
       "role": "admin",
-      "id": "e7fa"
+      "id": "e7fa",
+      "cart_ids": []
     }
   ],
   "comments": [
