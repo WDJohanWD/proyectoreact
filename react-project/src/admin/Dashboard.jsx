@@ -74,18 +74,21 @@ const Dashboard = () => {
     }, []);
 
     return (
-        <div className="container mx-auto px-4 py-8">
+        <section className="container mx-auto px-4 py-8">
+            {/* Mensaje de éxito o error */}
             {msg && (
-                <div className={`p-3 text-center rounded-lg font-medium flex items-center justify-center gap-2 text-sm 
+                <div
+                    className={`p-3 text-center rounded-lg font-medium flex items-center justify-center gap-2 text-sm 
             ${msg.includes("successfully") ? "bg-green-100 text-green-700 border-l-4 border-green-700" :
-                        "bg-red-100 text-red-700 border-l-4 border-red-700"}`}>
+                            "bg-red-100 text-red-700 border-l-4 border-red-700"}`}
+                >
                     <span>{msg.includes("successfully") ? "✔️" : "⚠️"}</span> {msg}
                 </div>
             )}
 
             {/* Sección de Usuarios */}
             <div className="bg-white shadow-md rounded-lg p-6 mb-8">
-                <h1 className="text-2xl font-semibold mb-4">Users</h1>
+                <h1 className="text-2xl font-semibold text-gray-800 mb-4">Users</h1>
                 <div className="overflow-x-auto">
                     <table className="w-full border-collapse border border-gray-200">
                         <thead>
@@ -133,7 +136,7 @@ const Dashboard = () => {
 
             {/* Sección de Artículos */}
             <div className="bg-white shadow-md rounded-lg p-6">
-                <h1 className="text-2xl font-semibold mb-4">Articles</h1>
+                <h1 className="text-2xl font-semibold text-gray-800 mb-4">Articles</h1>
                 <div className="overflow-x-auto">
                     <table className="w-full border-collapse border border-gray-200">
                         <thead>
@@ -172,7 +175,8 @@ const Dashboard = () => {
                     </table>
                 </div>
             </div>
-        </div>
+        </section>
+
 
     )
 
