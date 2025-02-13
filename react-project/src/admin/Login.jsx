@@ -59,6 +59,7 @@ const Login = () => {
 
         localStorage.setItem("isAdmin", user.username === "admin" ? "true" : "false");
         localStorage.setItem("username", user.username);
+        localStorage.setItem("userId", user.id)
         window.location.href = "/";
     }
 
