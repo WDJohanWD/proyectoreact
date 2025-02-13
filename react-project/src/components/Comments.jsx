@@ -12,9 +12,6 @@ const Comments = () => {
         setComment(event.target.value);
     }
 
-
-
-
     async function fetchComments() {
         try {
             const response = await fetch("http://localhost:5000/comments")
@@ -27,6 +24,7 @@ const Comments = () => {
             console.error(error)
         }
     }
+
     function saveComments(event) {
         event.preventDefault(); // Evita la recarga de la página
 
@@ -68,7 +66,6 @@ const Comments = () => {
         setTimeout(() => setMsg(""), 3000);
     }
 
-
     useEffect(() => {
         fetchComments()
     }, [])
@@ -103,6 +100,31 @@ const Comments = () => {
                                     Send Comment
                                 </button>
                             </form>
+                        </div>
+                        <div className="w-full bg-white shadow-lg m-1 rounded-lg p-6">
+                                Your comments:
+                                {comments.length > 0 ? (
+                                <div className="space-y-4">
+                                    {comments.filter(comment => comment.username === localStorage.getItem("username")).map((comment, index) => (
+                                        <div
+                                            key={index}
+                                            className="bg-gray-50 p-4 rounded-lg shadow-sm border border-gray-200"
+                                        >
+                                            <div className="flex items-center justify-between mb-2">
+                                                <h3 className="text-lg font-semibold text-teal-700">{comment.username}</h3>
+                                                <span className="text-sm text-gray-500">{comment.date.substring(0, 8)}</span>
+                                            </div>
+                                            <div className="text-gray-700 flex">
+                                                {comment.comment}
+                                                <p className="ml-auto">
+                                                    {comment.like}</p><AiOutlineLike className="mt-1" />
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            ) : (
+                                <p className="text-center text-gray-600">No comments available.</p>
+                            )}
                         </div>
                     </div>
 
