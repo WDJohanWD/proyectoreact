@@ -38,13 +38,17 @@ const Home = () => {
       setArticle3(categoryArticle("smartwatch"));
       setArticle4(categoryArticle("headphones"));
     }
-  }, [articles]);
+  }, [articles, categoryArticle]);
 
-  // Función para hacer scroll hacia "Featured Products"
+  // Función para hacer scroll suave
   const scrollToFeatured = () => {
     const featuredSection = document.getElementById("featured");
     if (featuredSection) {
-      featuredSection.scrollIntoView({ behavior: "smooth" });
+      const topPosition = featuredSection.offsetTop;
+      window.scrollTo({
+        top: topPosition - 50, // Ajustar margen superior
+        behavior: "smooth",
+      });
     }
   };
 
@@ -65,18 +69,18 @@ const Home = () => {
 
             {/* FLECHA DE SCROLL */}
             <div
-              className="flecha animate-bounce cursor-pointer flex flex-col items-center"
+              className="mt-12 cursor-pointer flex flex-col items-center transition-all duration-300 ease-in-out transform hover:scale-110"
               onClick={scrollToFeatured}
             >
               <p className="text-lg font-semibold"></p>
-              <FaArrowDown className="text-4xl mt-2 text-teal-300 hover:text-teal-500 transition duration-300" />
+              <FaArrowDown className="text-4xl mt-2 text-teal-600 hover:text-teal-500 transition duration-300 animate-bounce" />
             </div>
           </div>
         </section>
 
         {/* FEATURED PRODUCTS SECTION */}
-        <section className="container mx-auto px-4 py-16">
-          <h2 id="featured" className="text-3xl font-semibold text-center text-gray-800 mb-10">
+        <section id="featured" className="container mx-auto px-4 py-16">
+          <h2 className="text-3xl font-semibold text-center text-gray-800 mb-10">
             Featured Products
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
