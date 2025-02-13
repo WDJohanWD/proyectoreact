@@ -102,7 +102,7 @@ const Comments = () => {
                             </form>
                         </div>
                         <div className="w-full bg-white shadow-lg m-1 rounded-lg p-6">
-                                Your comments:
+                                <h2 className="text-xl font-semibold text-gray-800 my-6  pb-2">  Your comments:</h2>
                                 {comments.length > 0 ? (
                                 <div className="space-y-4">
                                     {comments.filter(comment => comment.username === localStorage.getItem("username")).map((comment, index) => (

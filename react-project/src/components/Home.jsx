@@ -69,7 +69,7 @@ const Home = () => {
 
             {/* FLECHA DE SCROLL */}
             <div
-              className="mt-12 cursor-pointer flex flex-col items-center transition-all duration-300 ease-in-out transform hover:scale-110"
+              className="mt-12  cursor-pointer flex flex-col items-center transition-all duration-300 ease-in-out transform hover:scale-110"
               onClick={scrollToFeatured}
             >
               <p className="text-lg font-semibold"></p>
