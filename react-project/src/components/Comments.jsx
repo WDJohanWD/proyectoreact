@@ -37,7 +37,7 @@ const Comments = () => {
             setMsg("To comment, you have to be logged in.");
             return;
         }
-        if(!comment){
+        if (!comment) {
             setMsg("Yo can not write a empty comment")
             return;
         }
@@ -121,11 +121,11 @@ const Comments = () => {
                                                 <h3 className="text-lg font-semibold text-teal-700">{comment.username}</h3>
                                                 <span className="text-sm text-gray-500">{comment.date.substring(0, 8)}</span>
                                             </div>
-                                            <p className="text-gray-700 flex">
+                                            <div className="text-gray-700 flex">
                                                 {comment.comment}
                                                 <p className="ml-auto">
-                                                {comment.like}</p><AiOutlineLike className="mt-0.5" />
-                                            </p>
+                                                    {comment.like}</p><AiOutlineLike className="mt-0.5" />
+                                            </div>
                                         </div>
                                     ))}
                                 </div>
