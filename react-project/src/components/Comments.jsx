@@ -109,7 +109,9 @@ const Comments = () => {
                     {/* Columna de los comentarios */}
                     <div className="md:col-span-2">
                         <div className="w-full bg-white shadow-lg rounded-lg p-6">
-                            <h2 className="text-2xl font-semibold mb-4">Comments:</h2>
+                        <h2 className="text-3xl font-semibold text-gray-800 my-6 border-b-2 border-teal-500 pb-2">
+                            Comments
+                        </h2>
                             {comments.length > 0 ? (
                                 <div className="space-y-4">
                                     {comments.map((comment, index) => (
@@ -124,7 +126,7 @@ const Comments = () => {
                                             <div className="text-gray-700 flex">
                                                 {comment.comment}
                                                 <p className="ml-auto">
-                                                    {comment.like}</p><AiOutlineLike className="mt-0.5" />
+                                                    {comment.like}</p><AiOutlineLike className="mt-1" />
                                             </div>
                                         </div>
                                     ))}

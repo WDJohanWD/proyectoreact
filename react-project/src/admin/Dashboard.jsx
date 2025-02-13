@@ -137,7 +137,9 @@ const Dashboard = () => {
 
             {/* Sección de Usuarios */}
             <div className="bg-white shadow-md rounded-lg p-6 mb-8">
-                <h1 className="text-2xl font-semibold text-gray-800 mb-4">Users</h1>
+                <h2 className="text-2xl font-semibold text-gray-800 my-6 border-b-2 border-teal-500 pb-2">
+                    Users
+                </h2>
                 <div className="overflow-x-auto">
                     <table className="w-full border-collapse border border-gray-200">
                         <thead>
@@ -208,7 +210,9 @@ const Dashboard = () => {
 
             {/* Sección de Artículos */}
             <div className="bg-white shadow-md rounded-lg p-6">
-                <h1 className="text-2xl font-semibold text-gray-800 mb-4">Articles</h1>
+                <h2 className="text-2xl font-semibold text-gray-800 my-6 border-b-2 border-teal-500 pb-2">
+                    Articles
+                </h2>
                 <div className="overflow-x-auto">
                     <table className="w-full border-collapse border border-gray-200">
                         <thead>
@@ -262,7 +266,7 @@ const Dashboard = () => {
                             onClick={handleNextArticlePage}
                             disabled={currentArticlePage === totalArticlePages}
                         >
-                            <SlArrowRight/>
+                            <SlArrowRight />
                         </button>
                     </div>
                 </div>

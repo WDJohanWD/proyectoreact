@@ -61,7 +61,10 @@ const Articles = () => {
 
                 {filter === "all" || filter === "mobile" ? (
                     <>
-                        <h2 className="text-3xl font-bold text-gray-800 mb-6" id="mobile">Mobile Phones</h2>
+                        <h2 className="text-xl font-semibold text-gray-800 mb-4 border-b-2 border-teal-500 pb-2">
+                            Mobiles
+                        </h2>
+
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                             {articles
                                 .filter(article => article.category === "mobile")
@@ -78,7 +81,9 @@ const Articles = () => {
                 ) : null}
                 {filter === "all" || filter === "laptop" ? (
                     <>
-                        <h2 className="text-3xl font-bold text-gray-800 mb-6" id="laptop">Laptops</h2>
+                        <h2 className="text-xl font-semibold text-gray-800 my-6 border-b-2 border-teal-500 pb-2">
+                            Laptops
+                        </h2>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="laptops">
                             {articles
                                 .filter(article => article.category === "laptop")
@@ -95,7 +100,9 @@ const Articles = () => {
                 ) : null}
                 {filter === "all" || filter === "smartwatch" ? (
                     <>
-                        <h2 className="text-3xl font-bold text-gray-800 mb-6" id="smartwatch">SmartWatch</h2>
+                        <h2 className="text-xl font-semibold text-gray-800 my-6 border-b-2 border-teal-500 pb-2">
+                            Smartwatches
+                        </h2>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="smartwatch">
                             {articles
                                 .filter(article => article.category === "smartwatch")
@@ -112,7 +119,9 @@ const Articles = () => {
                 ) : null}
                 {filter === "all" || filter === "headphones" ? (
                     <>
-                        <h2 className="text-3xl font-bold text-gray-800 mb-6" id="headphones">Headphones</h2>
+                        <h2 className="text-xl font-semibold text-gray-800 my-6 border-b-2 border-teal-500 pb-2">
+                            Headphones
+                        </h2>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="headphones">
                             {articles
                                 .filter(article => article.category === "headphones")
