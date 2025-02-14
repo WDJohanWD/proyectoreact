@@ -101,39 +101,42 @@ const Comments = () => {
                                 </button>
                             </form>
                         </div>
-                        <div className="w-full bg-white shadow-lg m-1 rounded-lg p-6">
-                                <h2 className="text-xl font-semibold text-gray-800 my-6  pb-2">  My comments:</h2>
+                        {localStorage.getItem('username') ? (
+                            <div className="w-full bg-white shadow-lg m-1 rounded-lg p-6">
                                 {comments.length > 0 ? (
-                                <div className="space-y-4">
-                                    {comments.filter(comment => comment.username === localStorage.getItem("username")).map((comment, index) => (
-                                        <div
-                                            key={index}
-                                            className="bg-gray-50 p-4 rounded-lg shadow-sm border border-gray-200"
-                                        >
-                                            <div className="flex items-center justify-between mb-2">
-                                                <h3 className="text-lg font-semibold text-teal-700">{comment.username}</h3>
-                                                <span className="text-sm text-gray-500">{comment.date.substring(0, 8)}</span>
+                                    <div className="space-y-4">
+                                        <h2 className="text-xl font-semibold text-gray-800 my-6  pb-2">  My comments:</h2>
+                                        {comments.filter(comment => comment.username === localStorage.getItem("username")).map((comment, index) => (
+                                            <div
+                                                key={index}
+                                                className="bg-gray-50 p-4 rounded-lg shadow-sm border border-gray-200"
+                                            >
+                                                <div className="flex items-center justify-between mb-2">
+                                                    <h3 className="text-lg font-semibold text-teal-700">{comment.username}</h3>
+                                                    <span className="text-sm text-gray-500">{comment.date.substring(0, 8)}</span>
+                                                </div>
+                                                <div className="text-gray-700 flex">
+                                                    {comment.comment}
+                                                    <p className="ml-auto">
+                                                        {comment.like}</p><AiOutlineLike className="mt-1" />
+                                                </div>
                                             </div>
-                                            <div className="text-gray-700 flex">
-                                                {comment.comment}
-                                                <p className="ml-auto">
-                                                    {comment.like}</p><AiOutlineLike className="mt-1" />
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            ) : (
-                                <p className="text-center text-gray-600">No comments available.</p>
-                            )}
-                        </div>
+                                        ))}
+                                    </div>
+                                ) : (
+                                    <p className="text-center text-gray-600">No comments available.</p>
+                                )}
+                            </div>) : (null)
+                        }
+
                     </div>
 
                     {/* Columna de los comentarios */}
                     <div className="md:col-span-2">
-                        <div className="w-full bg-white shadow-lg rounded-lg p-6">
-                        <h2 className="text-3xl font-semibold text-gray-800 my-6 border-b-2 border-teal-500 pb-2">
-                            Comments
-                        </h2>
+                        <div className="w-full bg-white shadow-lg rounded-lg p-6 mb-2">
+                            <h2 className="text-3xl font-semibold text-gray-800 my-6 border-b-2 border-teal-500 pb-2">
+                                Comments
+                            </h2>
                             {comments.length > 0 ? (
                                 <div className="space-y-4">
                                     {comments.map((comment, index) => (
