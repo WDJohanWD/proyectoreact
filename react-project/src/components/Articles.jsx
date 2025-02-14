@@ -23,7 +23,7 @@ const Articles = () => {
         <>
             <section className="container mx-auto px-4 py-8">
                 <div className="bg-white rounded-lg shadow-md p-4 text-center mb-6">
-                    <p className="text-lg font-semibold text-gray-800 mb-3">Filter by categories:</p>
+                    
                     <div className="flex flex-wrap justify-center gap-3">
                         <button
                             onClick={() => handleFilterChange("all")}

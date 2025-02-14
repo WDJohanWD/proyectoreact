@@ -15,12 +15,12 @@ const NavBar = () => {
   }
 
   return (
-    <nav className="sticky top-0 bg-gradient-to-r from-gray-600 to-gray-900 shadow-md border-b-2 border-gray-300 px-4 py-2 z-50 w-full">
+    <nav className="sticky top-0 bg-gradient-to-r from-gray-600 to-gray-900 shadow-md border-b-2 border-gray-300 px-4 py-0 z-50 w-full">
       <div className="flex items-center justify-between w-full">
         
         {/* IZQUIERDA: Logo y Menú */}
         <div className="flex items-center space-x-6">
-          <img width={100} src={logo || "/placeholder.svg"} alt="Logo" className="w-15" />
+          <img width={100} src={logo || "/placeholder.svg"} alt="Logo" className="w-20 m-0" />
 
           {/* Links en desktop */}
           <div className="hidden lg:flex items-center space-x-6 text-lg text-gray-400">
