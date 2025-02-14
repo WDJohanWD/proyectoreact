@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png'
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-r from-gray-600 to-gray-900 text-gray-300 py-6 mt-10 shadow-md border-t-2 border-gray-300">
+    <footer className="bg-gradient-to-r from-gray-600 to-gray-900 text-gray-300 py-6  shadow-md border-t-2 border-gray-300">
       <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-5 gap-8 text-center md:text-left">
         <div>
             <img className='w-40 m-0 p-0' src={logo} alt="" />

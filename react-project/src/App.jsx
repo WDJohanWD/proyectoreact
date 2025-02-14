@@ -11,6 +11,7 @@ import EditUser from "./admin/EditUser";
 import Comments from "./components/Comments";
 import { useEffect, useState } from "react";
 import Profile from "./components/Profile";
+import Error404 from "./components/Error404";
 
 function App() {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -30,6 +31,7 @@ function App() {
     <div className={isAuthPage ? "auth-background" : ""}>
       {!isAuthPage && <NavBar />}
       <Routes>  
+        <Route path="*" element={<Error404/>}/>
         <Route path="/" element={<Home />} />
         <Route path="/articles" element={<Articles />} />
         <Route path="/login" element={<Login />} />
