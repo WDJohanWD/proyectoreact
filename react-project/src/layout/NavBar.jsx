@@ -59,7 +59,7 @@ const NavBar = () => {
                 </svg>
               </Link>
               <Link to="/profile">
-              <p className="hover:text-teal-400 ml-2 text-gray-500">{username}</p>
+              <p className="hover:text-teal-400 ml-2 text-gray-500">{username.toUpperCase()}</p>
               </Link>
             </div>
           )}
