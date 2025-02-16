@@ -79,7 +79,8 @@ function Register() {
             email,
             password,
             date: new Date().toLocaleString(),
-            role: "user"
+            role: "user",
+            cart_ids : []
         };
 
         setUsers([...users, newUser]);

@@ -1,0 +1,131 @@
+import { useEffect, useState } from "react";
+
+const Cart = () => {
+    const [articlesId, setArticlesId] = useState([]); // Lista de IDs de artículos en el carrito
+    const [articles, setArticles] = useState([]); // Detalles de los artículos
+    const [quantities, setQuantities] = useState({}); // Cantidades de los artículos
+
+    async function fetchArticles() {
+        const response = await fetch("http://localhost:5000/articles");
+        const data = await response.json();
+        setArticles(data);
+    }
+
+    async function fetchList() {
+        const userId = localStorage.getItem("userId");
+
+        if (!userId) {
+            console.error("No userId found in localStorage");
+            return;
+        }
+    
+        try {
+            const response = await fetch(`http://localhost:5000/users/${userId}`);
+            const user = await response.json();
+    
+            const cartItems = user.cart_ids || [];
+            console.log("Carrito:", cartItems);
+    
+            setArticlesId(cartItems);
+        } catch (error) {
+            console.error("Error al obtener el carrito:", error);
+        }
+    }
+
+    async function cleanCart() {
+        const userId = localStorage.getItem("userId");
+
+        if (!userId) {
+            console.error("No userId found in localStorage");
+            return;
+        }
+
+        try {
+            await fetch(`http://localhost:5000/users/${userId}`, {
+                method: "PATCH",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ cart_ids: [] }),
+            });
+
+            setArticlesId([]); // Limpiar el carrito en la interfaz
+        } catch (error) {
+            console.error("Error al limpiar el carrito:", error);
+        }
+    }
+
+    const handleQuantityChange = (id, quantity) => {
+        setQuantities(prevQuantities => ({
+            ...prevQuantities,
+            [id]: quantity,
+        }));
+    };
+
+    const calculateTotal = () => {
+        // Calcular el total sumando los precios de los artículos por sus cantidades
+        return articlesId.reduce((total, cartId) => {
+            const article = articles.find(article => article.id === cartId);
+            if (article) {
+                const quantity = quantities[article.id] || 1; // Si no hay cantidad, tomar 1 por defecto
+                total += article.price * quantity; // Sumar el precio del artículo por su cantidad
+            }
+            return total;
+        }, 0);
+    };
+
+    useEffect(() => {
+        fetchList();
+        fetchArticles();
+    }, []);
+
+    return (
+        <div className="bg-white rounded-lg shadow-md p-4 text-center mb-6 container mx-auto px-4">
+            <h2 className="text-3xl font-semibold text-center text-gray-800">Your Shopping Cart</h2>
+            <div className="flex flex-wrap justify-center gap-3">
+                {articlesId
+                    .map(cartId => articles.find(article => article.id === cartId))
+                    .filter(Boolean)
+                    .map((article, index) => (
+                        <div key={index} className="flex items-center mb-4">
+                            {/* Imagen del producto */}
+                            <img
+                                src={article.path}
+                                alt={article.name}
+                                className="w-16 h-16 object-cover mr-4"
+                            />
+                            {/* Información del producto y selector de cantidad */}
+                            <div className="flex flex-col">
+                                <p>{article.name}</p>
+                                <p className="text-teal-600 font-bold my-2">{article.price}€</p>
+
+                                {/* Select de cantidad */}
+                                <label htmlFor={`quantity-${article.id}`} className="mr-2">Quantity:</label>
+                                <select
+                                    id={`quantity-${article.id}`}
+                                    value={quantities[article.id] || 1} // Si no hay cantidad, se pone 1 por defecto
+                                    onChange={(e) => handleQuantityChange(article.id, parseInt(e.target.value))}
+                                    className="border rounded-md p-1"
+                                >
+                                    {[...Array(10).keys()].map(n => (
+                                        <option key={n} value={n + 1}>{n + 1}</option>
+                                    ))}
+                                </select>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+            {/* Mostrar el total */}
+            <div className="text-xl font-semibold mt-4">
+                Total: {calculateTotal()}€
+            </div>
+            <button onClick={cleanCart} className="bg-white border border-teal-600 text-teal-600 font-semibold py-2 px-4 rounded-md transition shadow-md me-4 hover:text-teal-500 hover:border-teal-500">
+                Clean cart
+            </button>
+            <button className="bg-teal-600 hover:bg-teal-500 text-white font-semibold py-2 px-4 rounded-md transition">
+                Pay out
+            </button>
+        </div>
+    );
+};
+
+export default Cart;

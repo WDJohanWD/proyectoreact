@@ -2,7 +2,6 @@ import "../styles/Articles.css"
 import { useEffect, useState } from "react"
 const Articles = () => {
     const [articles, setArticles] = useState([])
-
     async function fetchArticles() {
         const response = await fetch("http://localhost:5000/articles")
         const data = await response.json()
@@ -12,6 +11,42 @@ const Articles = () => {
     useEffect(() => {
         fetchArticles()
     })
+
+    async function addCart(productId) {
+        const userId = localStorage.getItem("userId");
+    
+        if (!userId) {
+            console.error("No userId found in localStorage");
+            return;
+        }
+    
+        try {
+            // Obtener el usuario actual desde json-server
+            const response = await fetch(`http://localhost:5000/users/${userId}`);
+            const user = await response.json();
+    
+            // Verificar si cart_ids ya existe o inicializarlo
+            let updatedCart = user.cart_ids ? [...user.cart_ids] : [];
+    
+            // Solo agregar el producto si no está ya en el carrito
+            if (!updatedCart.includes(productId)) {
+                updatedCart.push(productId);
+                // Actualizar el carrito en json-server
+                await fetch(`http://localhost:5000/users/${userId}`, {
+                    method: "PATCH",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ cart_ids: updatedCart }),
+                });
+    
+                console.log("Producto añadido al carrito:", updatedCart);
+            } else {
+                console.log("Este producto ya está en el carrito.");
+            }
+        } catch (error) {
+            console.error("Error al añadir al carrito:", error);
+        }
+    }
+    
 
     const [filter, setFilter] = useState("all");
 
@@ -23,7 +58,7 @@ const Articles = () => {
         <>
             <section className="container mx-auto px-4 py-8">
                 <div className="bg-white rounded-lg shadow-md p-4 text-center mb-6">
-                    
+
                     <div className="flex flex-wrap justify-center gap-3">
                         <button
                             onClick={() => handleFilterChange("all")}
@@ -72,8 +107,8 @@ const Articles = () => {
                                     <div key={key} className="bg-white shadow-md rounded-lg p-4 text-center transition-transform transform hover:-translate-y-1">
                                         <img src={article.path} alt={article.name} className="w-full h-auto object-cover mb-4 rounded-md" />
                                         <h3 className="text-lg font-semibold text-gray-900">{article.name}</h3>
-                                        <p className="text-teal-600 font-bold my-2">{article.price}</p>
-                                        <button className="bg-teal-600 hover:bg-teal-500 text-white font-semibold py-2 px-4 rounded-md transition">Add to Cart</button>
+                                        <p className="text-teal-600 font-bold my-2">{article.price}€</p>
+                                        <button onClick={() => addCart(article.id)} className="bg-teal-600 hover:bg-teal-500 text-white font-semibold py-2 px-4 rounded-md transition">Add to Cart</button>
                                     </div>
                                 ))}
                         </div>
@@ -91,8 +126,8 @@ const Articles = () => {
                                     <div key={key} className="bg-white shadow-md rounded-lg p-4 text-center transition-transform transform hover:-translate-y-1">
                                         <img src={article.path} alt={article.name} className="w-full h-auto object-cover mb-4 rounded-md" />
                                         <h3 className="text-lg font-semibold text-gray-900">{article.name}</h3>
-                                        <p className="text-teal-600 font-bold my-2">{article.price}</p>
-                                        <button className="bg-teal-600 hover:bg-teal-500 text-white font-semibold py-2 px-4 rounded-md transition">Add to Cart</button>
+                                        <p className="text-teal-600 font-bold my-2">{article.price}€</p>
+                                        <button onClick={() => addCart(article.id)} className="bg-teal-600 hover:bg-teal-500 text-white font-semibold py-2 px-4 rounded-md transition">Add to Cart</button>
                                     </div>
                                 ))}
                         </div>
@@ -110,8 +145,8 @@ const Articles = () => {
                                     <div key={key} className="bg-white shadow-md rounded-lg p-4 text-center transition-transform transform hover:-translate-y-1">
                                         <img src={article.path} alt={article.name} className="w-full h-auto object-cover mb-4 rounded-md" />
                                         <h3 className="text-lg font-semibold text-gray-900">{article.name}</h3>
-                                        <p className="text-teal-600 font-bold my-2">{article.price}</p>
-                                        <button className="bg-teal-600 hover:bg-teal-500 text-white font-semibold py-2 px-4 rounded-md transition">Add to Cart</button>
+                                        <p className="text-teal-600 font-bold my-2">{article.price}€</p>
+                                        <button onClick={() => addCart(article.id)} className="bg-teal-600 hover:bg-teal-500 text-white font-semibold py-2 px-4 rounded-md transition">Add to Cart</button>
                                     </div>
                                 ))}
                         </div>
@@ -129,8 +164,8 @@ const Articles = () => {
                                     <div key={key} className="bg-white shadow-md rounded-lg p-4 text-center transition hover:-translate-y-1">
                                         <img src={article.path} alt={article.name} className="w-full h-auto object-cover mb-4" />
                                         <h3 className="text-lg font-semibold text-gray-900">{article.name}</h3>
-                                        <p className="text-teal-600 font-bold my-2">{article.price}</p>
-                                        <button className="bg-teal-600 hover:bg-teal-500 text-white font-semibold py-2 px-4 rounded-md transition">Add to Cart</button>
+                                        <p className="text-teal-600 font-bold my-2">{article.price}€</p>
+                                        <button onClick={() => addCart(article.id)} className="bg-teal-600 hover:bg-teal-500 text-white font-semibold py-2 px-4 rounded-md transition">Add to Cart</button>
                                     </div>
                                 ))}
                         </div>

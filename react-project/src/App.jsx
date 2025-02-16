@@ -12,6 +12,7 @@ import Comments from "./components/Comments";
 import { useEffect, useState } from "react";
 import Profile from "./components/Profile";
 import Error404 from "./components/Error404";
+import Cart from "./components/Cart";
 
 function App() {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -25,7 +26,7 @@ function App() {
   }, []);
 
   // Ocultar NavBar y Footer en login y register
-  const isAuthPage = location.pathname === "/login" || location.pathname === "/register";
+  const isAuthPage = location.pathname === "/login" || location.pathname === "/register" || location.pathname === "*";
 
   return (
     <div className={isAuthPage ? "auth-background" : ""}>
@@ -41,6 +42,7 @@ function App() {
         {isAdmin && <Route path="/edit-user" element={<EditUser />} />}
         <Route path="/comments" element={<Comments />} />
         <Route path="/profile" element={<Profile/>}></Route>
+        <Route path="/cart" element={<Cart/>}></Route>
       </Routes>
       {!isAuthPage && <Footer />}
     </div>

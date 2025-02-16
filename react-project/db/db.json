@@ -34,6 +34,18 @@
       "date": "10/2/2025, 13:57:11",
       "role": "admin",
       "id": "e7fa",
+      "cart_ids": [
+        "2",
+        "3"
+      ]
+    },
+    {
+      "id": "b1e8",
+      "username": "johan",
+      "email": "johan@gmail.com",
+      "password": "Johan123",
+      "date": "16/2/2025, 11:30:12",
+      "role": "user",
       "cart_ids": []
     }
   ],
@@ -84,7 +96,7 @@
   "articles": [
     {
       "name": "Iphone 16 Pro Max",
-      "price": "1399.99€",
+      "price": 1399.99,
       "stock": "12",
       "category": "mobile",
       "path": "/assets/articles/mobiles/apple.webp",
@@ -94,7 +106,7 @@
       "id": "2",
       "category": "mobile",
       "name": "Oppo X7 Pro 5g",
-      "price": "399.99€",
+      "price": 399.99,
       "path": "/assets/articles/mobiles/poco.webp",
       "stock": 10
     },
@@ -102,7 +114,7 @@
       "id": "3",
       "category": "mobile",
       "name": "Samsung Galaxy S25",
-      "price": "909.00€",
+      "price": 909,
       "path": "/assets/articles/mobiles/samsung.webp",
       "stock": 10
     },
@@ -110,7 +122,7 @@
       "id": "4",
       "category": "mobile",
       "name": "Xiaomi Redmi Note 13",
-      "price": "169,99€",
+      "price": 169.99,
       "path": "/assets/articles/mobiles/xiaomi.webp",
       "stock": 10
     },
@@ -118,7 +130,7 @@
       "id": "6",
       "category": "laptop",
       "name": "Asus Rog Strix G15",
-      "price": "1299.99€",
+      "price": 1299.99,
       "path": "/assets/articles/laptops/asus.webp",
       "stock": 10
     },
@@ -126,7 +138,7 @@
       "id": "7",
       "category": "laptop",
       "name": "Hp Pavilion 15",
-      "price": "899.99€",
+      "price": 899.99,
       "path": "/assets/articles/laptops/hp.webp",
       "stock": 10
     },
@@ -134,7 +146,7 @@
       "id": "8",
       "category": "laptop",
       "name": "Lenovo Legion 5",
-      "price": "999.99€",
+      "price": 999.99,
       "path": "/assets/articles/laptops/lenovo.webp",
       "stock": 10
     },
@@ -142,7 +154,7 @@
       "id": "9",
       "category": "laptop",
       "name": "Msi Gf65 Thin",
-      "price": "799.99€",
+      "price": 799.99,
       "path": "/assets/articles/laptops/msi.webp",
       "stock": 10
     },
@@ -150,7 +162,7 @@
       "id": "10",
       "category": "smartwatch",
       "name": "Essential Fit Max",
-      "price": "24.99€",
+      "price": 24.99,
       "path": "/assets/articles/smartwatch/fit-max.webp",
       "stock": 10
     },
@@ -158,7 +170,7 @@
       "id": "11",
       "category": "smartwatch",
       "name": "Apple Watch Series",
-      "price": "479€",
+      "price": 479,
       "path": "/assets/articles/smartwatch/apple-watch.webp",
       "stock": 10
     },
@@ -166,7 +178,7 @@
       "id": "12",
       "category": "smartwatch",
       "name": "Samsung Galaxy Watch FE ",
-      "price": "169€",
+      "price": 169,
       "path": "/assets/articles/smartwatch/samsung-watch.webp",
       "stock": 10
     },
@@ -174,7 +186,7 @@
       "id": "13",
       "category": "smartwatch",
       "name": "Amazfit Bip 3 Pro",
-      "price": "49.01€",
+      "price": 49.01,
       "path": "/assets/articles/smartwatch/amazon-watch.webp",
       "stock": 10
     },
@@ -182,7 +194,7 @@
       "id": "14",
       "category": "smartwatch",
       "name": "Garmin Forerunner 165",
-      "price": "287.95€",
+      "price": 287.95,
       "path": "/assets/articles/smartwatch/garmin-watch.webp",
       "stock": 10
     },
@@ -190,7 +202,7 @@
       "id": "15",
       "category": "smartwatch",
       "name": "Xiaomi Watch S3 ",
-      "price": "199.99€",
+      "price": 199.99,
       "path": "/assets/articles/smartwatch/xiaomi-watch.webp",
       "stock": 10
     },
@@ -198,7 +210,7 @@
       "id": "16",
       "category": "smartwatch",
       "name": "Cool Forest",
-      "price": "309.99€",
+      "price": 309.99,
       "path": "/assets/articles/smartwatch/cool-forest-watch.webp",
       "stock": 10
     },
@@ -206,7 +218,7 @@
       "id": "17",
       "category": "smartwatch",
       "name": "ASUS VivoWatch 5",
-      "price": "36.99€",
+      "price": 36.99,
       "path": "/assets/articles/smartwatch/asus-watch.webp",
       "stock": 10
     },
@@ -214,7 +226,7 @@
       "id": "18",
       "category": "headphones",
       "name": "Newskill Bael",
-      "price": "49.99€",
+      "price": 49.99,
       "path": "/assets/articles/headphones/newskill.webp",
       "stock": 10
     },
@@ -222,7 +234,7 @@
       "id": "19",
       "category": "headphones",
       "name": "Tempest GHS400 Inquisitor  ",
-      "price": "31.99€",
+      "price": 31.99,
       "path": "/assets/articles/headphones/tempest.webp",
       "stock": 10
     },
@@ -230,7 +242,7 @@
       "id": "20",
       "category": "headphones",
       "name": "Apple AirPods Max ",
-      "price": "579.00€",
+      "price": 579,
       "path": "/assets/articles/headphones/apple.webp",
       "stock": 10
     },
@@ -238,7 +250,7 @@
       "id": "21",
       "category": "headphones",
       "name": "Sony WF-1000XM5",
-      "price": "283.90€",
+      "price": 283.9,
       "path": "/assets/articles/headphones/sony.webp",
       "stock": 10
     },
@@ -246,7 +258,7 @@
       "id": "22",
       "category": "headphones",
       "name": "Technics EAH-A800",
-      "price": "273.90€",
+      "price": 273.9,
       "path": "/assets/articles/headphones/technics.webp",
       "stock": 10
     },
@@ -254,7 +266,7 @@
       "id": "23",
       "category": "headphones",
       "name": "Huawei FreeBuds 3",
-      "price": "241.90€",
+      "price": 241.9,
       "path": "/assets/articles/headphones/huawei.webp",
       "stock": 10
     },
@@ -262,7 +274,7 @@
       "id": "24",
       "category": "headphones",
       "name": "Beats Studio3 Wireless ",
-      "price": "229.90€",
+      "price": 229.9,
       "path": "/assets/articles/headphones/beats.webp",
       "stock": 10
     },
@@ -270,7 +282,7 @@
       "id": "25",
       "category": "headphones",
       "name": "Xiaomi Buds 4 Pro",
-      "price": "224.90€",
+      "price": 224.9,
       "path": "/assets/articles/headphones/xiaomi.webp",
       "stock": 10
     },
@@ -278,7 +290,7 @@
       "id": "26",
       "category": "laptop",
       "name": "Acer Gaming Nitro V 15 ANV15-41",
-      "price": "849.99€",
+      "price": 849.99,
       "path": "/assets/articles/laptops/acer.webp",
       "stock": 10
     },
@@ -286,7 +298,7 @@
       "id": "27",
       "category": "laptop",
       "name": "Microsoft Surface Laptop Studio 2",
-      "price": "4256.99€",
+      "price": 4256.99,
       "path": "/assets/articles/laptops/microsoft.webp",
       "stock": 10
     },
@@ -294,7 +306,7 @@
       "id": "28",
       "category": "laptop",
       "name": " ASUS Zenbook Duo UX8406CA-PZ009W",
-      "price": "2723.99€",
+      "price": 2723.99,
       "path": "/assets/articles/laptops/zenbook.webp",
       "stock": 10
     },
@@ -302,7 +314,7 @@
       "id": "29",
       "category": "laptop",
       "name": "MSI Stealth 16 Mercedes AMG A1VGG-294XES",
-      "price": "2282.99€",
+      "price": 2282.99,
       "path": "/assets/articles/laptops/stealth.webp",
       "stock": 10
     },
@@ -310,7 +322,7 @@
       "id": "30",
       "category": "mobile",
       "name": "Google Pixel 8 Pro 5G",
-      "price": "550,44€",
+      "price": 550.44,
       "path": "/assets/articles/mobiles/google.webp",
       "stock": 10
     },
@@ -318,7 +330,7 @@
       "id": "31",
       "category": "mobile",
       "name": "Realme 12 Pro 5G",
-      "price": "248,99€",
+      "price": 248.99,
       "path": "/assets/articles/mobiles/realme.webp",
       "stock": 10
     },
@@ -326,7 +338,7 @@
       "id": "32",
       "category": "mobile",
       "name": "OnePlus Nord 4",
-      "price": "467,99€",
+      "price": 467.99,
       "path": "/assets/articles/mobiles/pooc.webp",
       "stock": 10
     },
@@ -334,7 +346,7 @@
       "id": "33",
       "category": "mobile",
       "name": "Honor 70 Lite 5G",
-      "price": "147,99€",
+      "price": 147.99,
       "path": "/assets/articles/mobiles/honor.webp",
       "stock": 10
     }
