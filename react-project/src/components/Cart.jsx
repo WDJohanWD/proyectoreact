@@ -149,7 +149,7 @@ const Cart = () => {
             </div>
 
             {/* Mostrar el total */}
-            <div className="text-xl font-semibold mt-4">
+            <div className="text-xl font-semibold mt-4 mb-4">
                 {calculateTotal() === 0 ? (
                     <p className="text-md font-light">Your cart is empty</p>
                 ) : (

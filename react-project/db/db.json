@@ -49,13 +49,15 @@
       "cart_ids": []
     },
     {
-      "id": "7450",
       "username": "prueba",
-      "email": "prueba@email.com",
       "password": "Pruebapass1",
+      "email": "prueba@email.com",
       "date": "17/2/2025, 11:13:24",
-      "role": "admin",
-      "cart_ids": []
+      "role": "user",
+      "id": "7450",
+      "cart_ids": [
+        "4"
+      ]
     },
     {
       "id": "cc38",

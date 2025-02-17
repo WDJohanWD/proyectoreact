@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements, CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 
@@ -41,7 +41,7 @@ const CheckoutForm = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+    <div className="flex justify-center items-center min-h-screen bg-gray-100 -mt-25 ">
       <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-xl">
         <h2 className="text-3xl font-semibold text-center text-gray-800 mb-6">
           Realiza tu pago
@@ -112,7 +112,7 @@ const CheckoutForm = () => {
           >
             {loading ? "Cargando..." : "Pagar"}
           </button>
-          
+
         </form>
       </div>
     </div>
