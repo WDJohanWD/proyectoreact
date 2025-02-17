@@ -10,6 +10,8 @@ const NavBar = () => {
 
   function closeSession() {
     localStorage.removeItem("username");
+    localStorage.removeItem("userId");
+    localStorage.removeItem("articleId")
     localStorage.setItem("isAdmin", "false");
     window.location.href = "/login";
   }

@@ -57,7 +57,7 @@ const Login = () => {
             return setMsg("Password is incorrect");
         }
 
-        localStorage.setItem("isAdmin", user.username === "admin" ? "true" : "false");
+        localStorage.setItem("isAdmin", user.role === "admin" ? "true" : "false");
         localStorage.setItem("username", user.username);
         localStorage.setItem("userId", user.id)
         window.location.href = "/";
