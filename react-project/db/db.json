@@ -34,11 +34,7 @@
       "date": "10/2/2025, 13:57:11",
       "role": "admin",
       "id": "e7fa",
-      "cart_ids": [
-        "1",
-        "10",
-        "22"
-      ]
+      "cart_ids": []
     },
     {
       "id": "b1e8",
@@ -46,6 +42,24 @@
       "email": "johan@gmail.com",
       "password": "Johan123",
       "date": "16/2/2025, 11:30:12",
+      "role": "user",
+      "cart_ids": []
+    },
+    {
+      "id": "7450",
+      "username": "prueba",
+      "email": "prueba@email.com",
+      "password": "Pruebapass1",
+      "date": "17/2/2025, 11:13:24",
+      "role": "admin",
+      "cart_ids": []
+    },
+    {
+      "id": "cc38",
+      "username": "estebomba",
+      "email": "estebombita@gmail.com",
+      "password": "Patricia123",
+      "date": "17/2/2025, 13:58:08",
       "role": "user",
       "cart_ids": []
     }
@@ -350,6 +364,40 @@
       "price": 147.99,
       "path": "/assets/articles/mobiles/honor.webp",
       "stock": 10
+    }
+  ],
+  "brands": [
+    {
+      "name": "Apple",
+      "logo": "/assets/brands/apple.png"
+    },
+    {
+      "name": "Samsung",
+      "logo": "/assets/brands/samsung.png"
+    },
+    {
+      "name": "Hp",
+      "logo": "/assets/brands/hp.png"
+    },
+    {
+      "name": "BBK Eletronics",
+      "logo": "/assets/brands/BBK.png"
+    },
+    {
+      "name": "Microsoft",
+      "logo": "/assets/brands/windows.png"
+    },
+    {
+      "name": "Xiaomi",
+      "logo": "/assets/brands/xiaomi.png"
+    },
+    {
+      "name": "Google",
+      "logo": "/assets/brands/google.png"
+    },
+    {
+      "name": "Huawei",
+      "logo": "/assets/brands/huawei.png"
     }
   ]
 }

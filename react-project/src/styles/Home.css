@@ -38,6 +38,8 @@
     margin-bottom: 2rem;
 }
 
+
+
 @keyframes move-chevron {
   25% {
       opacity: 1;
@@ -87,3 +89,19 @@
       font-size: 1rem;
   }
 }
+
+@keyframes marquee {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  
+  .animate-marquee {
+    display: flex;
+    opacity: 70%;
+    animation: marquee 50s linear infinite;
+  }
+  

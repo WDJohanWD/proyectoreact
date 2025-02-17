@@ -9,6 +9,7 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+
     height: 100vh; /* Ajusta al 100% de la pantalla */
     display: flex;
     align-items: center;

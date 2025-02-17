@@ -13,7 +13,7 @@ import { useEffect, useState } from "react";
 import Profile from "./components/Profile";
 import Error404 from "./components/Error404";
 import Cart from "./components/Cart";
-
+import PaymentPage from "./components/PaymentGateway";
 function App() {
   const [isAdmin, setIsAdmin] = useState(false);
   const location = useLocation();
@@ -41,8 +41,9 @@ function App() {
         {isAdmin && <Route path="/edit-article" element={<EditArticle />} />}
         {isAdmin && <Route path="/edit-user" element={<EditUser />} />}
         <Route path="/comments" element={<Comments />} />
-        <Route path="/profile" element={<Profile/>}></Route>
-        <Route path="/cart" element={<Cart/>}></Route>
+        <Route path="/profile" element={<Profile/>}/>
+        <Route path="/cart" element={<Cart/>}/>
+        <Route path="/pay" element={<PaymentPage/>}/>
       </Routes>
       {!isAuthPage && <Footer />}
     </div>
