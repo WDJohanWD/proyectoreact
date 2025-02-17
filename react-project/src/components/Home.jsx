@@ -79,7 +79,7 @@ const Home = () => {
         </section>
 
         {/* FEATURED PRODUCTS SECTION */}
-        <section id="featured" className="container mx-auto px-4 py-16">
+        <section id="featured" className="container mx-auto px-4 py-5 mb-4">
         <h2 className="text-3xl font-semibold text-center text-gray-800 mb-10">
             Featured Products
           </h2>
