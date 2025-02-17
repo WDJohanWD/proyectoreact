@@ -14,6 +14,7 @@ import Profile from "./components/Profile";
 import Error404 from "./components/Error404";
 import Cart from "./components/Cart";
 import PaymentPage from "./components/PaymentGateway";
+
 function App() {
   const [isAdmin, setIsAdmin] = useState(false);
   const location = useLocation();

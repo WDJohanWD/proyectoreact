@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
     const [articlesId, setArticlesId] = useState([]); // Lista de IDs de artículos en el carrito
@@ -18,14 +19,14 @@ const Cart = () => {
             console.error("No userId found in localStorage");
             return;
         }
-    
+
         try {
             const response = await fetch(`http://localhost:5000/users/${userId}`);
             const user = await response.json();
-    
+
             const cartItems = user.cart_ids || [];
             console.log("Carrito:", cartItems);
-    
+
             setArticlesId(cartItems);
         } catch (error) {
             console.error("Error al obtener el carrito:", error);
@@ -100,7 +101,7 @@ const Cart = () => {
     }, []);
 
     return (
-        <div className="bg-white rounded-lg shadow-md p-4 text-center mb-6 container mx-auto px-4">
+        <div className="bg-white rounded-lg shadow-md p-4 text-center my-6 container mx-auto px-4">
             <h2 className="text-3xl font-semibold text-center text-gray-800">Your Shopping Cart</h2>
             <div className="flex flex-wrap justify-center gap-3 mt-2">
                 {articlesId
@@ -128,7 +129,7 @@ const Cart = () => {
                                         onChange={(e) => handleQuantityChange(article.id, parseInt(e.target.value))}
                                         className="border rounded-md p-1"
                                     >
-                                        {[...Array(10).keys()].map(n => (
+                                        {[...Array(article.stock).keys()].map(n => (
                                             <option key={n} value={n + 1}>{n + 1}</option>
                                         ))}
                                     </select>
@@ -138,7 +139,7 @@ const Cart = () => {
                             {/* Botón de eliminar */}
                             <button
                                 onClick={() => removeFromCart(article.id)}
-                                className="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-3 rounded"
+                               className="bg-red-700 hover:bg-red-500 text-white px-4 py-1 rounded-md transition"
                             >
                                 Remove
                             </button>
@@ -146,17 +147,23 @@ const Cart = () => {
                     ))
                 }
             </div>
-            
+
             {/* Mostrar el total */}
             <div className="text-xl font-semibold mt-4">
-                Total: {calculateTotal()}€
+                {calculateTotal() === 0 ? (
+                    <p className="text-md font-light">Your cart is empty</p>
+                ) : (
+
+                    <p >Total: {calculateTotal()}€</p>
+                )}
+
             </div>
             <button onClick={cleanCart} className="bg-white border border-teal-600 text-teal-600 font-semibold py-2 px-4 rounded-md transition shadow-md me-4 hover:text-teal-500 hover:border-teal-500">
-                Clean cart
+                Empty cart
             </button>
-            <button className="bg-teal-600 hover:bg-teal-500 text-white font-semibold py-2 px-4 rounded-md transition">
+            <Link to={"/pay"} className="bg-teal-600 hover:bg-teal-500 text-white font-semibold py-2 px-4 rounded-md transition shadow-md">
                 Pay out
-            </button>
+            </Link>
         </div>
     );
 };

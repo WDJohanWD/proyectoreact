@@ -34,7 +34,10 @@
       "date": "10/2/2025, 13:57:11",
       "role": "admin",
       "id": "e7fa",
-      "cart_ids": []
+      "cart_ids": [
+        "3",
+        "1"
+      ]
     },
     {
       "id": "b1e8",
@@ -112,7 +115,7 @@
     {
       "name": "Iphone 16 Pro Max",
       "price": 1399.99,
-      "stock": "12",
+      "stock": "20",
       "category": "mobile",
       "path": "/assets/articles/mobiles/apple.webp",
       "id": "1"
@@ -369,35 +372,43 @@
   "brands": [
     {
       "name": "Apple",
-      "logo": "/assets/brands/apple.png"
+      "logo": "/assets/brands/apple.png",
+      "id": "f661"
     },
     {
       "name": "Samsung",
-      "logo": "/assets/brands/samsung.png"
+      "logo": "/assets/brands/samsung.png",
+      "id": "a358"
     },
     {
       "name": "Hp",
-      "logo": "/assets/brands/hp.png"
+      "logo": "/assets/brands/hp.png",
+      "id": "51e0"
     },
     {
       "name": "BBK Eletronics",
-      "logo": "/assets/brands/BBK.png"
+      "logo": "/assets/brands/BBK.png",
+      "id": "1692"
     },
     {
       "name": "Microsoft",
-      "logo": "/assets/brands/windows.png"
+      "logo": "/assets/brands/windows.png",
+      "id": "422e"
     },
     {
       "name": "Xiaomi",
-      "logo": "/assets/brands/xiaomi.png"
+      "logo": "/assets/brands/xiaomi.png",
+      "id": "3896"
     },
     {
       "name": "Google",
-      "logo": "/assets/brands/google.png"
+      "logo": "/assets/brands/google.png",
+      "id": "b563"
     },
     {
       "name": "Huawei",
-      "logo": "/assets/brands/huawei.png"
+      "logo": "/assets/brands/huawei.png",
+      "id": "b541"
     }
   ]
 }
