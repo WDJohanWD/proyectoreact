@@ -10,7 +10,7 @@ const Footer = () => {
         {/* About Us */}
         <div>
           <h3 className="text-lg font-semibold text-white mb-3 col-span-2">About Us</h3>
-            <p className="text-sm leading-relaxed m-0 p-0 ">
+            <p className="text-sm leading-relaxed m-0 p-0  text-justify">
               We are dedicated to providing the best user and article management system.
             </p>
         </div>
