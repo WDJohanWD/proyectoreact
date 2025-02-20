@@ -36,17 +36,23 @@ const NavBar = () => {
   useEffect(() => {
     fetchCartAndArticles();
   }, []);
-  
+
   useEffect(() => {
-    function handleStorageChange(event) {
-      if (event.key === "cartUpdate") {
-        fetchCartAndArticles();
-      }
+    function handleCartUpdate() {
+        fetchCartAndArticles(); // Vuelve a cargar el carrito
     }
 
-    window.addEventListener("storage", handleStorageChange);
-    return () => window.removeEventListener("storage", handleStorageChange);
-  }, []);
+    // Detecta cambios en localStorage dentro de la misma pestaña
+    const interval = setInterval(() => {
+        if (localStorage.getItem("cartUpdate")) {
+            handleCartUpdate();
+            localStorage.removeItem("cartUpdate"); // Limpia para evitar llamadas innecesarias
+        }
+    }, 500); // Revisar cada 500ms
+
+    return () => clearInterval(interval); // Limpiar cuando se desmonte el componente
+}, []);
+
 
   // Filtrar artículos que están en el carrito
   useEffect(() => {
