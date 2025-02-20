@@ -2,6 +2,8 @@ import "../styles/Articles.css"
 import { useEffect, useState } from "react"
 const Articles = () => {
     const [articles, setArticles] = useState([])
+    const [msg, setMsg] = useState("");
+
     async function fetchArticles() {
         const response = await fetch("http://localhost:5000/articles")
         const data = await response.json()
@@ -14,9 +16,10 @@ const Articles = () => {
 
     async function addCart(productId) {
         const userId = localStorage.getItem("userId");
-    
+
+        
         if (!userId) {
-            console.error("No userId found in localStorage");
+            setMsg("You need to be logged");
             return;
         }
     
@@ -92,7 +95,11 @@ const Articles = () => {
                         </button>
                     </div>
                 </div>
-
+                {msg && (
+                    <div className="p-3 text-center rounded-lg font-medium bg-red-100 text-red-700 border-l-4 border-red-700">
+                        ⚠️ {msg}
+                    </div>
+                )}
 
                 {filter === "all" || filter === "mobile" ? (
                     <>

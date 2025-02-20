@@ -38,6 +38,43 @@ const Home = () => {
     }
   }
 
+  async function addCart(productId) {
+    setMsg(" ")
+    const userId = localStorage.getItem("userId");
+
+
+    if (!userId) {
+      setMsg("You need to be logged");
+      return;
+    }
+
+    try {
+      // Obtener el usuario actual desde json-server
+      const response = await fetch(`http://localhost:5000/users/${userId}`);
+      const user = await response.json();
+
+      // Verificar si cart_ids ya existe o inicializarlo
+      let updatedCart = user.cart_ids ? [...user.cart_ids] : [];
+
+      // Solo agregar el producto si no está ya en el carrito
+      if (!updatedCart.includes(productId)) {
+        updatedCart.push(productId);
+        // Actualizar el carrito en json-server
+        await fetch(`http://localhost:5000/users/${userId}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ cart_ids: updatedCart }),
+        });
+
+        console.log("Producto añadido al carrito:", updatedCart);
+      } else {
+        console.log("Este producto ya está en el carrito.");
+      }
+    } catch (error) {
+      console.error("Error al añadir al carrito:", error);
+    }
+  }
+
   function categoryArticle(category) {
     return articles.find((article) => article.category === category) || null;
   }
