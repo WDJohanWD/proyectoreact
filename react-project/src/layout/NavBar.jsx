@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/upscalemedia.png";
 
@@ -7,6 +7,57 @@ const NavBar = () => {
   const username = localStorage.getItem("username");
   const isLogged = !!username;
   const isAdmin = localStorage.getItem("isAdmin") === "true";
+  const [cartSummaryVisible, setCartSummaryVisible] = useState(false);
+  const [cartItems, setCartItems] = useState([]); // Lista de IDs de artículos en el carrito
+  const [articles, setArticles] = useState([]); // Lista de todos los artículos
+  const [cartDetails, setCartDetails] = useState([]); // Lista de artículos con info detallada
+  const [totalPrice, setTotalPrice] = useState(0); // Total del carrito
+
+  async function fetchCartAndArticles() {
+    const userId = localStorage.getItem("userId");
+    if (!userId) return;
+
+    try {
+      // Obtener carrito
+      const cartResponse = await fetch(`http://localhost:5000/users/${userId}`);
+      const user = await cartResponse.json();
+      setCartItems(user.cart_ids || []);
+
+      // Obtener artículos
+      const articlesResponse = await fetch(`http://localhost:5000/articles`);
+      const articlesData = await articlesResponse.json();
+      setArticles(articlesData || []);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  }
+
+
+  useEffect(() => {
+    fetchCartAndArticles();
+  }, []);
+  
+  useEffect(() => {
+    function handleStorageChange(event) {
+      if (event.key === "cartUpdate") {
+        fetchCartAndArticles();
+      }
+    }
+
+    window.addEventListener("storage", handleStorageChange);
+    return () => window.removeEventListener("storage", handleStorageChange);
+  }, []);
+
+  // Filtrar artículos que están en el carrito
+  useEffect(() => {
+    const filteredCartDetails = articles.filter(article =>
+      cartItems.includes(article.id)
+    );
+    setCartDetails(filteredCartDetails);
+
+    const total = filteredCartDetails.reduce((sum, item) => sum + (item.price || 0), 0);
+    setTotalPrice(total);
+  }, [cartItems, articles]);
 
   function closeSession() {
     localStorage.removeItem("username");
@@ -19,7 +70,7 @@ const NavBar = () => {
   return (
     <nav className="sticky top-0 bg-gradient-to-r from-gray-600 to-gray-900 shadow-md border-b-2 border-gray-300 px-4 py-0 z-50 w-full">
       <div className="flex items-center justify-between w-full">
-        
+
         {/* IZQUIERDA: Logo y Menú */}
         <div className="flex items-center space-x-6">
           <img width={100} src={logo || "/placeholder.svg"} alt="Logo" className="w-20 m-0" />
@@ -40,19 +91,37 @@ const NavBar = () => {
         </div>
 
         {/* DERECHA: Carrito, Login/Logout */}
-        <div className="flex items-center space-x-4 text-white text-lg">
+        <div className="flex items-center space-x-4 text-white text-lg" >
           {isAdmin && (
             <Link to="/dashboard" className="hover:text-teal-400">
-              <svg className="h-8 w-8 text-gray-500 hover:text-teal-400"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor">  <circle cx="12" cy="12" r="3" />  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" /></svg>
+              <svg className="h-8 w-8 text-gray-500 hover:text-teal-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">  <circle cx="12" cy="12" r="3" />  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" /></svg>
             </Link>
           )}
-          <Link to="/cart" className="hover:text-teal-400 relative">
-            <svg className="h-8 w-8 text-gray-500 hover:text-teal-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <circle cx="9" cy="21" r="1" />
-              <circle cx="20" cy="21" r="1" />
-              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
-            </svg>
-          </Link>
+          <div onMouseEnter={() => setCartSummaryVisible(true)}
+            onMouseLeave={() => setCartSummaryVisible(false)}>
+            <Link to="/cart" className="hover:text-teal-400 relative">
+              <svg className="h-8 w-8 text-gray-500 hover:text-teal-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <circle cx="9" cy="21" r="1" />
+                <circle cx="20" cy="21" r="1" />
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+              </svg>
+            </Link>
+            {cartSummaryVisible && cartDetails.length > 0 && (
+              <div className="absolute right-0 bg-white text-black shadow-lg rounded-md p-4 w-64 mt-2">
+                <h3 className="font-semibold border-b pb-2">Cart Summary</h3>
+                {cartDetails.map((item, index) => (
+                  <div key={index} className="flex justify-between text-sm my-2">
+                    <span>{item.name}</span>
+                    <span className="font-bold">${item.price.toFixed(2)}</span>
+                  </div>
+                ))}
+                <div className="border-t pt-2 font-bold text-right">Total: ${totalPrice.toFixed(2)}</div>
+                <Link to="/cart" className="text-teal-500 hover:underline text-sm block text-right">
+                  View Cart
+                </Link>
+              </div>
+            )}
+          </div>
           {username && (
             <div className="flex items-center">
               <Link to={"/profile"}>
@@ -61,7 +130,7 @@ const NavBar = () => {
                 </svg>
               </Link>
               <Link to="/profile">
-              <p className="hover:text-teal-400 ml-2 text-gray-500">{username.toUpperCase()}</p>
+                <p className="hover:text-teal-400 ml-2 text-gray-500">{username.toUpperCase()}</p>
               </Link>
             </div>
           )}

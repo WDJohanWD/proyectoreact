@@ -16,8 +16,7 @@ const Articles = () => {
 
     async function addCart(productId) {
         const userId = localStorage.getItem("userId");
-
-        
+    
         if (!userId) {
             setMsg("You need to be logged");
             return;
@@ -34,6 +33,7 @@ const Articles = () => {
             // Solo agregar el producto si no está ya en el carrito
             if (!updatedCart.includes(productId)) {
                 updatedCart.push(productId);
+    
                 // Actualizar el carrito en json-server
                 await fetch(`http://localhost:5000/users/${userId}`, {
                     method: "PATCH",
@@ -42,6 +42,9 @@ const Articles = () => {
                 });
     
                 console.log("Producto añadido al carrito:", updatedCart);
+    
+                // 🔥 Notifica a todos los componentes que el carrito ha cambiado
+                localStorage.setItem("cartUpdate", Date.now());
             } else {
                 console.log("Este producto ya está en el carrito.");
             }
@@ -49,6 +52,7 @@ const Articles = () => {
             console.error("Error al añadir al carrito:", error);
         }
     }
+    
     
 
     const [filter, setFilter] = useState("all");
