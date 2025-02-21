@@ -90,7 +90,7 @@ const NavBar = () => {
 
         {/* IZQUIERDA: Logo y Menú */}
         <div className="flex items-center space-x-6">
-          <img width={100} src={logo || "/placeholder.svg"} alt="Logo" className="w-20 m-0" />
+          <Link to={"/"} className="m-0"> <img width={100} src={logo || "/placeholder.svg"} alt="Logo" className="w-20 m-0" /></Link>
 
           {/* Links en desktop */}
           <div className="hidden lg:flex items-center space-x-6 text-lg text-gray-400">

@@ -20,7 +20,7 @@ const Articles = () => {
     const userId = localStorage.getItem("userId");
 
     if (!userId) {
-      setMsg("You need to be logged");
+      setMsg("You need to be logged in.");
       return;
     }
 
@@ -42,7 +42,7 @@ const Articles = () => {
         localStorage.setItem("cartUpdate", Date.now());
       }
     } catch (error) {
-      console.error("Error al añadir al carrito:", error);
+      console.error("Error adding to cart:", error);
     }
   }
 
@@ -51,8 +51,8 @@ const Articles = () => {
   };
 
   const buttonStyle = (category) => {
-    // Cambia el color de fondo y el texto solo si el filtro está activo
-    return `font-semibold py-2 px-4 rounded-md transition shadow-md ${filter === category ? 'bg-white text-teal-600 border boder-teal-600' : 'bg-teal-600 hover:bg-white hover:border border-teal-600 hover:text-teal-600 text-white'}`;
+    // Change button style when the filter is active
+    return `font-semibold py-2 px-4 rounded-md transition shadow-md ${filter === category ? 'bg-white text-teal-600 border border-teal-600' : 'bg-teal-600 hover:bg-white hover:border border-teal-600 hover:text-teal-600 text-white'}`;
   };
 
   return (
@@ -70,7 +70,7 @@ const Articles = () => {
               onClick={() => handleFilterChange("mobile")}
               className={buttonStyle("mobile")}
             >
-              Mobile
+              Mobiles
             </button>
             <button
               onClick={() => handleFilterChange("laptop")}
@@ -133,6 +133,7 @@ const Articles = () => {
             </div>
           </>
         ) : null}
+        
         {filter === "all" || filter === "laptop" ? (
           <>
             <h2 className="text-xl font-semibold text-gray-800 my-6 border-b-2 border-teal-500 pb-2">
@@ -166,6 +167,7 @@ const Articles = () => {
             </div>
           </>
         ) : null}
+
         {filter === "all" || filter === "smartwatch" ? (
           <>
             <h2 className="text-xl font-semibold text-gray-800 my-6 border-b-2 border-teal-500 pb-2">
@@ -199,6 +201,7 @@ const Articles = () => {
             </div>
           </>
         ) : null}
+
         {filter === "all" || filter === "headphones" ? (
           <>
             <h2 className="text-xl font-semibold text-gray-800 my-6 border-b-2 border-teal-500 pb-2">

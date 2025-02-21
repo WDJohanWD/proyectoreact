@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { FaArrowDown } from "react-icons/fa";
 import "../styles/Home.css";
 
-
 const Home = () => {
   const [articles, setArticles] = useState([]);
   const [article1, setArticle1] = useState(null);
@@ -39,39 +38,34 @@ const Home = () => {
   }
 
   async function addCart(productId) {
-    setMsg(" ")
+    setMsg(" ");
     const userId = localStorage.getItem("userId");
 
-
     if (!userId) {
-      setMsg("You need to be logged");
+      setMsg("You must be logged in to add items to your cart.");
       return;
     }
 
     try {
-      // Obtener el usuario actual desde json-server
       const response = await fetch(`http://localhost:5000/users/${userId}`);
       const user = await response.json();
 
-      // Verificar si cart_ids ya existe o inicializarlo
       let updatedCart = user.cart_ids ? [...user.cart_ids] : [];
 
-      // Solo agregar el producto si no está ya en el carrito
       if (!updatedCart.includes(productId)) {
         updatedCart.push(productId);
-        // Actualizar el carrito en json-server
         await fetch(`http://localhost:5000/users/${userId}`, {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ cart_ids: updatedCart }),
         });
 
-        console.log("Producto añadido al carrito:", updatedCart);
+        console.log("Product added to cart:", updatedCart);
       } else {
-        console.log("Este producto ya está en el carrito.");
+        console.log("This product is already in the cart.");
       }
     } catch (error) {
-      console.error("Error al añadir al carrito:", error);
+      console.error("Error adding to cart:", error);
     }
   }
 
@@ -81,7 +75,7 @@ const Home = () => {
 
   useEffect(() => {
     fetchArticles();
-    fetchBrands()
+    fetchBrands();
   }, []);
 
   useEffect(() => {
@@ -107,7 +101,7 @@ const Home = () => {
         <section className="hero relative text-white py-20 flex flex-col items-center justify-center text-center">
           <div className="container mx-auto px-4 relative z-10">
             <h1 className="text-4xl font-bold">Welcome to SmartSphere</h1>
-            <p className="mt-4 text-lg">Discover the latest in technology and gadgets</p>
+            <p className="mt-4 text-lg">Explore the latest in cutting-edge technology and innovative gadgets.</p>
             <Link
               to="/articles"
               className="mt-6 mb-12 inline-block bg-teal-600 hover:bg-teal-500 text-white font-semibold py-3 px-6 rounded-lg transition"
@@ -115,7 +109,7 @@ const Home = () => {
               Shop Now
             </Link>
 
-            {/* FLECHA DE SCROLL */}
+            {/* SCROLL ARROW */}
             <div
               className="mt-12 cursor-pointer flex flex-col items-center transition-all duration-300 ease-in-out transform hover:scale-110"
               onClick={scrollToFeatured}
@@ -152,12 +146,12 @@ const Home = () => {
         </section>
 
         {/* BRANDS WE WORK WITH */}
-        <section className="   w-full  py-16"> {/* Ocupa TODO el ancho */}
+        <section className="w-full py-16">
           <h2 className="text-3xl font-semibold text-center text-gray-800 mb-10">
-            Brands We Work With
+            Our Trusted Brands
           </h2>
           <div className="overflow-hidden relative w-full h-[250px] flex items-center">
-            <div className="flex animate-marquee whitespace-nowrap gap-16 min-w-full"> {/* Asegura que ocupe toda la anchura */}
+            <div className="flex animate-marquee whitespace-nowrap gap-16 min-w-full">
               {brands.concat(brands).map((brand, index) => (
                 <div key={index} className="flex flex-col items-center">
                   <img
@@ -170,10 +164,6 @@ const Home = () => {
             </div>
           </div>
         </section>
-
-
-
-
       </main>
     </div>
   );

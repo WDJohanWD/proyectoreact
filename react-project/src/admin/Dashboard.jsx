@@ -1,16 +1,14 @@
-
 import { useEffect, useState } from 'react';
 import "../styles/Dashboard.css";
 import { SlArrowLeft } from "react-icons/sl";
 import { SlArrowRight } from "react-icons/sl";
 
-
 const Dashboard = () => {
     const [users, setUsers] = useState([]);
     const [articles, setArticles] = useState([]);
     const [msg, setMsg] = useState("");
-    const ITEMS_PER_PAGE = 8
-        ;
+    const ITEMS_PER_PAGE = 8;
+
     async function getUsers() {
         const response = await fetch("http://localhost:5000/users");
         const data = await response.json();
@@ -30,9 +28,9 @@ const Dashboard = () => {
             method: "DELETE",
         }).then(response => {
             if (response.ok) {
-                setMsg("User deleted successfully");
+                setMsg("User deleted successfully!");
             } else {
-                setMsg("Failed to delete user");
+                setMsg("Failed to delete user.");
             }
         });
     }
@@ -42,31 +40,31 @@ const Dashboard = () => {
             method: "DELETE",
         }).then(response => {
             if (response.ok) {
-                setMsg("Article deleted successfully");
+                setMsg("Article deleted successfully!");
             } else {
-                setMsg("Failed to delete article");
+                setMsg("Failed to delete article.");
             }
         });
-
     }
+
     const [currentUserPage, setCurrentUserPage] = useState(1);
     const [currentArticlePage, setCurrentArticlePage] = useState(1);
 
-    // Función para obtener los datos paginados de usuarios
+    // Function to get paginated user data
     const getPaginatedUsers = () => {
         const startIndex = (currentUserPage - 1) * ITEMS_PER_PAGE;
         const endIndex = startIndex + ITEMS_PER_PAGE;
         return users.slice(startIndex, endIndex);
     };
 
-    // Función para obtener los datos paginados de artículos
+    // Function to get paginated article data
     const getPaginatedArticles = () => {
         const startIndex = (currentArticlePage - 1) * ITEMS_PER_PAGE;
         const endIndex = startIndex + ITEMS_PER_PAGE;
         return articles.slice(startIndex, endIndex);
     };
 
-    // Función para manejar la navegación de usuarios entre páginas
+    // Function to handle next page for users
     const handleNextUserPage = () => {
         if (currentUserPage * ITEMS_PER_PAGE < users.length) {
             setCurrentUserPage(currentUserPage + 1);
@@ -79,7 +77,7 @@ const Dashboard = () => {
         }
     };
 
-    // Función para manejar la navegación de artículos entre páginas
+    // Function to handle next page for articles
     const handleNextArticlePage = () => {
         if (currentArticlePage * ITEMS_PER_PAGE < articles.length) {
             setCurrentArticlePage(currentArticlePage + 1);
@@ -92,7 +90,7 @@ const Dashboard = () => {
         }
     };
 
-    // Total de páginas para usuarios y artículos
+    // Total pages for users and articles
     const totalUserPages = Math.ceil(users.length / ITEMS_PER_PAGE);
     const totalArticlePages = Math.ceil(articles.length / ITEMS_PER_PAGE);
 
@@ -106,16 +104,9 @@ const Dashboard = () => {
         window.location.href = "/edit-user";
     }
 
-
     function newUser() {
         window.location.href = "/register";
     }
-
-
-
-
-
-
 
     useEffect(() => {
         getUsers().then(data => setUsers(data));
@@ -124,20 +115,20 @@ const Dashboard = () => {
 
     return (
         <section className="container mx-auto px-4 py-8">
-            {/* Mensaje de éxito o error */}
+            {/* Success/Error message */}
             {msg && (
                 <div
                     className={`p-3 text-center rounded-lg font-medium flex items-center justify-center gap-2 text-sm 
-            ${msg.includes("successfully") ? "bg-green-100 text-green-700 border-l-4 border-green-700" :
-                            "bg-red-100 text-red-700 border-l-4 border-red-700"}`}
+                    ${msg.includes("successfully") ? "bg-green-100 text-green-700 border-l-4 border-green-700" :
+                    "bg-red-100 text-red-700 border-l-4 border-red-700"}`}
                 >
                     <span>{msg.includes("successfully") ? "✔️" : "⚠️"}</span> {msg}
                 </div>
             )}
 
-            {/* Sección de Usuarios */}
+            {/* Users Section */}
             <div className="bg-white shadow-md rounded-lg p-6 mb-8">
-                <h2 className="text-2xl font-semibold text-gray-800 my-6 border-b-2 border-teal-500 pb-2">
+                <h2 className="text-2xl font-semibold text-gray-800 my-6 pb-2">
                     Users
                 </h2>
                 <div className="overflow-x-auto">
@@ -184,10 +175,9 @@ const Dashboard = () => {
                         disabled={currentUserPage === 1}
                     >
                         <SlArrowLeft />
-
                     </button>
                     <span className="text-sm text-gray-700">
-                        Page {currentUserPage} of {totalUserPages}
+                        Showing page {currentUserPage} of {totalUserPages}
                     </span>
                     <button
                         className="bg-teal-600 hover:bg-teal-500 text-white font-semibold py-2 px-4 rounded-md transition"
@@ -195,22 +185,20 @@ const Dashboard = () => {
                         disabled={currentUserPage === totalUserPages}
                     >
                         <SlArrowRight />
-
                     </button>
                 </div>
-
 
                 <button
                     className="mt-4 bg-teal-600 hover:bg-teal-500 text-white font-semibold py-2 px-4 rounded-md transition"
                     onClick={newUser}
                 >
-                    Add new user
+                    Add New User
                 </button>
             </div>
 
-            {/* Sección de Artículos */}
+            {/* Articles Section */}
             <div className="bg-white shadow-md rounded-lg p-6">
-                <h2 className="text-2xl font-semibold text-gray-800 my-6 border-b-2 border-teal-500 pb-2">
+                <h2 className="text-2xl font-semibold text-gray-800 my-6 pb-2">
                     Articles
                 </h2>
                 <div className="overflow-x-auto">
@@ -256,10 +244,9 @@ const Dashboard = () => {
                             disabled={currentArticlePage === 1}
                         >
                             <SlArrowLeft />
-
                         </button>
                         <span className="text-sm text-gray-700">
-                            Page {currentArticlePage} of {totalArticlePages}
+                            Showing page {currentArticlePage} of {totalArticlePages}
                         </span>
                         <button
                             className="bg-teal-600 hover:bg-teal-500 text-white font-semibold py-2 px-4 rounded-md transition"
@@ -272,11 +259,7 @@ const Dashboard = () => {
                 </div>
             </div>
         </section>
-
-
-    )
-
+    );
 };
-
 
 export default Dashboard;
