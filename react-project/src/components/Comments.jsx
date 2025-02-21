@@ -83,7 +83,7 @@ const Comments = () => {
 
     return (
         <>
-            <div className="container mx-auto flex justify-center items-start mt-8 px-4">
+            <div className="container mx-auto flex justify-center items-start mt-22 px-4">
                 {/* Contenedor dividido en dos columnas */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
 

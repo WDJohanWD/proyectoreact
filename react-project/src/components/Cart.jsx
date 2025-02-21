@@ -101,7 +101,7 @@ const Cart = () => {
     }, []);
 
     return (
-        <div className="bg-white rounded-lg shadow-md p-4 text-center my-6 container mx-auto px-4">
+        <div className="bg-white rounded-lg shadow-md p-4 text-center my-6 container mx-auto px-4 mt-25">
             <h2 className="text-3xl font-semibold text-center text-gray-800">Your Shopping Cart</h2>
             <div className="flex flex-wrap justify-center gap-3 mt-2">
                 {articlesId

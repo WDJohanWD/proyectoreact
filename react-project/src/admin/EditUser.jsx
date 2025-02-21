@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import "../styles/Edit.css"
 
 const EditUser = () => {
-    const id = localStorage.getItem("userId");
+    const id = localStorage.getItem("editID");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
@@ -74,7 +74,7 @@ const EditUser = () => {
     };
 
     return (
-        <div className="max-w-lg mx-auto bg-white shadow-md rounded-lg p-6">
+        <div className="max-w-lg mx-auto bg-white shadow-md rounded-lg p-6 mt-25">
             <h1 className="text-2xl font-semibold text-center mb-4">Edit User</h1>
             <p className="text-center text-gray-600 mb-6">This is an edit user component.</p>
             <form onSubmit={handleSubmit} className="space-y-4">

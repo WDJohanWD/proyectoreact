@@ -102,7 +102,7 @@ const Dashboard = () => {
     }
 
     function handleEditUser(id) {
-        localStorage.setItem("userId", id);
+        localStorage.setItem("editID", id);
         window.location.href = "/edit-user";
     }
 

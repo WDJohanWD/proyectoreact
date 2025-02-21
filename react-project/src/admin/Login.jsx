@@ -80,57 +80,59 @@ const Login = () => {
     }
 
     return (
-        <div className="max-w-md mx-auto my-20 p-6 bg-white rounded-lg shadow-md w-100">
-            <h1 className="text-2xl font-bold text-center text-gray-800 mb-4">Login</h1>
-            
-            <form className="w-3/4 mx-auto" onSubmit={handleSubmit}>
-                
-                {/* Username Input */}
-                <div className="mb-4">
-                    <label className="block text-gray-700 font-semibold mb-1">Username</label>
-                    <input
-                        type="text"
-                        className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none"
-                        placeholder="Enter username"
-                        value={username}
-                        onChange={handleUsernameChange}
-                    />
-                    {errors.username && <p className="text-red-500 text-sm">{errors.username}</p>}
-                </div>
+        <div className="h-screen flex items-center justify-center w-100">
+            <div className="max-w-md w-full p-6 bg-white rounded-lg shadow-md">
+                <h1 className="text-2xl font-bold text-center text-gray-800 mb-4">Login</h1>
 
-                {/* Password Input */}
-                <div className="mb-4">
-                    <label className="block text-gray-700 font-semibold mb-1">Password</label>
-                    <input
-                        type="password"
-                        className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none"
-                        placeholder="Enter password"
-                        value={password}
-                        onChange={handlePasswordChange}
-                    />
-                    {errors.password && <p className="text-red-500 text-sm">{errors.password}</p>}
-                </div>
-
-                {/* Error Message */}
-                {msg && (
-                    <div className="p-3 text-center rounded-lg font-medium flex items-center justify-center gap-2 text-sm bg-red-100 text-red-700 border-l-4 border-red-700">
-                        ⚠️ {msg}
+                <form className="w-3/4 mx-auto" onSubmit={handleSubmit}>
+                    {/* Username Input */}
+                    <div className="mb-4">
+                        <label className="block text-gray-700 font-semibold mb-1">Username</label>
+                        <input
+                            type="text"
+                            className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none"
+                            placeholder="Enter username"
+                            value={username}
+                            onChange={handleUsernameChange}
+                        />
+                        {errors.username && <p className="text-red-500 text-sm">{errors.username}</p>}
                     </div>
-                )} 
-                <br />
 
-                {/* Login Button */}
-                <button type="submit" className="w-full bg-teal-600 text-white py-2 rounded-lg mt-1 hover:bg-teal-700 transition">
-                    Login
-                </button>
-                
-                {/* Register Link */}
-                <div className="justify-end mt-3 text-sm">
-                    <p className='mr-1'>If you are not a user yet, you can register</p>
-                    <Link to="/register" className="text-teal-600 hover:underline">here</Link>
-                </div>
-            </form>
+                    {/* Password Input */}
+                    <div className="mb-4">
+                        <label className="block text-gray-700 font-semibold mb-1">Password</label>
+                        <input
+                            type="password"
+                            className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none"
+                            placeholder="Enter password"
+                            value={password}
+                            onChange={handlePasswordChange}
+                        />
+                        {errors.password && <p className="text-red-500 text-sm">{errors.password}</p>}
+                    </div>
+
+                    {/* Error Message */}
+                    {msg && (
+                        <div className="p-3 text-center rounded-lg font-medium flex items-center justify-center gap-2 text-sm bg-red-100 text-red-700 border-l-4 border-red-700">
+                            ⚠️ {msg}
+                        </div>
+                    )}
+                    <br />
+
+                    {/* Login Button */}
+                    <button type="submit" className="w-full bg-teal-600 text-white py-2 rounded-lg mt-1 hover:bg-teal-700 transition">
+                        Login
+                    </button>
+
+                    {/* Register Link */}
+                    <div className="justify-end mt-3 text-sm">
+                        <p className='mr-1'>If you are not a user yet, you can register</p>
+                        <Link to="/register" className="text-teal-600 hover:underline">here</Link>
+                    </div>
+                </form>
+            </div>
         </div>
+
     );
 }
 

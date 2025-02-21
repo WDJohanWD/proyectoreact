@@ -34,10 +34,7 @@
       "date": "10/2/2025, 13:57:11",
       "role": "admin",
       "id": "e7fa",
-      "cart_ids": [
-        "3",
-        "1"
-      ]
+      "cart_ids": []
     },
     {
       "id": "b1e8",
@@ -65,6 +62,15 @@
       "email": "estebombita@gmail.com",
       "password": "Patricia123",
       "date": "17/2/2025, 13:58:08",
+      "role": "user",
+      "cart_ids": []
+    },
+    {
+      "id": "a796",
+      "username": "normaluser",
+      "email": "user@mail.com",
+      "password": "Normaluser1",
+      "date": "21/2/2025, 9:06:17",
       "role": "user",
       "cart_ids": []
     }

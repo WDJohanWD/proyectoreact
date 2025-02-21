@@ -63,7 +63,7 @@ const Articles = () => {
 
     return (
         <>
-            <section className="container mx-auto px-4 py-8">
+            <section className="container mx-auto px-4 mt-12 py-8">
                 <div className="bg-white rounded-lg shadow-md p-4 text-center mb-6">
 
                     <div className="flex flex-wrap justify-center gap-3">

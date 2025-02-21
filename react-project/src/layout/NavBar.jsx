@@ -18,11 +18,11 @@ const NavBar = () => {
     const response = await fetch("http://localhost:5000/users");
     const data = await response.json();
     data.forEach(user => {
-        if (user.id === userID) {
-            setUsername(user.username);
-        }
+      if (user.id === userID) {
+        setUsername(user.username);
+      }
     });
-}
+  }
 
   async function fetchCartAndArticles() {
     const userId = localStorage.getItem("userId");
@@ -51,19 +51,19 @@ const NavBar = () => {
 
   useEffect(() => {
     function handleCartUpdate() {
-        fetchCartAndArticles(); // Vuelve a cargar el carrito
+      fetchCartAndArticles(); // Vuelve a cargar el carrito
     }
 
     // Detecta cambios en localStorage dentro de la misma pestaña
     const interval = setInterval(() => {
-        if (localStorage.getItem("cartUpdate")) {
-            handleCartUpdate();
-            localStorage.removeItem("cartUpdate"); // Limpia para evitar llamadas innecesarias
-        }
+      if (localStorage.getItem("cartUpdate")) {
+        handleCartUpdate();
+        localStorage.removeItem("cartUpdate"); // Limpia para evitar llamadas innecesarias
+      }
     }, 500); // Revisar cada 500ms
 
     return () => clearInterval(interval); // Limpiar cuando se desmonte el componente
-}, []);
+  }, []);
 
 
   // Filtrar artículos que están en el carrito
@@ -85,7 +85,7 @@ const NavBar = () => {
   }
 
   return (
-    <nav className="sticky top-0 bg-gradient-to-r from-gray-600 to-gray-900 shadow-md border-b-2 border-gray-300 px-4 py-0 z-50 w-full">
+    <nav className="fixed top-0 bg-gradient-to-r from-gray-600 to-gray-900 shadow-md border-b-2 border-gray-300 px-4 py-0 z-50 w-full">
       <div className="flex items-center justify-between w-full">
 
         {/* IZQUIERDA: Logo y Menú */}

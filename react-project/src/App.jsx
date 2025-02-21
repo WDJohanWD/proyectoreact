@@ -27,25 +27,27 @@ function App() {
   }, []);
 
   // Ocultar NavBar y Footer en login y register
-  const isAuthPage = location.pathname === "/login" || location.pathname === "/register" || location.pathname === "*";
+  const isAuthPage = location.pathname === "/login" || location.pathname === "/register" || location.pathname === "/pay";
 
   return (
-    <div className={isAuthPage ? "auth-background" : ""}>
+    <div className={isAuthPage ? "auth-background app-container" : "app-container"}>
       {!isAuthPage && <NavBar />}
-      <Routes>  
-        <Route path="*" element={<Error404/>}/>
-        <Route path="/" element={<Home />} />
-        <Route path="/articles" element={<Articles />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        {isAdmin && <Route path="/dashboard" element={<Dashboard />} />}
-        {isAdmin && <Route path="/edit-article" element={<EditArticle />} />}
-        {isAdmin && <Route path="/edit-user" element={<EditUser />} />}
-        <Route path="/comments" element={<Comments />} />
-        <Route path="/profile" element={<Profile/>}/>
-        <Route path="/cart" element={<Cart/>}/>
-        <Route path="/pay" element={<PaymentPage/>}/>
-      </Routes>
+      <div className="content">
+        <Routes>
+          <Route path="*" element={<Error404 />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/articles" element={<Articles />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          {isAdmin && <Route path="/dashboard" element={<Dashboard />} />}
+          {isAdmin && <Route path="/edit-article" element={<EditArticle />} />}
+          {isAdmin && <Route path="/edit-user" element={<EditUser />} />}
+          <Route path="/comments" element={<Comments />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/pay" element={<PaymentPage />} />
+        </Routes>
+      </div>
       {!isAuthPage && <Footer />}
     </div>
   );

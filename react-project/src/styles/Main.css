@@ -3,7 +3,25 @@
 body {
     background-color: #fafafa;
 }
-
+html, body, #root {
+    height: 100%; /* Hacer que el contenedor ocupe el 100% de la pantalla */
+  }
+  
+  /* El contenedor principal que envuelve el contenido y el footer */
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  /* El contenido principal debe ocupar el espacio restante */
+  .content {
+    flex: 1; /* Esto hará que el contenido ocupe todo el espacio disponible */
+  }
+  
+  footer {
+    margin-top: auto; /* Esto hace que el footer se quede al final */
+  }
 .auth-background {
     background-image: url("../assets/homeImage.webp"); /* Ruta de la imagen */
     background-size: cover;
