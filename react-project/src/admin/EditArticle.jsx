@@ -77,7 +77,7 @@ const EditArticle = () => {
     };
 
     return (
-        <div className="max-w-lg mx-auto bg-white shadow-md rounded-lg p-6">
+        <div className="max-w-lg mx-auto bg-white shadow-md rounded-lg p-6 mt-25">
             <h1 className="text-2xl font-semibold text-center mb-4">Edit Article</h1>
             <p className="text-center text-gray-600 mb-6">This is an edit article component.</p>
             <form onSubmit={handleSubmit} className="space-y-4">

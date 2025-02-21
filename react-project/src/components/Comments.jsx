@@ -105,8 +105,8 @@ const Comments = () => {
     };
 
     return (
-        <div className="container mx-auto flex justify-center items-start mt-22 px-4">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
+        <div className="container mx-auto flex justify-center items-start  px-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full mt-25">
                 {/* Comment form */}
                 <div className="md:col-span-1 flex flex-col items-center">
                     <div className="w-full bg-white shadow-lg rounded-lg p-6">

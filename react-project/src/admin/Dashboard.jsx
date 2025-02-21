@@ -114,7 +114,7 @@ const Dashboard = () => {
     }, []);
 
     return (
-        <section className="container mx-auto px-4 py-8">
+        <section className="container mx-auto px-4 py-8 ">
             {/* Success/Error message */}
             {msg && (
                 <div
@@ -127,7 +127,7 @@ const Dashboard = () => {
             )}
 
             {/* Users Section */}
-            <div className="bg-white shadow-md rounded-lg p-6 mb-8">
+            <div className="bg-white shadow-md rounded-lg p-5 mb-8 mt-20">
                 <h2 className="text-2xl font-semibold text-gray-800 my-6 pb-2">
                     Users
                 </h2>
