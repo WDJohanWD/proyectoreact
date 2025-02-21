@@ -4,14 +4,25 @@ import { AiOutlineLike } from "react-icons/ai";
 import "../styles/Edit.css"
 
 const Comments = () => {
+    const userID = localStorage.getItem("userId");
     const [comments, setComments] = useState([])
     const [comment, setComment] = useState("")
     const [msg, setMsg] = useState("");
-
+    const [username, setUsername] = useState("");
     function handleCommentChange(event) {
         setComment(event.target.value);
     }
 
+    async function getUsers() {
+        const response = await fetch("http://localhost:5000/users");
+        const data = await response.json();
+        data.forEach(user => {
+            if (user.id === userID) {
+                
+                setUsername(user.username);
+            }
+        });
+    }
     async function fetchComments() {
         try {
             const response = await fetch("http://localhost:5000/comments")
@@ -28,10 +39,9 @@ const Comments = () => {
     function saveComments(event) {
         event.preventDefault(); // Evita la recarga de la página
 
-        const username = localStorage.getItem("username");
         const registrationDate = new Date().toLocaleString();
 
-        if (!username) {
+        if (!userID) {
             setMsg("To comment, you have to be logged in.");
             return;
         }
@@ -67,6 +77,7 @@ const Comments = () => {
     }
 
     useEffect(() => {
+        getUsers()
         fetchComments()
     }, [])
 
@@ -101,12 +112,12 @@ const Comments = () => {
                                 </button>
                             </form>
                         </div>
-                        {localStorage.getItem('username') ? (
+                        {username ? (
                             <div className="w-full bg-white shadow-lg m-1 rounded-lg p-6">
                                 {comments.length > 0 ? (
                                     <div className="space-y-4">
                                         <h2 className="text-xl font-semibold text-gray-800 my-6  pb-2">  My comments:</h2>
-                                        {comments.filter(comment => comment.username === localStorage.getItem("username")).map((comment, index) => (
+                                        {comments.filter(comment => comment.username === username).map((comment, index) => (
                                             <div
                                                 key={index}
                                                 className="bg-gray-50 p-4 rounded-lg shadow-sm border border-gray-200"

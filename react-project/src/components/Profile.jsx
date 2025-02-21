@@ -2,13 +2,12 @@ import { useEffect, useState } from "react";
 import { AiOutlineLike } from "react-icons/ai";
 
 const Profile = () => {
-    const username = localStorage.getItem("username");
     const userID = localStorage.getItem("userId");
     const [email, setEmail] = useState("");
     const [date, setDate] = useState("");
     const [comments, setComments] = useState([]);
     const [pass, setPass] = useState("")
-
+    const [username, setUsername] = useState("");
     const [newEmail, setNewEmail] = useState("");
     const [currentPassword, setCurrentPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");
@@ -19,10 +18,11 @@ const Profile = () => {
         const response = await fetch("http://localhost:5000/users");
         const data = await response.json();
         data.forEach(user => {
-            if (user.username === username) {
+            if (user.id === userID) {
                 setEmail(user.email);
                 setDate(user.date);
                 setPass(user.password);
+                setUsername(user.username);
             }
         });
     }

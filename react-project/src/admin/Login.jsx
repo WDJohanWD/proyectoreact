@@ -59,7 +59,6 @@ const Login = () => {
 
         localStorage.setItem("isAdmin", user.role === "admin" ? "true" : "false");
         localStorage.setItem("Isloggged", true)
-        localStorage.setItem("username", user.username);
         localStorage.setItem("userId", user.id)
         window.location.href = "/";
     }

@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import logo from "../assets/upscalemedia.png";
 
 const NavBar = () => {
+  const userID = localStorage.getItem("userId");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const username = localStorage.getItem("username");
+  const [username, setUsername] = useState("");
   const isLogged = !!username;
   const isAdmin = localStorage.getItem("isAdmin") === "true";
   const [cartSummaryVisible, setCartSummaryVisible] = useState(false);
@@ -12,6 +13,16 @@ const NavBar = () => {
   const [articles, setArticles] = useState([]); // Lista de todos los artículos
   const [cartDetails, setCartDetails] = useState([]); // Lista de artículos con info detallada
   const [totalPrice, setTotalPrice] = useState(0); // Total del carrito
+
+  async function getUsers() {
+    const response = await fetch("http://localhost:5000/users");
+    const data = await response.json();
+    data.forEach(user => {
+        if (user.id === userID) {
+            setUsername(user.username);
+        }
+    });
+}
 
   async function fetchCartAndArticles() {
     const userId = localStorage.getItem("userId");
@@ -35,6 +46,7 @@ const NavBar = () => {
 
   useEffect(() => {
     fetchCartAndArticles();
+    getUsers();
   }, []);
 
   useEffect(() => {
@@ -66,7 +78,6 @@ const NavBar = () => {
   }, [cartItems, articles]);
 
   function closeSession() {
-    localStorage.removeItem("username");
     localStorage.removeItem("userId");
     localStorage.removeItem("articleId")
     localStorage.setItem("isAdmin", "false");
