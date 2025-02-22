@@ -176,7 +176,7 @@ const Profile = () => {
 
 
 
-                    <h2 className="text-lg font-semibold text-teal-600 mt-6">Activity</h2>
+                    <h2 className="text-lg font-semibold text-teal-600 mt-6">Activity:</h2>
                     {comments.length > 0 ? (
                         <div className="space-y-4">
                             {comments.map((comment, index) => (
