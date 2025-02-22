@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
-import { AiOutlineLike } from "react-icons/ai";
+import { AiOutlineLike, AiFillLike } from "react-icons/ai"; // Añado AiFillLike para el "like" lleno
 import "../styles/Edit.css";
+import { SlArrowLeft } from "react-icons/sl";
+import { SlArrowRight } from "react-icons/sl";
 
 const Comments = () => {
     const userID = localStorage.getItem("userId");
@@ -9,6 +11,8 @@ const Comments = () => {
     const [msg, setMsg] = useState("");
     const [username, setUsername] = useState("");
     const [loading, setLoading] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
+    const ITEMS_PER_PAGE = 4; // Número de comentarios por página
 
     useEffect(() => {
         if (userID) {
@@ -58,11 +62,11 @@ const Comments = () => {
             return;
         }
         if (!comment) {
-            setMsg("You cannot write an empty comment")
+            setMsg("You cannot write an empty comment");
             return;
         }
 
-        const newComment = { username, comment, date: new Date().toLocaleString(), like: 0 };
+        const newComment = { username, comment, date: new Date().toLocaleString(), like: 0, liked: false };
 
         try {
             const response = await fetch("http://localhost:5000/comments", {
@@ -73,27 +77,35 @@ const Comments = () => {
             if (!response.ok) {
                 throw new Error("Error saving comment");
             }
-            setMsg("Comment added successfully!")
+            setMsg("Comment added successfully!");
             setComment(""); // Clear the textarea
             fetchComments(); // Refresh comments
         } catch (error) {
+            console.error("Error saving comment:", error);
             setMsg("There was an error adding your comment.");
         }
         setTimeout(() => setMsg(""), 3000);
     };
 
-    // Increment likes for a specific comment
+    // Increment or decrement likes for a specific comment
     const handleLike = async (commentId) => {
         try {
-            const updatedComments = comments.map((com) =>
-                com.id === commentId ? { ...com, like: com.like + 1 } : com
-            );
+            const updatedComments = comments.map((com) => {
+                if (com.id === commentId) {
+                    const newLikeCount = com.liked ? com.like - 1 : com.like + 1; // Si tiene like, resta 1, si no, suma 1
+                    return { ...com, like: newLikeCount, liked: !com.liked }; // Cambia el estado de liked y el contador de likes
+                }
+                return com;
+            });
             setComments(updatedComments);
 
             const response = await fetch(`http://localhost:5000/comments/${commentId}`, {
                 method: "PATCH",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ like: updatedComments.find(com => com.id === commentId).like }),
+                body: JSON.stringify({
+                    like: updatedComments.find((com) => com.id === commentId).like,
+                    liked: updatedComments.find((com) => com.id === commentId).liked,
+                }),
             });
 
             if (!response.ok) {
@@ -104,8 +116,29 @@ const Comments = () => {
         }
     };
 
+    // Pagination functions
+    const totalPages = Math.ceil(comments.length / ITEMS_PER_PAGE);
+
+    const getPaginatedComments = () => {
+        const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+        const endIndex = startIndex + ITEMS_PER_PAGE;
+        return comments.slice(startIndex, endIndex);
+    };
+
+    const handleNextPage = () => {
+        if (currentPage < totalPages) {
+            setCurrentPage(currentPage + 1);
+        }
+    };
+
+    const handlePrevPage = () => {
+        if (currentPage > 1) {
+            setCurrentPage(currentPage - 1);
+        }
+    };
+
     return (
-        <div className="container mx-auto flex justify-center items-start  px-4">
+        <div className="container mx-auto flex justify-center items-start px-4">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full mt-25">
                 {/* Comment form */}
                 <div className="md:col-span-1 flex flex-col items-center">
@@ -136,14 +169,14 @@ const Comments = () => {
                                     {comments.filter((com) => com.username === username).map((comment, index) => (
                                         <div key={index} className="bg-gray-50 p-4 rounded-lg shadow-sm border border-gray-200">
                                             <div className="flex items-center justify-between mb-2">
-                                                <h3 className="text-lg font-semibold text-teal-700">{comment.username}</h3>
+                                                <h3 className="text-lg font-semibold text-teal-700">{comment.username.toUpperCase()}</h3>
                                                 <span className="text-sm text-gray-500">{comment.date.substring(0, 8)}</span>
                                             </div>
                                             <div className="text-gray-700 flex">
                                                 {comment.comment}
                                                 <div className="ml-auto flex items-center gap-2">
                                                     <p>{comment.like}</p>
-                                                    <AiOutlineLike className="mt-1 cursor-pointer" onClick={() => handleLike(comment.id)} />
+                                                    <AiOutlineLike className="mt-1 cursor-pointer"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -159,24 +192,26 @@ const Comments = () => {
                 {/* All comments */}
                 <div className="md:col-span-2">
                     <div className="w-full bg-white shadow-lg rounded-lg p-6 mb-2">
-                        <h2 className="text-3xl font-semibold text-gray-800 my-6 border-b-2 border-teal-500 pb-2">
-                            Comments
-                        </h2>
+                        <h2 className="text-3xl font-semibold text-gray-800 my-6 border-b-2 border-teal-500 pb-2">Comments</h2>
                         {loading ? (
                             <p className="text-center text-gray-600">Loading comments...</p>
                         ) : comments.length > 0 ? (
                             <div className="space-y-4">
-                                {comments.map((comment, index) => (
+                                {getPaginatedComments().map((comment, index) => (
                                     <div key={index} className="bg-gray-50 p-4 rounded-lg shadow-sm border border-gray-200">
                                         <div className="flex items-center justify-between mb-2">
-                                            <h3 className="text-lg font-semibold text-teal-700">{comment.username}</h3>
+                                            <h3 className="text-lg font-semibold text-teal-700">{comment.username.toUpperCase()}</h3>
                                             <span className="text-sm text-gray-500">{comment.date.substring(0, 8)}</span>
                                         </div>
                                         <div className="text-gray-700 flex">
                                             {comment.comment}
                                             <div className="ml-auto flex items-center gap-2">
                                                 <p>{comment.like}</p>
-                                                <AiOutlineLike className="mt-1 cursor-pointer" onClick={() => handleLike(comment.id)} />
+                                                {comment.liked ? (
+                                                    <AiFillLike className="mt-1 cursor-pointer text-teal-500" onClick={() => handleLike(comment.id)} />
+                                                ) : (
+                                                    <AiOutlineLike className="mt-1 cursor-pointer" onClick={() => handleLike(comment.id)} />
+                                                )}
                                             </div>
                                         </div>
                                     </div>
@@ -185,6 +220,27 @@ const Comments = () => {
                         ) : (
                             <p className="text-center text-gray-600">No comments available.</p>
                         )}
+                        
+                        {/* Pagination controls */}
+                        <div className="flex justify-between items-center mt-4">
+                            <button
+                                className="bg-teal-600 hover:bg-teal-500 text-white font-semibold py-2 px-4 rounded-md transition"
+                                onClick={handlePrevPage}
+                                disabled={currentPage === 1}
+                            >
+                                <SlArrowLeft />
+                            </button>
+                            <span className="text-sm text-gray-700">
+                                Showing page {currentPage} of {totalPages}
+                            </span>
+                            <button
+                                className="bg-teal-600 hover:bg-teal-500 text-white font-semibold py-2 px-4 rounded-md transition"
+                                onClick={handleNextPage}
+                                disabled={currentPage === totalPages}
+                            >
+                                <SlArrowRight />
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
