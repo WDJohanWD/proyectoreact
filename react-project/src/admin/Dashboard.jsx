@@ -128,7 +128,7 @@ const Dashboard = () => {
 
             {/* Users Section */}
             <div className="bg-white shadow-md rounded-lg p-5 mb-8 mt-20">
-                <h2 className="text-2xl font-semibold text-gray-800 my-6 pb-2">
+                <h2 className="text-2xl font-semibold text-gray-800  pb-2">
                     Users
                 </h2>
                 <div className="overflow-x-auto">
@@ -198,7 +198,7 @@ const Dashboard = () => {
 
             {/* Articles Section */}
             <div className="bg-white shadow-md rounded-lg p-6">
-                <h2 className="text-2xl font-semibold text-gray-800 my-6 pb-2">
+                <h2 className="text-2xl font-semibold text-gray-800  pb-2">
                     Articles
                 </h2>
                 <div className="overflow-x-auto">
@@ -216,7 +216,7 @@ const Dashboard = () => {
                             {getPaginatedArticles().map((article) => (
                                 <tr key={article.id} className="border border-gray-200">
                                     <td className="border border-gray-300 px-4 py-2">{article.name}</td>
-                                    <td className="border border-gray-300 px-4 py-2">{article.price}</td>
+                                    <td className="border border-gray-300 px-4 py-2">{article.price}€</td>
                                     <td className="border border-gray-300 px-4 py-2">{article.category}</td>
                                     <td className="border border-gray-300 px-4 py-2">{article.stock}</td>
                                     <td className="border border-gray-300 px-4 py-2 flex gap-2">

@@ -30,7 +30,7 @@ function Register() {
     const validatePassword = (password) => /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password);
     const checkUsernameExists = (username) => users.some(user => user.username === username.toLowerCase());
 
-    //Functions to handle
+    //Functions to handle   
     const handleUsernameChange = (event) => {
         const value = event.target.value;
         setUsername(value);
