@@ -177,25 +177,28 @@ const Profile = () => {
 
 
                     <h2 className="text-lg font-semibold text-teal-600 mt-6">Activity:</h2>
-                    {comments.length > 0 ? (
-                        <div className="space-y-4">
-                            {comments.map((comment, index) => (
-                                <div key={index} className="bg-gray-50 p-4 rounded-lg shadow-sm border border-gray-200">
-                                    <div className="flex items-center justify-between mb-2">
-                                        <h3 className="text-lg font-semibold text-teal-700">{comment.username}</h3>
-                                        <span className="text-sm text-gray-500">{comment.date.substring(0, 8)}</span>
-                                    </div>
-                                    <div className="text-gray-700 flex">
-                                        {comment.comment}
-                                        <p className="ml-auto">{comment.like}</p>
-                                        <AiOutlineLike className="mt-1" />
-                                    </div>
+                   
+                            {comments.length > 0 ? (
+                                <div className="space-y-4">
+                                    {comments.filter((com) => com.username === username).map((comment, index) => (
+                                        <div key={index} className="bg-gray-50 p-4 rounded-lg shadow-sm border border-gray-200">
+                                            <div className="flex items-center justify-between mb-2">
+                                                <h3 className="text-lg font-semibold text-teal-700">{comment.username.toUpperCase()}</h3>
+                                                <span className="text-sm text-gray-500">{comment.date.substring(0, 8)}</span>
+                                            </div>
+                                            <div className="text-gray-700 flex">
+                                                {comment.comment}
+                                                <div className="ml-auto flex items-center gap-2">
+                                                    <p>{comment.like}</p>
+                                                    <AiOutlineLike className="mt-1 cursor-pointer"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))}
                                 </div>
-                            ))}
-                        </div>
-                    ) : (
-                        <p className="text-center text-gray-600">No comments available.</p>
-                    )}
+                            ) : (
+                                <p className="text-center text-gray-600">There are no comments yet.</p>
+                            )}
                 </div>
             </div>
         </div>
