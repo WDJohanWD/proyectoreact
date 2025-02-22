@@ -19,15 +19,6 @@
       "cart_ids": []
     },
     {
-      "username": "sandra",
-      "password": "sandra123",
-      "email": "sandra@gmail.com",
-      "date": "7/2/2025, 20:07:11",
-      "role": "admin",
-      "id": "2d5c",
-      "cart_ids": []
-    },
-    {
       "username": "admin",
       "password": "renaido1",
       "email": "admin@admin.ad",
@@ -42,26 +33,6 @@
       "email": "johan@gmail.com",
       "password": "Johan123",
       "date": "16/2/2025, 11:30:12",
-      "role": "user",
-      "cart_ids": []
-    },
-    {
-      "username": "prueba",
-      "password": "Pruebapass1",
-      "email": "prueba@email.com",
-      "date": "17/2/2025, 11:13:24",
-      "role": "user",
-      "id": "7450",
-      "cart_ids": [
-        "4"
-      ]
-    },
-    {
-      "id": "cc38",
-      "username": "estebomba",
-      "email": "estebombita@gmail.com",
-      "password": "Patricia123",
-      "date": "17/2/2025, 13:58:08",
       "role": "user",
       "cart_ids": []
     },
@@ -81,7 +52,7 @@
       "username": "admin",
       "comment": "hola",
       "date": "9/2/2025, 21:37:00",
-      "like": 1
+      "like": 7
     },
     {
       "id": "5e53",
