@@ -107,3 +107,14 @@ html, body, #root {
         url('https://cdn.rawgit.com/ahmedhosna95/upload/ba6564f8/fonts/Shabnam/Shabnam.ttf') format('truetype');
     font-weight: normal;
 }
+
+/* styles.css o cualquier archivo de estilo */
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 20px;
+    color: #00796b;
+  }
+  
