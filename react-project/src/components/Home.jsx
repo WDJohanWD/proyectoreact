@@ -5,18 +5,18 @@ import "../styles/Home.css";
 
 const Home = () => {
   const [articles, setArticles] = useState([]);
-  const [article1, setArticle1] = useState(null);
-  const [article2, setArticle2] = useState(null);
-  const [article3, setArticle3] = useState(null);
-  const [article4, setArticle4] = useState(null);
   const [brands, setBrands] = useState([]);
+  const [msg, setMsg] = useState("");
+
+  useEffect(() => {
+    fetchArticles();
+    fetchBrands();
+  }, []);
 
   async function fetchBrands() {
     try {
       const response = await fetch("http://localhost:5000/brands");
-      if (!response.ok) {
-        throw new Error("Error fetching brands");
-      }
+      if (!response.ok) throw new Error("Error fetching brands");
       const data = await response.json();
       setBrands(data);
     } catch (error) {
@@ -27,9 +27,7 @@ const Home = () => {
   async function fetchArticles() {
     try {
       const response = await fetch("http://localhost:5000/articles");
-      if (!response.ok) {
-        throw new Error("Error fetching articles");
-      }
+      if (!response.ok) throw new Error("Error fetching articles");
       const data = await response.json();
       setArticles(data);
     } catch (error) {
@@ -38,11 +36,10 @@ const Home = () => {
   }
 
   async function addCart(productId) {
-    setMsg(" ");
     const userId = localStorage.getItem("userId");
 
     if (!userId) {
-      setMsg("You must be logged in to add items to your cart.");
+      setMsg("You need to be logged in.");
       return;
     }
 
@@ -54,45 +51,25 @@ const Home = () => {
 
       if (!updatedCart.includes(productId)) {
         updatedCart.push(productId);
+
         await fetch(`http://localhost:5000/users/${userId}`, {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ cart_ids: updatedCart }),
         });
 
-        console.log("Product added to cart:", updatedCart);
-      } else {
-        console.log("This product is already in the cart.");
+        localStorage.setItem("cartUpdate", Date.now());
       }
     } catch (error) {
       console.error("Error adding to cart:", error);
     }
   }
 
-  function categoryArticle(category) {
+  function getFirstArticle(category) {
     return articles.find((article) => article.category === category) || null;
   }
 
-  useEffect(() => {
-    fetchArticles();
-    fetchBrands();
-  }, []);
-
-  useEffect(() => {
-    if (articles.length > 0) {
-      setArticle1(categoryArticle("mobile"));
-      setArticle2(categoryArticle("laptop"));
-      setArticle3(categoryArticle("smartwatch"));
-      setArticle4(categoryArticle("headphones"));
-    }
-  }, [articles]);
-
-  const scrollToFeatured = () => {
-    const featuredSection = document.getElementById("featured");
-    if (featuredSection) {
-      window.scrollTo({ top: featuredSection.offsetTop - 50, behavior: "smooth" });
-    }
-  };
+  const featuredArticles = ["mobile", "laptop", "smartwatch", "headphones"].map(getFirstArticle);
 
   return (
     <div className="tech-shop">
@@ -112,7 +89,7 @@ const Home = () => {
             {/* SCROLL ARROW */}
             <div
               className="mt-12 cursor-pointer flex flex-col items-center transition-all duration-300 ease-in-out transform hover:scale-110"
-              onClick={scrollToFeatured}
+              onClick={() => window.scrollTo({ top: document.getElementById("featured").offsetTop - 50, behavior: "smooth" })}
             >
               <FaArrowDown className="text-4xl mt-2 text-teal-600 hover:text-teal-500 transition duration-300 animate-bounce" />
             </div>
@@ -121,25 +98,39 @@ const Home = () => {
 
         {/* FEATURED PRODUCTS SECTION */}
         <section id="featured" className="container mx-auto px-4 py-10">
+          {msg && (
+            <div className="p-3 text-center rounded-lg font-medium bg-red-100 text-red-700 border-l-4 border-red-700">
+              ⚠️ {msg}
+            </div>
+          )}
           <h2 className="text-3xl font-semibold text-center text-gray-800 mb-10">
             Featured Products
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {[article1, article2, article3, article4].map((article, index) => (
+            {featuredArticles.map((article, index) => (
               <div
                 key={index}
                 className="bg-white rounded-lg shadow-md p-4 text-center transition-transform transform hover:-translate-y-1 hover:shadow-lg"
               >
-                <img
-                  src={article?.path || ""}
-                  alt={article?.name || "Product"}
-                  className="w-full h-auto object-cover mb-4"
-                />
-                <h3 className="text-lg font-semibold text-gray-900">{article?.name || "Product"}</h3>
-                <p className="text-teal-600 font-bold my-2">{article?.price ? `${article.price}€` : "N/A"}</p>
-                <button className="bg-teal-600 hover:bg-teal-500 text-white font-semibold py-2 px-4 rounded-lg transition">
-                  Add to Cart
-                </button>
+                {article ? (
+                  <>
+                    <img
+                      src={article.path}
+                      alt={article.name}
+                      className="w-full h-auto object-cover mb-4"
+                    />
+                    <h3 className="text-lg font-semibold text-gray-900">{article.name}</h3>
+                    <p className="text-teal-600 font-bold my-2">{article.price}€</p>
+                    <button 
+                      onClick={() => addCart(article.id)} 
+                      className="bg-teal-600 hover:bg-teal-500 text-white font-semibold py-2 px-4 rounded-lg transition"
+                    >
+                      Add to Cart
+                    </button>
+                  </>
+                ) : (
+                  <p className="text-gray-500">No product available</p>
+                )}
               </div>
             ))}
           </div>

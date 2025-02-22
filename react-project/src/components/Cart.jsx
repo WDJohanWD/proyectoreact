@@ -35,47 +35,52 @@ const Cart = () => {
 
     async function cleanCart() {
         const userId = localStorage.getItem("userId");
-
+    
         if (!userId) {
             console.error("No userId found in localStorage");
             return;
         }
-
+    
         try {
             await fetch(`http://localhost:5000/users/${userId}`, {
                 method: "PATCH",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ cart_ids: [] }),
             });
-
+    
             setArticlesId([]); // Limpiar el carrito en la interfaz
+            localStorage.setItem("cartUpdate", Date.now()); // Notificar el cambio
         } catch (error) {
             console.error("Error al limpiar el carrito:", error);
         }
     }
+    
 
     async function removeFromCart(id) {
         const userId = localStorage.getItem("userId");
-
+    
         if (!userId) {
             console.error("No userId found in localStorage");
             return;
         }
-
+    
         // Filtrar el carrito y eliminar el artículo con el ID seleccionado
         const updatedCart = articlesId.filter(cartId => cartId !== id);
         setArticlesId(updatedCart);
-
+    
         try {
             await fetch(`http://localhost:5000/users/${userId}`, {
                 method: "PATCH",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ cart_ids: updatedCart }),
             });
+    
+            localStorage.setItem("cartUpdate", Date.now()); // Notificar el cambio
         } catch (error) {
             console.error("Error al eliminar el artículo del carrito:", error);
         }
     }
+    
 
     const handleQuantityChange = (id, quantity) => {
         setQuantities(prevQuantities => ({
