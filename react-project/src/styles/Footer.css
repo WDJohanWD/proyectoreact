@@ -1,9 +1,14 @@
 @media (max-width: 768px) {
   .footer-content {
     flex-direction: column;
+    text-align: center;
   }
 
   .footer-section {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+  }
+
+  .footer-logo {
+    margin: 0 auto;
   }
 }
