@@ -159,7 +159,7 @@ const Cart = () => {
                     <p className="text-md font-light">Your cart is empty</p>
                 ) : (
 
-                    <p >Total: {calculateTotal()}€</p>
+                    <p >Total: {calculateTotal().toFixed(2)}€</p>
                 )}
 
             </div>
