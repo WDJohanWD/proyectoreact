@@ -174,6 +174,10 @@ function Register() {
                         <Link to="/login" className="text-teal-600 hover:underline">here</Link>
                     </div>
                 </form>
+                <div className="text-center mt-4">
+                    <Link to="/" className="text-teal-600 hover:underline">Go home</Link>
+                </div>
+
             </div>
         </div>
 
