@@ -1,15 +1,18 @@
 
 .hero {
-  background-image: url("../assets/homeImage.webp");
-  background-size: cover;
-  color: #fff;
-  padding: 19% 0;
-  margin: 0 0 5% 0 ;
-  text-align: center;
-  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
-  position: relative;
-}
-.hero::before {
+    background-image: url("../assets/homeImage.webp");
+    background-size: cover; /* Asegura que la imagen cubra toda la sección */
+    background-position: center center; /* Centra la imagen en la sección */
+    color: #fff;
+    padding: 19% 0;
+    margin: 0 0 5% 0;
+    text-align: center;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+    position: relative;
+    height: 100vh; /* Asegura que la sección ocupe todo el alto de la pantalla */
+  }
+  
+  .hero::before {
     content: "";
     position: absolute;
     top: 0;
@@ -18,25 +21,26 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 1;
-}
-
-.hero h1,
-.hero p,
-.hero .cta-button,
-.hero .flecha {
+  }
+  
+  .hero h1,
+  .hero p,
+  .hero .cta-button,
+  .hero .flecha {
     position: relative;
     z-index: 2;
-}
-
-.hero h1 {
+  }
+  
+  .hero h1 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
-}
-
-.hero p {
+  }
+  
+  .hero p {
     font-size: 1.2rem;
     margin-bottom: 2rem;
-}
+  }
+  
 
 
 
@@ -102,6 +106,6 @@
   .animate-marquee {
     display: flex;
     opacity: 70%;
-    animation: marquee 50s linear infinite;
+    animation: marquee 30s linear infinite;
   }
   
