@@ -122,6 +122,14 @@ const NavBar = () => {
                 <circle cx="20" cy="21" r="1" />
                 <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
               </svg>
+
+              {/* Contador sobre el carrito */}
+              {cartItems.length > 0 && (
+                <span className="absolute top-0 right-0 transform translate-x-2 -translate-y-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                  {cartItems.length > 9 ? "+9" : cartItems.length}
+                </span>
+              )}
+
             </Link>
             {cartSummaryVisible && cartDetails.length > 0 && (
               <div className="absolute right-0 bg-white text-black shadow-lg rounded-md p-4 w-64 mt-2">
