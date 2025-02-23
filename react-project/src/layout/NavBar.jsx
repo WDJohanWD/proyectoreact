@@ -129,10 +129,12 @@ const NavBar = () => {
                 {cartDetails.map((item, index) => (
                   <div key={index} className="flex justify-between text-sm my-2">
                     <span>{item.name}</span>
-                    <span className="font-bold">${item.price.toFixed(2)}</span>
+                    <span className="font-bold">${(Number(item.price) || 0).toFixed(2)}</span>
                   </div>
                 ))}
-                <div className="border-t pt-2 font-bold text-right">Total: ${totalPrice.toFixed(2)}</div>
+                <div className="border-t pt-2 font-bold text-right">
+                  Total: ${(Number(totalPrice) || 0).toFixed(2)}
+                </div>
                 <Link to="/cart" className="text-teal-500 hover:underline text-sm block text-right">
                   View Cart
                 </Link>

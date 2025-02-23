@@ -25,9 +25,7 @@
       "date": "10/2/2025, 13:57:11",
       "role": "admin",
       "id": "e7fa",
-      "cart_ids": [
-        "10"
-      ]
+      "cart_ids": []
     },
     {
       "id": "b1e8",
@@ -85,15 +83,15 @@
       "username": "esteban",
       "comment": "I think the prices are good",
       "date": "2/11/2025, 1:14:48 PM",
-      "like": 2,
-      "liked": true
+      "like": 1,
+      "liked": false
     }
   ],
   "articles": [
     {
       "name": "Iphone 16 Pro Max",
       "price": 1399.99,
-      "stock": "20",
+      "stock": 10,
       "category": "mobile",
       "path": "/assets/articles/mobiles/apple.webp",
       "id": "1"
@@ -108,7 +106,7 @@
     },
     {
       "name": "Samsung Galaxy S25",
-      "price": "909.00",
+      "price": 909,
       "stock": 10,
       "category": "mobile",
       "path": "/assets/articles/mobiles/samsung.webp",
