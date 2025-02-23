@@ -44,7 +44,7 @@ const CheckoutForm = () => {
   };
 
   return (
-    <div className="mx-auto my-20 p-6 bg-white rounded-lg shadow-md w-130 h-170">
+    <div className="mx-auto  p-6 bg-white rounded-lg shadow-md w-100 h-160 mt-10">
       <h1 className="text-2xl font-bold text-center text-gray-800 mt-10">Complete Your Payment</h1>
 
       <form className="w-3/4 mx-auto py-10" onSubmit={handleSubmit}>
