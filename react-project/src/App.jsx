@@ -25,11 +25,20 @@ function App() {
   const location = useLocation();
 
   useEffect(() => {
-    const admin = localStorage.getItem("isAdmin");
-    if (admin === "true") {
-      setIsAdmin(true);
-    }
+    const checkAdmin = () => {
+      const admin = localStorage.getItem("isAdmin");
+      setIsAdmin(admin === "true");
+    };
+  
+    checkAdmin(); // Llamada inicial
+  
+    window.addEventListener("storage", checkAdmin); // Escuchar cambios en localStorage
+  
+    return () => {
+      window.removeEventListener("storage", checkAdmin); // Limpiar evento al desmontar
+    };
   }, []);
+  
 
   // Ocultar NavBar y Footer en login y register
   const isAuthPage = location.pathname === "/login" || location.pathname === "/register" || location.pathname === "/pay";

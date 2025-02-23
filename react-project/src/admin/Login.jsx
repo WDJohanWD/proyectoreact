@@ -55,30 +55,32 @@ const Login = () => {
     // Handle Login Submission
     function handleSubmit(event) {
         event.preventDefault();
-        setMsg(""); // Clear previous messages
-
-        if (!validateFields()) return; // Stop if validation fails
-
-        // Find user in the fetched database
+        setMsg(""); // Limpiar mensajes previos
+    
+        if (!validateFields()) return; // Validación
+    
         const user = users.find(user => user.username === username.trim().toLowerCase());
-
+    
         if (!user) {
             return setMsg("User not found");
         }
-
+    
         if (user.password !== password.trim()) {
             return setMsg("Password is incorrect");
         }
-
-        // Store User Information in Local Storage
+    
+        // Guardar en localStorage
         localStorage.setItem("isAdmin", user.role === "admin" ? "true" : "false");
-        localStorage.setItem("isLogged", "true"); // Fix typo from "Isloggged"
+        localStorage.setItem("isLogged", "true");
         localStorage.setItem("userId", user.id);
-
-        // Navigate to Home Page after Successful Login
+    
+        // 🔥 Forzar actualización del estado en App.js
+        window.dispatchEvent(new Event("storage"));
+    
+        // Navegar al home o dashboard si es admin
         navigate("/");
     }
-
+    
     return (
         <div className="h-screen flex items-center justify-center w-100">
             <div className="max-w-md w-full p-6 bg-white rounded-lg shadow-md">
@@ -130,6 +132,10 @@ const Login = () => {
                         <Link to="/register" className="text-teal-600 hover:underline">here</Link>
                     </div>
                 </form>
+                <div className="text-center mt-4">
+                    <Link to="/" className="text-teal-600 hover:underline">Go home</Link>
+                </div>
+
             </div>
         </div>
 
